@@ -2,7 +2,7 @@ interface Props {
   isPanelOpen: boolean;
 }
 
-export default function ({ isPanelOpen }: Props) {
+export default function SidePanel({ isPanelOpen }: Props) {
   return (
     <aside className="h-full w-60 self-end overflow-hidden p-2">
       <div
