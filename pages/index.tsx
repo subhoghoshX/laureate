@@ -1,8 +1,11 @@
 import Head from "next/head";
+import { useState } from "react";
 import Header from "../components/Header";
 import SidePanel from "../components/SidePanel";
 
 export default function Home() {
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+
   return (
     <div>
       <Head>
@@ -11,8 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex h-screen flex-col">
-        <Header />
-        <SidePanel />
+        <Header setIsPanelOpen={setIsPanelOpen} />
+        <SidePanel isPanelOpen={isPanelOpen} />
       </div>
     </div>
   );

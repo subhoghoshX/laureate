@@ -1,7 +1,15 @@
-export default function () {
+interface Props {
+  isPanelOpen: boolean;
+}
+
+export default function ({ isPanelOpen }: Props) {
   return (
     <aside className="h-full w-60 self-end overflow-hidden p-2">
-      <div className="h-full overflow-y-auto rounded-md text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)]">
+      <div
+        className={`h-full overflow-y-auto rounded-md text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-transform duration-200 ease-out ${
+          isPanelOpen ? "translate-x-0" : "translate-x-60"
+        }`}
+      >
         <div className="p-5">
           <h2 className="font-bold">Size</h2>
           <div className="mt-4 flex">
