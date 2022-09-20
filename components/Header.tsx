@@ -1,0 +1,22 @@
+export default function Header() {
+  return (
+    <header className="flex items-center justify-between gap-x-4 px-4 py-2 shadow">
+      <img src="/laureate-logo.svg" alt="laureate logo" className="" />
+      <form className="w-1/2">
+        <input
+          className="w-full rounded-full bg-slate-200 px-6 py-2.5 text-sm"
+          type="text"
+          placeholder="Paste tweet link here"
+        />
+      </form>
+      <div className="flex gap-x-3">
+        <button>
+          <img src="/moon.svg" alt="moon icon" />
+        </button>
+        <button>
+          <img src="/flap.svg" alt="flap icon" />
+        </button>
+      </div>
+    </header>
+  );
+}
