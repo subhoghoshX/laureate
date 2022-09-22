@@ -6,7 +6,7 @@ interface Props {
 
 export default function Header({ setIsPanelOpen }: Props) {
   return (
-    <header className="flex items-center justify-between gap-x-4 px-4 py-2 shadow">
+    <header className="flex items-center justify-between gap-x-4 bg-white px-4 py-2 shadow">
       <img src="/laureate-logo.svg" alt="laureate logo" className="" />
       <form className="w-1/2">
         <input
