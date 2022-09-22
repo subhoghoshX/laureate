@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .scrollbar:hover::-webkit-scrollbar-thumb {
+        @apply bg-gray-400 rounded-full;
+    }
+    
+    .scrollbar {
+        scrollbar-color: transparent transparent;
+    }
+    
+    .scrollbar:hover {
+        scrollbar-color: theme('colors.gray[400]') transparent;
+    }
+}
+
+@supports (scrollbar-width: thin) {
+    .firefox-padding-fix {
+        @apply !p-5;
+    }
+}

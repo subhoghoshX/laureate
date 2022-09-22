@@ -6,11 +6,11 @@ export default function SidePanel({ isPanelOpen }: Props) {
   return (
     <aside className="h-full w-60 self-end overflow-hidden p-2">
       <div
-        className={`h-full overflow-y-auto rounded-md bg-white text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-transform duration-200 ease-out ${
+        className={`scrollbar group h-full overflow-y-hidden rounded-md bg-white text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-transform duration-200 ease-out hover:overflow-y-auto ${
           isPanelOpen ? "translate-x-0" : "translate-x-60"
         }`}
       >
-        <div className="p-5">
+        <div className="firefox-padding-fix p-5 group-hover:pr-3.5">
           <h2 className="font-bold">Size</h2>
           <div className="mt-4 flex">
             <div className="flex gap-x-3">
@@ -28,7 +28,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
             </div>
           </div>
         </div>
-        <div className="border-t p-5">
+        <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
           <h2 className="font-bold">Background</h2>
           <div className="mt-3 grid grid-cols-4 gap-3">
             <button className="h-9 w-9 rounded-lg bg-red-500"></button>
@@ -41,7 +41,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
             <button className="h-9 w-9 rounded-lg bg-red-500"></button>
           </div>
         </div>
-        <div className="border-t p-5">
+        <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
           <h2 className="font-bold">Templates</h2>
           <div className="mt-4 space-y-4">
             <div className="rounded-lg border-2 p-3">
