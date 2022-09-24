@@ -91,14 +91,6 @@ export default function SidePanel({ isPanelOpen }: Props) {
             </div>
           </div>
         </div>
-        <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
-          <h2 className="font-bold">Export</h2>
-          <div className="mt-3 grid grid-cols-3 gap-3 text-xs text-gray-700">
-            <button className="rounded bg-gray-300 py-1">JPG</button>
-            <button className="rounded bg-gray-300 py-1">PNG</button>
-            <button className="rounded bg-gray-300 py-1">SVG</button>
-          </div>
-        </div>
       </div>
     </aside>
   );
