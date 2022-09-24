@@ -10,14 +10,16 @@ export default function Home() {
   const rootRef = useRef();
 
   async function exportPNG() {
-    const canvas = await html2canvas(rootRef.current, {
-      allowTaint: true,
-      useCORS: true,
-    });
-    const img = canvas
-      .toDataURL("image/png", 1.0)
-      .replace("image/png", "image/octet-stream");
-    window.location.href = img;
+    if (rootRef.current !== undefined) {
+      const canvas = await html2canvas(rootRef.current, {
+        allowTaint: true,
+        useCORS: true,
+      });
+      const img = canvas
+        .toDataURL("image/png", 1.0)
+        .replace("image/png", "image/octet-stream");
+      window.location.href = img;
+    }
   }
 
   return (

@@ -1,4 +1,4 @@
-export default function TweetCard({ rootRef }) {
+export default function TweetCard({ rootRef }: any) {
   return (
     <div
       ref={rootRef}
