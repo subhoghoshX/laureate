@@ -1,8 +1,25 @@
+import { useEffect, useState } from "react";
+import { useCardStore } from "../store";
+
 interface Props {
   isPanelOpen: boolean;
 }
 
 export default function SidePanel({ isPanelOpen }: Props) {
+  const [width, setWidth] = useState("672");
+  const cardWidth = useCardStore((state: any) => state.width);
+  const changeWidth = useCardStore((state: any) => state.changeWidth);
+  useEffect(() => {
+    setWidth(cardWidth);
+  }, [cardWidth]);
+
+  const [height, setHeight] = useState("332");
+  const cardHeight = useCardStore((state: any) => state.width);
+  const changeHeight = useCardStore((state: any) => state.changeHeight);
+  useEffect(() => {
+    setHeight(cardHeight);
+  }, [cardHeight]);
+
   return (
     <aside className="h-full w-60 self-end overflow-hidden p-2">
       <div
@@ -12,21 +29,42 @@ export default function SidePanel({ isPanelOpen }: Props) {
       >
         <div className="firefox-padding-fix p-5 group-hover:pr-3.5">
           <h2 className="font-bold">Size</h2>
-          <div className="mt-4 flex">
+          <form className="mt-4 flex">
             <div className="flex gap-x-3">
               <label htmlFor="" className="font-mono text-slate-500">
                 W
               </label>
-              <input value={554} className="w-full" type="text" />
+              <input
+                value={width}
+                onChange={(e) => setWidth(e.target.value)}
+                onBlur={() =>
+                  Number.isNaN(Number(width))
+                    ? setWidth(cardWidth)
+                    : changeWidth(Number(width))
+                }
+                className="w-full"
+                type="text"
+              />
             </div>
 
             <div className="flex gap-x-3">
               <label htmlFor="" className="font-mono text-slate-500">
                 H
               </label>
-              <input value={224} className="w-full" type="text" />
+              <input
+                value={height}
+                onChange={(e) => setWidth(e.target.value)}
+                onBlur={() =>
+                  Number.isNaN(Number(height))
+                    ? setHeight(cardHeight)
+                    : changeHeight(Number(height))
+                }
+                className="w-full"
+                type="text"
+              />
             </div>
-          </div>
+            {/* <button className="sr-only" type="submit"></button> */}
+          </form>
         </div>
         <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
           <h2 className="font-bold">Background</h2>
