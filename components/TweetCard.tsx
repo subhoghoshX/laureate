@@ -1,6 +1,9 @@
-export default function TweetCard() {
+export default function TweetCard({ rootRef }) {
   return (
-    <div className="max-w-2xl rounded-2xl bg-gradient-to-br from-yellow-300 to-red-500 py-16 px-20">
+    <div
+      ref={rootRef}
+      className="max-w-2xl rounded-2xl bg-gradient-to-br from-yellow-300 to-red-500 py-16 px-20"
+    >
       <div className="rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
         <div className="flex items-center gap-x-5">
           <img

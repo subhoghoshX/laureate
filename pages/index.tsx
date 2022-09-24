@@ -1,11 +1,24 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "../components/Header";
 import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
+import html2canvas from "html2canvas";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const rootRef = useRef();
+
+  async function exportPNG() {
+    const canvas = await html2canvas(rootRef.current, {
+      allowTaint: true,
+      useCORS: true,
+    });
+    const img = canvas
+      .toDataURL("image/png", 1.0)
+      .replace("image/png", "image/octet-stream");
+    window.location.href = img;
+  }
 
   return (
     <div>
@@ -20,7 +33,12 @@ export default function Home() {
           <SidePanel isPanelOpen={isPanelOpen} />
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
-          <TweetCard />
+          <TweetCard rootRef={rootRef} />
+        </div>
+        <div className="absolute bottom-4 left-4 z-20">
+          <button className="rounded bg-gray-300 px-4 py-1" onClick={exportPNG}>
+            Download
+          </button>
         </div>
       </div>
     </div>
