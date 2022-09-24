@@ -14,7 +14,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
   }, [cardWidth]);
 
   const [height, setHeight] = useState("332");
-  const cardHeight = useCardStore((state: any) => state.width);
+  const cardHeight = useCardStore((state: any) => state.height);
   const changeHeight = useCardStore((state: any) => state.changeHeight);
   useEffect(() => {
     setHeight(cardHeight);
