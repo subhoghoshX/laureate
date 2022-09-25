@@ -21,7 +21,7 @@ export default function TweetCard({ rootRef }: any) {
         ref={rootRef}
         className="flex h-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-300 to-red-500 py-16 px-20"
       >
-        <div className="max-w-lg rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
+        <div className="max-w-screen-sm rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
           <div className="flex items-center gap-x-5">
             <img
               className="h-14 w-14 rounded-full"
