@@ -33,9 +33,9 @@ export default function Home() {
         <div className="relative z-10 flex h-screen flex-col">
           <Header setIsPanelOpen={setIsPanelOpen} />
           <SidePanel isPanelOpen={isPanelOpen} />
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <TweetCard rootRef={rootRef} />
+          <div className="absolute inset-0 z-[-10] flex items-center justify-center">
+            <TweetCard rootRef={rootRef} />
+          </div>
         </div>
         <div className="absolute bottom-4 left-4 z-20">
           <button className="rounded bg-gray-300 px-4 py-1" onClick={exportPNG}>
