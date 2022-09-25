@@ -12,6 +12,19 @@ export default function SidePanel({ isPanelOpen }: Props) {
   useEffect(() => {
     setWidth(cardWidth);
   }, [cardWidth]);
+  function widthKeyDown(e: any) {
+    if (e.keyCode === 38) {
+      changeWidth(+width + 1);
+    } else if (e.keyCode === 40) {
+      changeWidth(+width - 1);
+    } else if (e.keyCode === 13) {
+      if (Number.isNaN(Number(width))) {
+        setWidth(cardWidth);
+      } else {
+        changeWidth(+width);
+      }
+    }
+  }
 
   const [height, setHeight] = useState("332");
   const cardHeight = useCardStore((state: any) => state.height);
@@ -19,6 +32,19 @@ export default function SidePanel({ isPanelOpen }: Props) {
   useEffect(() => {
     setHeight(cardHeight);
   }, [cardHeight]);
+  function heightKeyDown(e: any) {
+    if (e.keyCode === 38) {
+      changeWidth(+height + 1);
+    } else if (e.keyCode === 40) {
+      changeWidth(+height - 1);
+    } else if (e.keyCode === 13) {
+      if (Number.isNaN(Number(height))) {
+        setHeight(cardHeight);
+      } else {
+        changeHeight(+height);
+      }
+    }
+  }
 
   return (
     <aside className="h-full w-60 self-end overflow-hidden p-2">
@@ -42,6 +68,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
                     ? setWidth(cardWidth)
                     : changeWidth(Number(width))
                 }
+                onKeyDown={widthKeyDown}
                 className="w-full"
                 type="text"
               />
@@ -59,6 +86,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
                     ? setHeight(cardHeight)
                     : changeHeight(Number(height))
                 }
+                onKeyDown={heightKeyDown}
                 className="w-full"
                 type="text"
               />
