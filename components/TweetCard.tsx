@@ -1,8 +1,14 @@
+import { useCardStore } from "../store";
+
 export default function TweetCard({ rootRef }: any) {
+  const cardWidth = useCardStore((state: any) => state.width);
+  const cardHeight = useCardStore((state: any) => state.width);
+
   return (
     <div
       ref={rootRef}
-      className="max-w-2xl rounded-2xl bg-gradient-to-br from-yellow-300 to-red-500 py-16 px-20"
+      style={{ width: cardWidth }}
+      className="rounded-2xl bg-gradient-to-br from-yellow-300 to-red-500 py-16 px-20"
     >
       <div className="rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
         <div className="flex items-center gap-x-5">
