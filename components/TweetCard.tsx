@@ -3,16 +3,25 @@ import { Resizable } from "re-resizable";
 
 export default function TweetCard({ rootRef }: any) {
   const cardWidth = useCardStore((state: any) => state.width);
-  const cardHeight = useCardStore((state: any) => state.width);
+  const cardHeight = useCardStore((state: any) => state.height);
+
+  const changeWidth = useCardStore((state: any) => state.changeWidth);
+  const changeHeight = useCardStore((state: any) => state.changeHeight);
 
   return (
-    <Resizable>
+    <Resizable
+      defaultSize={{ width: cardWidth, height: cardHeight }}
+      size={{ width: cardWidth, height: cardHeight }}
+      onResizeStop={(e, dir, ref, d) => {
+        changeWidth(cardWidth + d.width);
+        changeHeight(cardHeight + d.height);
+      }}
+    >
       <div
         ref={rootRef}
-        style={{ width: cardWidth }}
-        className="rounded-2xl bg-gradient-to-br from-yellow-300 to-red-500 py-16 px-20"
+        className="flex h-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-300 to-red-500 py-16 px-20"
       >
-        <div className="rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
+        <div className="max-w-lg rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
           <div className="flex items-center gap-x-5">
             <img
               className="h-14 w-14 rounded-full"
