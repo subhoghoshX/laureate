@@ -47,11 +47,13 @@ export default function SidePanel({ isPanelOpen }: Props) {
   }
 
   return (
-    <aside className="h-full w-60 self-end overflow-hidden p-2">
+    <aside
+      className={`h-full w-60 self-end overflow-hidden p-2 transition-transform duration-200 ease-out ${
+        isPanelOpen ? "translate-x-0" : "translate-x-60"
+      }`}
+    >
       <div
-        className={`scrollbar group h-full overflow-y-hidden rounded-md bg-white text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-transform duration-200 ease-out hover:overflow-y-auto ${
-          isPanelOpen ? "translate-x-0" : "translate-x-60"
-        }`}
+        className={`scrollbar group h-full overflow-y-hidden rounded-md bg-white text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)] hover:overflow-y-auto`}
       >
         <div className="firefox-padding-fix p-5 group-hover:pr-3.5">
           <h2 className="font-bold">Size</h2>

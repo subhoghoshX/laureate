@@ -30,7 +30,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="relative">
-        <div className="relative z-10 flex h-screen flex-col">
+        <div className="relative z-10 flex h-screen flex-col overflow-hidden">
           <Header setIsPanelOpen={setIsPanelOpen} />
           <SidePanel isPanelOpen={isPanelOpen} />
           <div className="absolute inset-0 z-[-10] flex items-center justify-center">
