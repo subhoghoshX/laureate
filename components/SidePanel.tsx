@@ -34,9 +34,9 @@ export default function SidePanel({ isPanelOpen }: Props) {
   }, [cardHeight]);
   function heightKeyDown(e: any) {
     if (e.keyCode === 38) {
-      changeWidth(+height + 1);
+      changeHeight(+height + 1);
     } else if (e.keyCode === 40) {
-      changeWidth(+height - 1);
+      changeHeight(+height - 1);
     } else if (e.keyCode === 13) {
       if (Number.isNaN(Number(height))) {
         setHeight(cardHeight);
@@ -80,7 +80,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
               </label>
               <input
                 value={height}
-                onChange={(e) => setWidth(e.target.value)}
+                onChange={(e) => setHeight(e.target.value)}
                 onBlur={() =>
                   Number.isNaN(Number(height))
                     ? setHeight(cardHeight)
