@@ -7,6 +7,11 @@ export const useCardStore = create((set) => {
     changeHeight: (c: any) => {
       set((state: any) => ({ height: c }));
     },
+    incrementCardWidth: (c: any) => {
+      set((state: any) => ({
+        width: state.width + c,
+      }));
+    },
     changeWidth: (c: any) => {
       set((state: any) => ({ width: c }));
     },

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCardStore } from "../store";
 
 interface Props {
@@ -46,6 +46,32 @@ export default function SidePanel({ isPanelOpen }: Props) {
     }
   }
 
+  const widthRef = useRef<HTMLLabelElement>(null);
+
+  function widthMouseDownHandler() {
+    if (widthRef.current) {
+      widthRef.current.requestPointerLock();
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("pointerlockchange", () => {
+      if (document.pointerLockElement === widthRef.current) {
+        document.addEventListener("mousemove", incrementWidth);
+      } else {
+        document.removeEventListener("mousemove", incrementWidth);
+      }
+    });
+  }, []);
+
+  const incrementCardWidth = useCardStore(
+    (state: any) => state.incrementCardWidth,
+  );
+
+  function incrementWidth(e: any) {
+    incrementCardWidth(e.movementX);
+  }
+
   return (
     <aside
       className={`h-full w-60 self-end overflow-hidden p-2 transition-transform duration-200 ease-out ${
@@ -59,7 +85,15 @@ export default function SidePanel({ isPanelOpen }: Props) {
           <h2 className="font-bold">Size</h2>
           <form className="mt-4 flex">
             <div className="flex gap-x-3">
-              <label htmlFor="" className="font-mono text-slate-500">
+              <label
+                htmlFor=""
+                ref={widthRef}
+                className="cursor-ew-resize font-mono text-slate-500"
+                onMouseDown={widthMouseDownHandler}
+                onMouseUp={() => {
+                  document.exitPointerLock();
+                }}
+              >
                 W
               </label>
               <input
