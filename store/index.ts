@@ -118,3 +118,12 @@ export const useGradientStore = create((set) => {
     },
   };
 });
+
+export const usePanStore = create((set) => {
+  return {
+    spaceDown: false,
+    changeSpaceDown: (c: any) => {
+      set((state: any) => ({ spaceDown: c }));
+    },
+  };
+});

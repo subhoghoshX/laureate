@@ -1,10 +1,10 @@
 import Head from "next/head";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
 import html2canvas from "html2canvas";
-import { useArrowStore } from "../store";
+import { useArrowStore, usePanStore } from "../store";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -27,6 +27,39 @@ export default function Home() {
   const arrowX = useArrowStore((state: any) => state.X);
   const arrowY = useArrowStore((state: any) => state.Y);
 
+  const spaceDown = usePanStore((state: any) => state.spaceDown);
+  const changeSpaceDown = usePanStore((state: any) => state.changeSpaceDown);
+  const [mouseDown, setMouseDown] = useState(false);
+  const [posX, setPosX] = useState(0);
+  const [posY, setPosY] = useState(0);
+
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.keyCode === 32) {
+        changeSpaceDown(true);
+      }
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.keyCode === 32) {
+        changeSpaceDown(false);
+      }
+    });
+  }, []);
+
+  function mouseDownHandler() {
+    setMouseDown(true);
+  }
+  function mouseUpHandler() {
+    setMouseDown(false);
+  }
+  function mouseMoveHandler(e: any) {
+    if (mouseDown && spaceDown) {
+      setPosX((state) => state + e.movementX);
+      setPosY((state) => state + e.movementY);
+    }
+  }
+
   return (
     <div>
       <Head>
@@ -47,7 +80,19 @@ export default function Home() {
           <Header setIsPanelOpen={setIsPanelOpen} />
           <SidePanel isPanelOpen={isPanelOpen} />
           <div className="absolute inset-0 z-[-10] flex items-center justify-center">
-            <TweetCard rootRef={rootRef} />
+            <div
+              onMouseDown={mouseDownHandler}
+              onMouseUp={mouseUpHandler}
+              onMouseMove={mouseMoveHandler}
+              style={{
+                transform: `translate(${posX}px, ${posY}px)`,
+              }}
+              className={`${
+                spaceDown ? (mouseDown ? "cursor-grabbing" : "cursor-grab") : ""
+              }`}
+            >
+              <TweetCard rootRef={rootRef} />
+            </div>
           </div>
         </div>
         <div className="absolute bottom-4 left-4 z-20">
