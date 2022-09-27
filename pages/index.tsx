@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
 import html2canvas from "html2canvas";
+import { useArrowStore } from "../store";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -22,6 +23,10 @@ export default function Home() {
     }
   }
 
+  const showArrow = useArrowStore((state: any) => state.showArrow);
+  const arrowX = useArrowStore((state: any) => state.X);
+  const arrowY = useArrowStore((state: any) => state.Y);
+
   return (
     <div>
       <Head>
@@ -30,6 +35,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="relative">
+        {showArrow && (
+          <span
+            className="fixed z-20 text-sm font-bold"
+            style={{ left: arrowX, top: arrowY }}
+          >
+            ⟷
+          </span>
+        )}
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">
           <Header setIsPanelOpen={setIsPanelOpen} />
           <SidePanel isPanelOpen={isPanelOpen} />

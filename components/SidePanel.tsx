@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useCardStore } from "../store";
+import { useArrowStore, useCardStore } from "../store";
 
 interface Props {
   isPanelOpen: boolean;
@@ -46,9 +46,21 @@ export default function SidePanel({ isPanelOpen }: Props) {
     }
   }
 
+  const changeVisibility = useArrowStore(
+    (state: any) => state.changeVisibility,
+  );
+
+  const changeX = useArrowStore((state: any) => state.changeX);
+  const changeY = useArrowStore((state: any) => state.changeY);
+  const setX = useArrowStore((state: any) => state.setX);
+  const setY = useArrowStore((state: any) => state.setY);
+
   const widthRef = useRef<HTMLLabelElement>(null);
 
   function widthMouseDownHandler(e: any) {
+    changeVisibility(true);
+    setX(e.clientX - 10);
+    setY(e.clientY - 10);
     if (widthRef.current && widthRef.current === e.target) {
       widthRef.current.requestPointerLock();
     } else if (heightRef.current && heightRef.current === e.target) {
@@ -80,6 +92,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
   );
 
   function incrementWidth(e: any) {
+    changeX(e.movementX);
     if (e.target === widthRef.current) {
       incrementCardWidth(e.movementX);
     } else if (e.target === heightRef.current) {
@@ -107,6 +120,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
                 onMouseDown={widthMouseDownHandler}
                 onMouseUp={() => {
                   document.exitPointerLock();
+                  changeVisibility(false);
                 }}
               >
                 W
@@ -132,6 +146,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
                 onMouseDown={widthMouseDownHandler}
                 onMouseUp={() => {
                   document.exitPointerLock();
+                  changeVisibility(false);
                 }}
                 ref={heightRef}
               >
