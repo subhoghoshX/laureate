@@ -23,6 +23,7 @@ export default function TweetCard({ rootRef }: any) {
         .filter((gradient: any) => gradient.selected)
         .map((gradient: any) => (
           <div
+            key={gradient.id}
             ref={rootRef}
             style={{
               background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
