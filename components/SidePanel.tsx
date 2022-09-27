@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useArrowStore, useCardStore } from "../store";
+import { useArrowStore, useCardStore, useGradientStore } from "../store";
 
 interface Props {
   isPanelOpen: boolean;
@@ -100,6 +100,9 @@ export default function SidePanel({ isPanelOpen }: Props) {
     }
   }
 
+  const gradients = useGradientStore((state: any) => state.gradients);
+  const selectGradient = useGradientStore((state: any) => state.selectGradient);
+
   return (
     <aside
       className={`h-full w-60 self-end overflow-hidden p-2 transition-transform duration-200 ease-out ${
@@ -171,14 +174,18 @@ export default function SidePanel({ isPanelOpen }: Props) {
         <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
           <h2 className="font-bold">Background</h2>
           <div className="mt-3 grid grid-cols-4 gap-3">
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
-            <button className="h-9 w-9 rounded-lg bg-red-500"></button>
+            {gradients.map((gradient: any) => (
+              <button
+                key={gradient.id}
+                style={{
+                  background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
+                }}
+                className={`h-9 w-9 rounded-lg ${
+                  gradient.selected ? `ring-2` : ""
+                }`}
+                onClick={() => selectGradient(gradient.id)}
+              ></button>
+            ))}
           </div>
         </div>
         <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
