@@ -5,8 +5,12 @@ export default function TweetCard({ rootRef }: any) {
   const cardWidth = useCardStore((state: any) => state.width);
   const cardHeight = useCardStore((state: any) => state.height);
 
-  const changeWidth = useCardStore((state: any) => state.changeWidth);
-  const changeHeight = useCardStore((state: any) => state.changeHeight);
+  const incrementCardWidth = useCardStore(
+    (state: any) => state.incrementCardWidth,
+  );
+  const incrementCardHeight = useCardStore(
+    (state: any) => state.incrementCardHeight,
+  );
 
   const gradients = useGradientStore((state: any) => state.gradients);
 
@@ -14,9 +18,28 @@ export default function TweetCard({ rootRef }: any) {
     <Resizable
       defaultSize={{ width: cardWidth, height: cardHeight }}
       size={{ width: cardWidth, height: cardHeight }}
-      onResizeStop={(e, dir, ref, d) => {
-        changeWidth(cardWidth + d.width);
-        changeHeight(cardHeight + d.height);
+      onResize={(e: any, dir, ref, d) => {
+        if (dir === "right") {
+          incrementCardWidth(e.movementX);
+        } else if (dir === "left") {
+          incrementCardWidth(-e.movementX);
+        } else if (dir === "top") {
+          incrementCardHeight(-e.movementY);
+        } else if (dir === "bottom") {
+          incrementCardHeight(e.movementY);
+        } else if (dir === "topRight") {
+          incrementCardWidth(e.movementX);
+          incrementCardHeight(-e.movementY);
+        } else if (dir === "topLeft") {
+          incrementCardWidth(-e.movementX);
+          incrementCardHeight(-e.movementY);
+        } else if (dir === "bottomLeft") {
+          incrementCardWidth(-e.movementX);
+          incrementCardHeight(e.movementY);
+        } else if (dir === "bottomRight") {
+          incrementCardWidth(e.movementX);
+          incrementCardHeight(e.movementY);
+        }
       }}
     >
       {gradients
