@@ -15,5 +15,10 @@ export const useCardStore = create((set) => {
     changeWidth: (c: any) => {
       set((state: any) => ({ width: c }));
     },
+    incrementCardHeight: (c: any) => {
+      set((state: any) => ({
+        height: state.height + c,
+      }));
+    },
   };
 });

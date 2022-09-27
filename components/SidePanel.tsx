@@ -48,15 +48,22 @@ export default function SidePanel({ isPanelOpen }: Props) {
 
   const widthRef = useRef<HTMLLabelElement>(null);
 
-  function widthMouseDownHandler() {
-    if (widthRef.current) {
+  function widthMouseDownHandler(e: any) {
+    if (widthRef.current && widthRef.current === e.target) {
       widthRef.current.requestPointerLock();
+    } else if (heightRef.current && heightRef.current === e.target) {
+      heightRef.current.requestPointerLock();
     }
   }
 
+  const heightRef = useRef<HTMLLabelElement>(null);
+
   useEffect(() => {
     document.addEventListener("pointerlockchange", () => {
-      if (document.pointerLockElement === widthRef.current) {
+      if (
+        document.pointerLockElement === widthRef.current ||
+        document.pointerLockElement === heightRef.current
+      ) {
         document.addEventListener("mousemove", incrementWidth);
       } else {
         document.removeEventListener("mousemove", incrementWidth);
@@ -68,8 +75,16 @@ export default function SidePanel({ isPanelOpen }: Props) {
     (state: any) => state.incrementCardWidth,
   );
 
+  const incrementCardHeight = useCardStore(
+    (state: any) => state.incrementCardHeight,
+  );
+
   function incrementWidth(e: any) {
-    incrementCardWidth(e.movementX);
+    if (e.target === widthRef.current) {
+      incrementCardWidth(e.movementX);
+    } else if (e.target === heightRef.current) {
+      incrementCardHeight(e.movementX);
+    }
   }
 
   return (
@@ -111,7 +126,15 @@ export default function SidePanel({ isPanelOpen }: Props) {
             </div>
 
             <div className="flex gap-x-3">
-              <label htmlFor="" className="font-mono text-slate-500">
+              <label
+                htmlFor=""
+                className="cursor-ew-resize font-mono text-slate-500"
+                onMouseDown={widthMouseDownHandler}
+                onMouseUp={() => {
+                  document.exitPointerLock();
+                }}
+                ref={heightRef}
+              >
                 H
               </label>
               <input
