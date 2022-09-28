@@ -19,27 +19,36 @@ export default function TweetCard({ rootRef }: any) {
     <Resizable
       defaultSize={{ width: cardWidth, height: cardHeight }}
       size={{ width: cardWidth, height: cardHeight }}
-      onResize={(e: any, dir, ref, d) => {
-        if (dir === "right") {
-          incrementCardWidth(e.movementX);
-        } else if (dir === "left") {
-          incrementCardWidth(-e.movementX);
-        } else if (dir === "top") {
-          incrementCardHeight(-e.movementY);
-        } else if (dir === "bottom") {
-          incrementCardHeight(e.movementY);
-        } else if (dir === "topRight") {
-          incrementCardWidth(e.movementX);
-          incrementCardHeight(-e.movementY);
-        } else if (dir === "topLeft") {
-          incrementCardWidth(-e.movementX);
-          incrementCardHeight(-e.movementY);
-        } else if (dir === "bottomLeft") {
-          incrementCardWidth(-e.movementX);
-          incrementCardHeight(e.movementY);
-        } else if (dir === "bottomRight") {
-          incrementCardWidth(e.movementX);
-          incrementCardHeight(e.movementY);
+      onResize={(e: any, dir) => {
+        switch (dir) {
+          case "left":
+            incrementCardWidth(-e.movementX);
+            break;
+          case "right":
+            incrementCardWidth(e.movementX);
+            break;
+          case "top":
+            incrementCardHeight(-e.movementY);
+            break;
+          case "bottom":
+            incrementCardHeight(e.movementY);
+            break;
+          case "topLeft":
+            incrementCardWidth(-e.movementX);
+            incrementCardHeight(-e.movementY);
+            break;
+          case "topRight":
+            incrementCardWidth(e.movementX);
+            incrementCardHeight(-e.movementY);
+            break;
+          case "bottomLeft":
+            incrementCardWidth(-e.movementX);
+            incrementCardHeight(e.movementY);
+            break;
+          case "bottomRight":
+            incrementCardWidth(e.movementX);
+            incrementCardHeight(e.movementY);
+            break;
         }
       }}
     >
