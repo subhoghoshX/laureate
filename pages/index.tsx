@@ -14,8 +14,7 @@ export default function Home() {
   const spaceDown = usePanStore((state: any) => state.spaceDown);
   const changeSpaceDown = usePanStore((state: any) => state.changeSpaceDown);
   const [mouseDown, setMouseDown] = useState(false);
-  const [posX, setPosX] = useState(0);
-  const [posY, setPosY] = useState(0);
+  const [moveBy, setMoveBy] = useState({ X: 0, Y: 0 });
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
@@ -39,8 +38,7 @@ export default function Home() {
   }
   function mouseMoveHandler(e: any) {
     if (mouseDown && spaceDown) {
-      setPosX((state) => state + e.movementX);
-      setPosY((state) => state + e.movementY);
+      setMoveBy((s) => ({ X: s.X + e.movementX, Y: s.Y + e.movementY }));
     }
   }
 
@@ -62,7 +60,7 @@ export default function Home() {
               onMouseUp={mouseUpHandler}
               onMouseMove={mouseMoveHandler}
               style={{
-                transform: `translate(${posX}px, ${posY}px)`,
+                transform: `translate(${moveBy.X}px, ${moveBy.Y}px)`,
               }}
               className={`${
                 spaceDown ? (mouseDown ? "cursor-grabbing" : "cursor-grab") : ""
