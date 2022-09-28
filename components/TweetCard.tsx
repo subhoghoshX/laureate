@@ -1,6 +1,7 @@
 import { useCardStore, useGradientStore } from "../store";
 import { Resizable } from "re-resizable";
 import Tweet from "./Tweet";
+import { useMemo } from "react";
 
 export default function TweetCard({ rootRef }: any) {
   const cardWidth = useCardStore((state: any) => state.width);
@@ -14,6 +15,11 @@ export default function TweetCard({ rootRef }: any) {
   );
 
   const gradients = useGradientStore((state: any) => state.gradients);
+
+  const gradient = useMemo(
+    () => gradients.filter((gradient: any) => gradient.selected)[0],
+    [gradients],
+  );
 
   return (
     <Resizable
@@ -52,20 +58,15 @@ export default function TweetCard({ rootRef }: any) {
         }
       }}
     >
-      {gradients
-        .filter((gradient: any) => gradient.selected)
-        .map((gradient: any) => (
-          <div
-            key={gradient.id}
-            ref={rootRef}
-            style={{
-              background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
-            }}
-            className="flex h-full items-center justify-center overflow-hidden rounded-2xl py-16 px-20"
-          >
-            <Tweet />
-          </div>
-        ))}
+      <div
+        ref={rootRef}
+        style={{
+          background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
+        }}
+        className="flex h-full items-center justify-center overflow-hidden rounded-2xl py-16 px-20"
+      >
+        <Tweet />
+      </div>
     </Resizable>
   );
 }
