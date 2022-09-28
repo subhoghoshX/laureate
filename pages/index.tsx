@@ -3,16 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import Header from "../components/Header";
 import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
-import { useArrowStore, usePanStore } from "../store";
+import { usePanStore } from "../store";
 import ExportButton from "../components/ExportButton";
+import Arrow from "../components/Arrow";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const rootRef = useRef();
-
-  const showArrow = useArrowStore((state: any) => state.showArrow);
-  const arrowX = useArrowStore((state: any) => state.X);
-  const arrowY = useArrowStore((state: any) => state.Y);
 
   const spaceDown = usePanStore((state: any) => state.spaceDown);
   const changeSpaceDown = usePanStore((state: any) => state.changeSpaceDown);
@@ -55,14 +52,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="relative">
-        {showArrow && (
-          <span
-            className="fixed z-20 text-sm font-bold"
-            style={{ left: arrowX, top: arrowY }}
-          >
-            ⟷
-          </span>
-        )}
+        <Arrow />
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">
           <Header setIsPanelOpen={setIsPanelOpen} />
           <SidePanel isPanelOpen={isPanelOpen} />
