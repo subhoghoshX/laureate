@@ -12,6 +12,38 @@ export default function TweetCard({ rootRef }: any) {
   const incrementCardHeight = useCardStore(
     (state: any) => state.incrementCardHeight,
   );
+  function resizeHandler(e: any, dir: any) {
+    switch (dir) {
+      case "left":
+        incrementCardWidth(-e.movementX);
+        break;
+      case "right":
+        incrementCardWidth(e.movementX);
+        break;
+      case "top":
+        incrementCardHeight(-e.movementY);
+        break;
+      case "bottom":
+        incrementCardHeight(e.movementY);
+        break;
+      case "topLeft":
+        incrementCardWidth(-e.movementX);
+        incrementCardHeight(-e.movementY);
+        break;
+      case "topRight":
+        incrementCardWidth(e.movementX);
+        incrementCardHeight(-e.movementY);
+        break;
+      case "bottomLeft":
+        incrementCardWidth(-e.movementX);
+        incrementCardHeight(e.movementY);
+        break;
+      case "bottomRight":
+        incrementCardWidth(e.movementX);
+        incrementCardHeight(e.movementY);
+        break;
+    }
+  }
 
   const gradients = useGradientStore((state: any) => state.gradients);
   const gradient = useMemo(
@@ -23,38 +55,7 @@ export default function TweetCard({ rootRef }: any) {
     <Resizable
       defaultSize={{ width: cardWidth, height: cardHeight }}
       size={{ width: cardWidth, height: cardHeight }}
-      onResize={(e: any, dir) => {
-        switch (dir) {
-          case "left":
-            incrementCardWidth(-e.movementX);
-            break;
-          case "right":
-            incrementCardWidth(e.movementX);
-            break;
-          case "top":
-            incrementCardHeight(-e.movementY);
-            break;
-          case "bottom":
-            incrementCardHeight(e.movementY);
-            break;
-          case "topLeft":
-            incrementCardWidth(-e.movementX);
-            incrementCardHeight(-e.movementY);
-            break;
-          case "topRight":
-            incrementCardWidth(e.movementX);
-            incrementCardHeight(-e.movementY);
-            break;
-          case "bottomLeft":
-            incrementCardWidth(-e.movementX);
-            incrementCardHeight(e.movementY);
-            break;
-          case "bottomRight":
-            incrementCardWidth(e.movementX);
-            incrementCardHeight(e.movementY);
-            break;
-        }
-      }}
+      onResize={resizeHandler}
     >
       <div
         ref={rootRef}
