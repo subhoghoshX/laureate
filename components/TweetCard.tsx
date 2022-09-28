@@ -6,7 +6,6 @@ import { useMemo } from "react";
 export default function TweetCard({ rootRef }: any) {
   const cardWidth = useCardStore((state: any) => state.width);
   const cardHeight = useCardStore((state: any) => state.height);
-
   const incrementCardWidth = useCardStore(
     (state: any) => state.incrementCardWidth,
   );
@@ -15,7 +14,6 @@ export default function TweetCard({ rootRef }: any) {
   );
 
   const gradients = useGradientStore((state: any) => state.gradients);
-
   const gradient = useMemo(
     () => gradients.filter((gradient: any) => gradient.selected)[0],
     [gradients],
