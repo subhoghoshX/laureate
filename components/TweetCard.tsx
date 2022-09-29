@@ -2,6 +2,8 @@ import { useCardStore, useGradientStore } from "../store";
 import { Resizable } from "re-resizable";
 import Tweet from "./Tweet";
 import { useMemo } from "react";
+import { usePanStore } from "../store";
+import { useEffect } from "react";
 
 export default function TweetCard({ rootRef }: any) {
   const cardWidth = useCardStore((state: any) => state.width);
@@ -51,21 +53,66 @@ export default function TweetCard({ rootRef }: any) {
     [gradients],
   );
 
+  const spaceDown = usePanStore((state: any) => state.spaceDown);
+  const changeSpaceDown = usePanStore((state: any) => state.changeSpaceDown);
+  const mouseDown = usePanStore((state: any) => state.mouseDown);
+  const setMouseDown = usePanStore((state: any) => state.setMouseDown);
+  const moveBy = usePanStore((state: any) => state.moveBy);
+  const setMoveBy = usePanStore((state: any) => state.setMoveBy);
+
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.keyCode === 32) {
+        changeSpaceDown(true);
+      }
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.keyCode === 32) {
+        changeSpaceDown(false);
+      }
+    });
+  }, []);
+
+  function mouseDownHandler() {
+    setMouseDown(true);
+  }
+  function mouseUpHandler() {
+    setMouseDown(false);
+  }
+  function mouseMoveHandler(e: any) {
+    if (mouseDown && spaceDown) {
+      setMoveBy({ X: moveBy.X + e.movementX, Y: moveBy.Y + e.movementY });
+    }
+  }
+
   return (
-    <Resizable
-      defaultSize={{ width: cardWidth, height: cardHeight }}
-      size={{ width: cardWidth, height: cardHeight }}
-      onResize={resizeHandler}
+    <div
+      onMouseDown={mouseDownHandler}
+      onMouseUp={mouseUpHandler}
+      onMouseMove={mouseMoveHandler}
+      style={{
+        transform: `translate(${moveBy.X}px, ${moveBy.Y}px)`,
+      }}
+      className={`${
+        spaceDown ? (mouseDown ? "cursor-grabbing" : "cursor-grab") : ""
+      }`}
     >
-      <div
-        ref={rootRef}
-        style={{
-          background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
-        }}
-        className="flex h-full items-center justify-center overflow-hidden rounded-2xl py-16 px-20"
+      <Resizable
+        defaultSize={{ width: cardWidth, height: cardHeight }}
+        size={{ width: cardWidth, height: cardHeight }}
+        onResize={resizeHandler}
       >
-        <Tweet />
-      </div>
-    </Resizable>
+        <div
+          ref={rootRef}
+          style={{
+            background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
+          }}
+          className="flex h-full items-center justify-center overflow-hidden rounded-2xl py-16 px-20"
+        >
+          <Tweet />
+        </div>
+      </Resizable>
+    </div>
   );
 }
