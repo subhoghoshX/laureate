@@ -13,8 +13,10 @@ export default function Home() {
 
   const spaceDown = usePanStore((state: any) => state.spaceDown);
   const changeSpaceDown = usePanStore((state: any) => state.changeSpaceDown);
-  const [mouseDown, setMouseDown] = useState(false);
-  const [moveBy, setMoveBy] = useState({ X: 0, Y: 0 });
+  const mouseDown = usePanStore((state: any) => state.mouseDown);
+  const setMouseDown = usePanStore((state: any) => state.setMouseDown);
+  const moveBy = usePanStore((state: any) => state.moveBy);
+  const setMoveBy = usePanStore((state: any) => state.setMoveBy);
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
@@ -38,7 +40,7 @@ export default function Home() {
   }
   function mouseMoveHandler(e: any) {
     if (mouseDown && spaceDown) {
-      setMoveBy((s) => ({ X: s.X + e.movementX, Y: s.Y + e.movementY }));
+      setMoveBy({ X: moveBy.X + e.movementX, Y: moveBy.Y + e.movementY });
     }
   }
 

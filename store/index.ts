@@ -122,8 +122,16 @@ export const useGradientStore = create((set) => {
 export const usePanStore = create((set) => {
   return {
     spaceDown: false,
+    mouseDown: false,
+    moveBy: { X: 0, Y: 0 },
     changeSpaceDown: (c: any) => {
       set((state: any) => ({ spaceDown: c }));
+    },
+    setMouseDown: (c: any) => {
+      set((staet: any) => ({ mouseDown: c }));
+    },
+    setMoveBy: (c: any) => {
+      set((state: any) => ({ moveBy: c }));
     },
   };
 });
