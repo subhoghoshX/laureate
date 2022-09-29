@@ -79,6 +79,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
         document.addEventListener("mousemove", incrementWidth);
       } else {
         document.removeEventListener("mousemove", incrementWidth);
+        changeVisibility(false);
       }
     });
   }, []);
@@ -168,7 +169,6 @@ export default function SidePanel({ isPanelOpen }: Props) {
                 type="text"
               />
             </div>
-            {/* <button className="sr-only" type="submit"></button> */}
           </form>
         </div>
         <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">

@@ -95,7 +95,11 @@ export default function TweetCard({ rootRef }: any) {
         transform: `translate(${moveBy.X}px, ${moveBy.Y}px)`,
       }}
       className={`${
-        spaceDown ? (mouseDown ? "cursor-grabbing" : "cursor-grab") : ""
+        spaceDown
+          ? mouseDown
+            ? "cursor-grabbing select-none"
+            : "cursor-grab select-auto"
+          : ""
       }`}
     >
       <Resizable
