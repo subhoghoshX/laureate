@@ -1,6 +1,6 @@
 import html2canvas from "html2canvas";
 
-export default function ({ rootRef }: any) {
+export default function ExportButton({ rootRef }: any) {
   async function exportPNG() {
     if (rootRef.current !== undefined) {
       const canvas = await html2canvas(rootRef.current, {
