@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        line-height: 0.4;
+        vertical-align: text-bottom;
+    }
+}
+
 @layer utilities {
     .scrollbar::-webkit-scrollbar {
         width: 8px;

@@ -15,7 +15,7 @@ export default function ({ rootRef }: any) {
       style={{
         background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
       }}
-      className="flex h-full items-center justify-center overflow-hidden rounded-2xl py-16 px-20"
+      className="flex h-full items-center justify-center overflow-hidden rounded-2xl py-16 px-20 leading-normal"
     >
       <CardInner />
     </div>
