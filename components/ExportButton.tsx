@@ -6,6 +6,7 @@ export default function ExportButton({ rootRef }: any) {
       const canvas = await html2canvas(rootRef.current, {
         allowTaint: true,
         useCORS: true,
+        scale:3
       });
       const img = canvas
         .toDataURL("image/png", 1.0)
