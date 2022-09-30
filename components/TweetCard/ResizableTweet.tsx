@@ -1,4 +1,4 @@
-import { useCardStore, useGradientStore } from "../store";
+import { useCardStore, useGradientStore } from "../../store";
 import { Resizable } from "re-resizable";
 import Tweet from "./Tweet";
 import { useMemo } from "react";

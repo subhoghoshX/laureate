@@ -1,4 +1,4 @@
-import { usePanStore } from "../store";
+import { usePanStore } from "../../store";
 import { useEffect } from "react";
 import ResizableTweet from "./ResizableTweet";
 

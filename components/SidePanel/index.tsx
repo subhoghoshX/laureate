@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useArrowStore, useCardStore, useGradientStore } from "../store";
+import { useArrowStore, useCardStore, useGradientStore } from "../../store";
 
 interface Props {
   isPanelOpen: boolean;
