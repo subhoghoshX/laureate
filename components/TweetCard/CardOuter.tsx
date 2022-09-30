@@ -2,7 +2,7 @@ import CardInner from "./CardInner";
 import { useMemo } from "react";
 import { useGradientStore } from "../../store";
 
-export default function ({ rootRef }: any) {
+export default function CardOuter({ rootRef }: any) {
   const gradients = useGradientStore((state: any) => state.gradients);
   const gradient = useMemo(
     () => gradients.filter((gradient: any) => gradient.selected)[0],
