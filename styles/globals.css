@@ -4,11 +4,16 @@
 
 @layer utilities {
     .scrollbar::-webkit-scrollbar {
-        width: 6px;
+        width: 8px;
     }
     
-    .scrollbar:hover::-webkit-scrollbar-thumb {
+    .scrollbar::-webkit-scrollbar-thumb {
         @apply bg-gray-400 rounded-full;
+        border: 2px solid white;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-500 rounded-full;
     }
     
     .scrollbar {

@@ -1,6 +1,6 @@
 export default function () {
   return (
-    <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
+    <div className="firefox-padding-fix border-t p-5 pr-3">
       <h2 className="font-bold">Templates</h2>
       <div className="mt-4 space-y-4">
         <div className="rounded-lg border-2 p-3">

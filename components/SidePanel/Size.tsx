@@ -98,7 +98,7 @@ export default function () {
   }
 
   return (
-    <div className="firefox-padding-fix p-5 group-hover:pr-3.5">
+    <div className="firefox-padding-fix p-5 pr-3">
       <h2 className="font-bold">Size</h2>
       <form className="mt-4 flex">
         <div className="flex gap-x-3">

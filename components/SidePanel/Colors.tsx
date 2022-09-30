@@ -5,7 +5,7 @@ export default function Colors() {
   const selectGradient = useGradientStore((state: any) => state.selectGradient);
 
   return (
-    <div className="firefox-padding-fix border-t p-5 group-hover:pr-3.5">
+    <div className="firefox-padding-fix border-t p-5 pr-3">
       <h2 className="font-bold">Colors</h2>
       <div className="mt-3 grid grid-cols-4 gap-3">
         {gradients.map((gradient: any) => (
