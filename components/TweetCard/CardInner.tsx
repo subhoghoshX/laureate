@@ -1,4 +1,4 @@
-export default function Tweet() {
+export default function CardInner() {
   return (
     <div className="max-w-screen-sm rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
       <div className="flex items-center gap-x-5">

@@ -1,7 +1,6 @@
 import { useCardStore, useGradientStore } from "../../store";
 import { Resizable } from "re-resizable";
-import Tweet from "./Tweet";
-import { useMemo } from "react";
+import CardOuter from "./CardOuter";
 
 export default function ResizableTweet({ rootRef }: any) {
   const cardWidth = useCardStore((state: any) => state.width);
@@ -45,27 +44,13 @@ export default function ResizableTweet({ rootRef }: any) {
     }
   }
 
-  const gradients = useGradientStore((state: any) => state.gradients);
-  const gradient = useMemo(
-    () => gradients.filter((gradient: any) => gradient.selected)[0],
-    [gradients],
-  );
-
   return (
     <Resizable
       defaultSize={{ width: cardWidth, height: cardHeight }}
       size={{ width: cardWidth, height: cardHeight }}
       onResize={resizeHandler}
     >
-      <div
-        ref={rootRef}
-        style={{
-          background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
-        }}
-        className="flex h-full items-center justify-center overflow-hidden rounded-2xl py-16 px-20"
-      >
-        <Tweet />
-      </div>
+      <CardOuter rootRef={rootRef} />
     </Resizable>
   );
 }

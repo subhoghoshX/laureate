@@ -1,6 +1,6 @@
 import { usePanStore } from "../../store";
 import { useEffect } from "react";
-import ResizableTweet from "./ResizableTweet";
+import CardResizable from "./CardResizable";
 
 export default function TweetCard({ rootRef }: any) {
   const spaceDown = usePanStore((state: any) => state.spaceDown);
@@ -52,7 +52,7 @@ export default function TweetCard({ rootRef }: any) {
           : ""
       }`}
     >
-      <ResizableTweet rootRef={rootRef} />
+      <CardResizable rootRef={rootRef} />
     </div>
   );
 }
