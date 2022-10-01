@@ -1,4 +1,4 @@
-export default function () {
+export default function Templates() {
   return (
     <div className="firefox-padding-fix border-t p-5 pr-3">
       <h2 className="font-bold">Templates</h2>

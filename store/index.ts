@@ -4,6 +4,7 @@ export const useCardStore = create((set) => {
   return {
     height: 332,
     width: 672,
+    rounded: 16,
     changeHeight: (c: any) => {
       set((state: any) => ({ height: c }));
     },
@@ -18,6 +19,11 @@ export const useCardStore = create((set) => {
     incrementCardHeight: (c: any) => {
       set((state: any) => ({
         height: state.height + c,
+      }));
+    },
+    incrementRounded: (c: any, final: boolean) => {
+      set((state: any) => ({
+        rounded: final ? c : state.rounded + c,
       }));
     },
   };
