@@ -10,9 +10,13 @@ export default function ExportButton({ rootRef }: any) {
         backgroundColor: null,
       });
       const img = canvas
-        .toDataURL("image/png", 1.0)
-        .replace("image/png", "image/octet-stream");
-      window.location.href = img;
+        .toDataURL("image/png", 1.0);
+
+      const a = document.createElement('a');
+      a.href = img;
+      a.download = 'tweet.png'
+      a.click();
+      a.remove();
     }
   }
 
