@@ -66,6 +66,11 @@ This is where you want to demonstrate the technologies you used in this project 
 - Any contributions you make are greatly appreciated.
 - Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
+## Pull requests
+
+**Please ask first before starting work on any significant new features.**
+
+It's never a fun experience to have your pull request declined after investing a lot of time and effort into a new feature. To avoid this from happening, we request that contributors create [a feature request](https://github.com/subhoghoshX/laureate/discussions/new) to first discuss any significant new ideas.
 ## License
 
 Laureate is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
