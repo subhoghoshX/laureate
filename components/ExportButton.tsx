@@ -1,5 +1,4 @@
 import html2canvas from "html2canvas";
-import { blob } from "stream/consumers";
 
 export default function ExportButton({ rootRef }: any) {
   async function exportPNG() {
