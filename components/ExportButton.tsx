@@ -16,6 +16,20 @@ export default function ExportButton({ rootRef }: any) {
     }
   }
 
+  async function copytoClipboard() {
+    if (rootRef.current !== undefined) {
+      const canvas = await html2canvas(rootRef.current, {
+        allowTaint: true,
+        useCORS: true,
+      });
+
+    canvas.toBlob((blob:any) => {
+      const data = [new ClipboardItem({"image/png":blob})];
+      navigator.clipboard.write(data);
+    });
+  }
+  }
+
   return (
     <button
       className="rounded bg-gray-300 px-4 py-1 leading-normal"
