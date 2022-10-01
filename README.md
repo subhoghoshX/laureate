@@ -21,7 +21,7 @@ A web app that helps you to transform your tweets into beautiful images with dif
 
 Provide links to the deployed application for users to be able to view it easily. If you have any other links you would like to show here, feel free.
 
-View the application at [Deployed Project Link](Link)
+View the application at [Deployed Project Link](https://laureate.netlify.app/)
 
 ## Tech Stack
 
