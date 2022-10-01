@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react";
+import { useTweetStore } from "../store/tweet";
 
 interface Props {
   setIsPanelOpen: Dispatch<SetStateAction<boolean>>;
@@ -6,6 +7,8 @@ interface Props {
 
 export default function Header({ setIsPanelOpen }: Props) {
   const [url, setUrl] = useState("");
+
+  const setTweetInfo = useTweetStore((state: any) => state.setTweetInfo);
 
   async function handleSumbit(e: any) {
     e.preventDefault();
@@ -16,6 +19,19 @@ export default function Header({ setIsPanelOpen }: Props) {
     });
 
     const data = await res.json();
+
+    setTweetInfo({
+      profile_image_url: data.includes.users[0].profile_image_url.replace(
+        "_normal",
+        "",
+      ),
+      name: data.includes.users[0].name,
+      username: data.includes.users[0].username,
+      text: data.data.text,
+      retweet_count: data.data.public_metrics.retweet_count,
+      reply_count: data.data.public_metrics.reply_count,
+      like_count: data.data.public_metrics.like_count,
+    });
   }
 
   return (
