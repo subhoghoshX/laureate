@@ -6,7 +6,7 @@ export default function Size() {
   const cardWidth = useCardStore((state) => state.width);
   const changeWidth = useCardStore((state) => state.changeWidth);
   useEffect(() => {
-    setWidth(cardWidth);
+    setWidth(cardWidth + "");
   }, [cardWidth]);
   function widthKeyDown(e: any) {
     if (e.keyCode === 38) {
@@ -15,7 +15,7 @@ export default function Size() {
       changeWidth(+width - 1);
     } else if (e.keyCode === 13) {
       if (Number.isNaN(Number(width))) {
-        setWidth(cardWidth);
+        setWidth(cardWidth + "");
       } else {
         changeWidth(+width);
       }
@@ -26,7 +26,7 @@ export default function Size() {
   const cardHeight = useCardStore((state) => state.height);
   const changeHeight = useCardStore((state) => state.changeHeight);
   useEffect(() => {
-    setHeight(cardHeight);
+    setHeight(cardHeight + "");
   }, [cardHeight]);
   function heightKeyDown(e: any) {
     if (e.keyCode === 38) {
@@ -35,7 +35,7 @@ export default function Size() {
       changeHeight(+height - 1);
     } else if (e.keyCode === 13) {
       if (Number.isNaN(Number(height))) {
-        setHeight(cardHeight);
+        setHeight(cardHeight + "");
       } else {
         changeHeight(+height);
       }
@@ -119,7 +119,7 @@ export default function Size() {
             onChange={(e) => setWidth(e.target.value)}
             onBlur={() =>
               Number.isNaN(Number(width))
-                ? setWidth(cardWidth)
+                ? setWidth(cardWidth + "")
                 : changeWidth(Number(width))
             }
             onKeyDown={widthKeyDown}
@@ -146,7 +146,7 @@ export default function Size() {
             onChange={(e) => setHeight(e.target.value)}
             onBlur={() =>
               Number.isNaN(Number(height))
-                ? setHeight(cardHeight)
+                ? setHeight(cardHeight + "")
                 : changeHeight(Number(height))
             }
             onKeyDown={heightKeyDown}

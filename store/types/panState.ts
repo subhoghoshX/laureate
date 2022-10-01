@@ -1,4 +1,4 @@
-export interface PanStore {
+export interface PanState {
   spaceDown: boolean;
   mouseDown: boolean;
   moveBy: MoveBy;

@@ -1,5 +1,5 @@
 import create from "zustand";
-import { CardState, GradientState, ArrowState, PanStore } from "./types";
+import { CardState, GradientState, ArrowState, PanState } from "./types";
 
 export const useCardStore = create<CardState>((set) => ({
   height: 332,
@@ -25,29 +25,29 @@ export const useCardStore = create<CardState>((set) => ({
 
 export const useArrowStore = create<ArrowState>((set) => ({
   showArrow: false,
-  x: 0,
-  y: 0,
+  X: 0,
+  Y: 0,
   changeVisibility: (showArrow) => {
     set(() => ({ showArrow }));
   },
-  changeX: (x) => {
+  changeX: (X) => {
     set((state) => {
-      if (state.x > window.innerWidth) {
-        return { x: -20 };
-      } else if (state.x < -20) {
-        return { x: window.innerWidth };
+      if (state.X > window.innerWidth) {
+        return { X: -20 };
+      } else if (state.X < -20) {
+        return { X: window.innerWidth };
       }
-      return { x: state.x + x };
+      return { X: state.X + X };
     });
   },
-  changeY: (y) => {
-    set((state) => ({ y: state.y + y }));
+  changeY: (Y) => {
+    set((state) => ({ Y: state.Y + Y }));
   },
-  setX: (x) => {
-    set(() => ({ x }));
+  setX: (X) => {
+    set(() => ({ X }));
   },
-  setY: (y) => {
-    set(() => ({ y }));
+  setY: (Y) => {
+    set(() => ({ Y }));
   },
 }
 ));
@@ -118,7 +118,7 @@ export const useGradientStore = create<GradientState>((set) => ({
 })
 );
 
-export const usePanStore = create<PanStore>((set) => ({
+export const usePanStore = create<PanState>((set) => ({
     spaceDown: false,
     mouseDown: false,
     moveBy: { x: 0, y: 0 },
