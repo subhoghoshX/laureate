@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Laureate
 
-## Getting Started
+A web app that helps you to transform your tweets into beautiful images with different gradient and color combinations.
 
-First, run the development server:
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Image of the application (Demo)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Laureate](https://user-images.githubusercontent.com/107422421/193412168-dc91299b-678a-4781-9351-2cfc1108b5a1.png)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Table of Contents
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+* [Demo](#demo)
+* [Tech Stack](#tech-stack)
+* [Installation](#installation)
+* [Contributing](#contributing)
+* [License](#license)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Demo
 
-## Learn More
+Provide links to the deployed application for users to be able to view it easily. If you have any other links you would like to show here, feel free.
 
-To learn more about Next.js, take a look at the following resources:
+View the application at [Deployed Project Link](Link)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This is where you want to demonstrate the technologies you used in this project and provide any links.
+| Technology | Description                               | Link ↘️          |
+|------------|-------------------------------------------|--------           |
+| NextJs     | The React Framework                       |https://nextjs.org/|
+|Tailwind CSS| Utility-first CSS framework               |https://tailwindcss.com/|
+| Zustand    | Bear necessities for state management     |https://github.com/pmndrs/zustand|
+| Twitter api| For fetching tweet data                   |https://developer.twitter.com/en/docs/twitter-api| 
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. [Fork](https://github.com/Dun-sin/laureate/fork) the project. Click on the fork icon in the top right to get started
+2. Clone the project, you can use the following command:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   git clone https://github.com/<your-github-username>/laureate
+   ```
+
+3. Navigate to the project directory
+
+   ```bash
+   cd laureate
+   ```
+
+4. Install dependencies with `npm install` in both client and server folder
+
+   ```bash
+   npm install
+   ```
+
+5. Run `npm start`
+
+   ```bash
+   npm start
+   ```
+ 
+## Contributing
+
+- Contributions make the open source community such an amazing place to learn, inspire, and create.
+- Any contributions you make are greatly appreciated.
+- Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
+
+## License
+
+Laureate is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
