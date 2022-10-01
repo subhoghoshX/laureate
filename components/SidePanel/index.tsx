@@ -14,7 +14,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
       }`}
     >
       <div
-        className={`scrollbar h-full overflow-y-auto rounded-md bg-white text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)]`}
+        className={`scrollbar h-full overflow-y-auto rounded-md bg-white dark:bg-[#2c2c2c] text-sm shadow-[1px_1px_5px_rgba(0,0,0,0.25)]`}
       >
         <Size />
         <Colors />

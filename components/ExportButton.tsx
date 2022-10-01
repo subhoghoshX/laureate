@@ -18,7 +18,7 @@ export default function ExportButton({ rootRef }: any) {
 
   return (
     <button
-      className="rounded bg-gray-300 px-4 py-1 leading-normal"
+      className="rounded bg-gray-300 dark:bg-[#2c2c2c] px-4 py-1 leading-normal"
       onClick={exportPNG}
     >
       Download

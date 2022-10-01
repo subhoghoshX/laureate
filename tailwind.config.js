@@ -7,4 +7,5 @@ module.exports = {
     extend: {},
   },
   plugins: [require("prettier-plugin-tailwindcss")],
+  darkMode: "class",
 };
