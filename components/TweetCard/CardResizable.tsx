@@ -3,13 +3,13 @@ import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
 
 export default function ResizableTweet({ rootRef }: any) {
-  const cardWidth = useCardStore((state: any) => state.width);
-  const cardHeight = useCardStore((state: any) => state.height);
+  const cardWidth = useCardStore((state) => state.width);
+  const cardHeight = useCardStore((state) => state.height);
   const incrementCardWidth = useCardStore(
-    (state: any) => state.incrementCardWidth,
+    (state) => state.incrementCardWidth,
   );
   const incrementCardHeight = useCardStore(
-    (state: any) => state.incrementCardHeight,
+    (state) => state.incrementCardHeight,
   );
   function resizeHandler(e: any, dir: any) {
     switch (dir) {

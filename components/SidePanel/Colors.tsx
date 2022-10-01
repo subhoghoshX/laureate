@@ -1,8 +1,8 @@
 import { useGradientStore } from "../../store";
 
 export default function Colors() {
-  const gradients = useGradientStore((state: any) => state.gradients);
-  const selectGradient = useGradientStore((state: any) => state.selectGradient);
+  const gradients = useGradientStore((state) => state.gradients);
+  const selectGradient = useGradientStore((state) => state.selectGradient);
 
   return (
     <div className="firefox-padding-fix border-t p-5 pr-3">

@@ -1,137 +1,135 @@
 import create from "zustand";
+import { CardState, GradientState, ArrowState, PanStore } from "./types";
 
-export const useCardStore = create((set) => {
-  return {
-    height: 332,
-    width: 672,
-    changeHeight: (c: any) => {
-      set((state: any) => ({ height: c }));
-    },
-    incrementCardWidth: (c: any) => {
-      set((state: any) => ({
-        width: state.width + c,
-      }));
-    },
-    changeWidth: (c: any) => {
-      set((state: any) => ({ width: c }));
-    },
-    incrementCardHeight: (c: any) => {
-      set((state: any) => ({
-        height: state.height + c,
-      }));
-    },
-  };
-});
+export const useCardStore = create<CardState>((set) => ({
+  height: 332,
+  width: 672,
+  changeHeight: (height) => {
+    set(() => ({ height }));
+  },
+  incrementCardWidth: (width) => {
+    set((state) => ({
+      width: state.width + width,
+    }));
+  },
+  changeWidth: (width) => {
+    set(() => ({ width: width }));
+  },
+  incrementCardHeight: (height) => {
+    set((state) => ({
+      height: state.height + height,
+    }));
+  },
+}
+));
 
-export const useArrowStore = create((set) => {
-  return {
-    showArrow: false,
-    X: 0,
-    Y: 0,
-    changeVisibility: (c: any) => {
-      set((state: any) => ({ showArrow: c }));
-    },
-    changeX: (c: any) => {
-      set((state: any) => {
-        if (state.X > window.innerWidth) {
-          return { X: -20 };
-        } else if (state.X < -20) {
-          return { X: window.innerWidth };
-        }
-        return { X: state.X + c };
-      });
-    },
-    changeY: (c: any) => {
-      set((state: any) => ({ Y: state.Y + c }));
-    },
-    setX: (c: any) => {
-      set((state: any) => ({ X: c }));
-    },
-    setY: (c: any) => {
-      set((state: any) => ({ Y: c }));
-    },
-  };
-});
+export const useArrowStore = create<ArrowState>((set) => ({
+  showArrow: false,
+  x: 0,
+  y: 0,
+  changeVisibility: (showArrow) => {
+    set(() => ({ showArrow }));
+  },
+  changeX: (x) => {
+    set((state) => {
+      if (state.x > window.innerWidth) {
+        return { x: -20 };
+      } else if (state.x < -20) {
+        return { x: window.innerWidth };
+      }
+      return { x: state.x + x };
+    });
+  },
+  changeY: (y) => {
+    set((state) => ({ y: state.y + y }));
+  },
+  setX: (x) => {
+    set(() => ({ x }));
+  },
+  setY: (y) => {
+    set(() => ({ y }));
+  },
+}
+));
 
-export const useGradientStore = create((set) => {
-  return {
-    gradients: [
-      {
-        id: 1,
-        from: "#F12711",
-        to: "#F5AF19",
-        selected: true,
-      },
-      {
-        id: 2,
-        from: "#FC5C7D",
-        to: "#6A82FB",
-        selected: false,
-      },
-      {
-        id: 3,
-        from: "#FFFBD5",
-        to: "#B20A2C",
-        selected: false,
-      },
-      {
-        id: 4,
-        from: "#159957",
-        to: "#155799",
-        selected: false,
-      },
-      {
-        id: 5,
-        from: "#F79D00",
-        to: "#64F38C",
-        selected: false,
-      },
-      {
-        id: 6,
-        from: "#00E1F4",
-        to: "#0064F4",
-        selected: false,
-      },
-      {
-        id: 7,
-        from: "#536976",
-        to: "#292E49",
-        selected: false,
-      },
-      {
-        id: 8,
-        from: "#EECDA3",
-        to: "#EF629F",
-        selected: false,
-      },
-    ],
-    selectGradient: (id: any) => {
-      set((state: any) => {
-        return {
-          gradients: state.gradients.map((gradient: any) =>
-            gradient.id == id
-              ? { ...gradient, selected: true }
-              : { ...gradient, selected: false },
-          ),
-        };
-      });
+export const useGradientStore = create<GradientState>((set) => ({
+  gradients: [
+    {
+      id: 1,
+      from: "#F12711",
+      to: "#F5AF19",
+      selected: true,
     },
-  };
-});
+    {
+      id: 2,
+      from: "#FC5C7D",
+      to: "#6A82FB",
+      selected: false,
+    },
+    {
+      id: 3,
+      from: "#FFFBD5",
+      to: "#B20A2C",
+      selected: false,
+    },
+    {
+      id: 4,
+      from: "#159957",
+      to: "#155799",
+      selected: false,
+    },
+    {
+      id: 5,
+      from: "#F79D00",
+      to: "#64F38C",
+      selected: false,
+    },
+    {
+      id: 6,
+      from: "#00E1F4",
+      to: "#0064F4",
+      selected: false,
+    },
+    {
+      id: 7,
+      from: "#536976",
+      to: "#292E49",
+      selected: false,
+    },
+    {
+      id: 8,
+      from: "#EECDA3",
+      to: "#EF629F",
+      selected: false,
+    },
+  ],
 
-export const usePanStore = create((set) => {
-  return {
+  selectGradient: (id) => {
+    set((state) => {
+      return {
+        gradients: state.gradients.map((gradient) =>
+          gradient.id == id
+            ? { ...gradient, selected: true }
+            : { ...gradient, selected: false },
+        ),
+      };
+    });
+  },
+})
+);
+
+export const usePanStore = create<PanStore>((set) => ({
     spaceDown: false,
     mouseDown: false,
-    moveBy: { X: 0, Y: 0 },
-    changeSpaceDown: (c: any) => {
-      set((state: any) => ({ spaceDown: c }));
+    moveBy: { x: 0, y: 0 },
+    setSpaceDown: (spaceDown) => {
+      set(() => ({ spaceDown }));
     },
-    setMouseDown: (c: any) => {
-      set((staet: any) => ({ mouseDown: c }));
+    setMouseDown: (mouseDown) => {
+      set(() => ({ mouseDown }));
     },
-    setMoveBy: (c: any) => {
-      set((state: any) => ({ moveBy: c }));
+    setMoveBy: (moveBy) => {
+      set(() => ({ moveBy }));
     },
-  };
-});
+  }
+));
