@@ -51,7 +51,7 @@ This is where you want to demonstrate the technologies you used in this project 
 4. Install dependencies with `npm install` in both client and server folder
 
    ```bash
-   npm install
+   yarn install
    ```
 
 5. Run `npm start`
