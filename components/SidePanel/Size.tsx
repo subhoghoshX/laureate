@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useArrowStore, useCardStore, useGradientStore } from "../../store";
 
-export default function () {
+export default function Size() {
   const [width, setWidth] = useState("672");
   const cardWidth = useCardStore((state: any) => state.width);
   const changeWidth = useCardStore((state: any) => state.changeWidth);
@@ -70,7 +70,8 @@ export default function () {
     document.addEventListener("pointerlockchange", () => {
       if (
         document.pointerLockElement === widthRef.current ||
-        document.pointerLockElement === heightRef.current
+        document.pointerLockElement === heightRef.current ||
+        document.pointerLockElement === roundedRef.current
       ) {
         document.addEventListener("mousemove", incrementWidth);
       } else {
@@ -94,14 +95,49 @@ export default function () {
       incrementCardWidth(e.movementX);
     } else if (e.target === heightRef.current) {
       incrementCardHeight(e.movementX);
+    } else if (e.target === roundedRef.current) {
+      incrementRounded(e.movementX);
+    }
+  }
+
+  const [round, setRound] = useState("16");
+  const incrementRounded = useCardStore((state: any) => state.incrementRounded);
+  const rounded = useCardStore((state: any) => state.rounded);
+
+  useEffect(() => {
+    setRound(rounded);
+  }, [rounded]);
+  function roundKeyDown(e: any) {
+    if (e.keyCode === 38) {
+      incrementRounded(1);
+    } else if (e.keyCode === 40) {
+      incrementRounded(-1);
+    } else if (e.keyCode === 13) {
+      if (Number.isNaN(Number(round))) {
+        setRound(rounded);
+      } else {
+        incrementRounded(Number(round), true);
+      }
+    }
+  }
+
+  const roundedRef = useRef<HTMLLabelElement>(null);
+
+  function roundedMouseDownHandler(e: any) {
+    changeVisibility(true);
+    setX(e.clientX - 10);
+    setY(e.clientY - 10);
+    console.log(roundedRef.current);
+    if (roundedRef.current) {
+      roundedRef.current.requestPointerLock();
     }
   }
 
   return (
     <div className="firefox-padding-fix p-5 pr-3">
       <h2 className="font-bold">Size</h2>
-      <form className="mt-4 flex">
-        <div className="flex gap-x-3">
+      <form className="mt-4 flex flex-wrap gap-y-4">
+        <div className="flex w-1/2 gap-x-3">
           <label
             htmlFor=""
             ref={widthRef}
@@ -128,7 +164,7 @@ export default function () {
           />
         </div>
 
-        <div className="flex gap-x-3">
+        <div className="flex w-1/2 gap-x-3">
           <label
             htmlFor=""
             className="cursor-ew-resize font-mono text-slate-500"
@@ -150,6 +186,32 @@ export default function () {
                 : changeHeight(Number(height))
             }
             onKeyDown={heightKeyDown}
+            className="w-full"
+            type="text"
+          />
+        </div>
+        <div className="flex w-1/2 gap-x-3">
+          <label
+            htmlFor=""
+            className="cursor-ew-resize font-mono text-slate-500"
+            onMouseDown={roundedMouseDownHandler}
+            onMouseUp={() => {
+              document.exitPointerLock();
+              changeVisibility(false);
+            }}
+            ref={roundedRef}
+          >
+            R
+          </label>
+          <input
+            value={round}
+            onChange={(e) => setRound(e.target.value)}
+            onBlur={() =>
+              Number.isNaN(Number(round))
+                ? setRound(rounded)
+                : incrementRounded(Number(round), true)
+            }
+            onKeyDown={roundKeyDown}
             className="w-full"
             type="text"
           />

@@ -7,6 +7,8 @@ export default function ExportButton({ rootRef }: any) {
       const canvas = await html2canvas(rootRef.current, {
         allowTaint: true,
         useCORS: true,
+        scale: 3,
+        backgroundColor: null,
       });
       const img = canvas
         .toDataURL("image/png", 1.0)
@@ -30,7 +32,10 @@ export default function ExportButton({ rootRef }: any) {
   }
 
   return (
-    <button className="rounded bg-gray-300 px-4 py-1" onClick={exportPNG}>
+    <button
+      className="rounded bg-gray-300 px-4 py-1 leading-normal"
+      onClick={exportPNG}
+    >
       Download
     </button>
   );

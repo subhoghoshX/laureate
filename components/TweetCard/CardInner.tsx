@@ -1,6 +1,6 @@
 export default function CardInner() {
   return (
-    <div className="max-w-screen-sm rounded-xl bg-white/50 px-8 py-7 backdrop-blur-md">
+    <div className="max-w-screen-sm rounded-xl bg-white/70 px-8 py-7 shadow-md backdrop-blur-md">
       <div className="flex items-center gap-x-5">
         <img
           className="h-14 w-14 rounded-full"
@@ -8,7 +8,7 @@ export default function CardInner() {
           alt="Andrej's pic"
         />
         <div>
-          <h2 className="text-zinc-900">Andrej</h2>
+          <h2 className="font-bold text-zinc-900">Andrej</h2>
           <p className="text-xs text-zinc-900">@reactive_dude</p>
         </div>
       </div>
