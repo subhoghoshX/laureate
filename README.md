@@ -54,7 +54,7 @@ This is where you want to demonstrate the technologies you used in this project 
    yarn install
    ```
 
-5. Run `npm start`
+5. Run `yarn start`
 
    ```bash
    npm start
