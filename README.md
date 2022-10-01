@@ -35,7 +35,7 @@ This is where you want to demonstrate the technologies you used in this project 
 
 ## Installation
 
-1. [Fork](https://github.com/Dun-sin/laureate/fork) the project. Click on the fork icon in the top right to get started
+1. [Fork](https://github.com/subhoghoshX/laureate/fork) the project. Click on the fork icon in the top right to get started
 2. Clone the project, you can use the following command:
 
    ```bash
