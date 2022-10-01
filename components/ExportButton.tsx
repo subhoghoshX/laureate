@@ -1,12 +1,15 @@
 import html2canvas from "html2canvas";
+import { useCardStore } from "../store";
 
 export default function ExportButton({ rootRef }: any) {
+  const cardScale = useCardStore((state: any) => state.scale);
+
   async function exportPNG() {
     if (rootRef.current !== undefined) {
       const canvas = await html2canvas(rootRef.current, {
         allowTaint: true,
         useCORS: true,
-        scale: 3,
+        scale: 3 + 1/cardScale,
         backgroundColor: null,
       });
       const img = canvas

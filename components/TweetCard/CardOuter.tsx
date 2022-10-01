@@ -10,6 +10,7 @@ export default function CardOuter({ rootRef }: any) {
   );
 
   const rounded = useCardStore((state: any) => state.rounded);
+  const cardScale = useCardStore((state: any) => state.scale);
 
   return (
     <div
@@ -17,6 +18,7 @@ export default function CardOuter({ rootRef }: any) {
       style={{
         background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
         borderRadius: `${rounded}px`,
+        transform: `scale(${cardScale})`
       }}
       className="flex h-full items-center justify-center overflow-hidden py-16 px-20 leading-normal"
     >
