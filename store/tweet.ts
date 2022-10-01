@@ -13,7 +13,7 @@ export const useTweetStore = create((set) => {
       like_count: 323,
     },
     setTweetInfo: (c: any) => {
-      set(() => c);
+      set(() => ({ tweetInfo: c }));
     },
   };
 });

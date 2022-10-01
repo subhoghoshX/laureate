@@ -8,7 +8,7 @@ export default function CardInner() {
       <div className="flex items-center gap-x-5">
         <img
           className="h-14 w-14 rounded-full"
-          src="https://pbs.twimg.com/profile_images/1510928172686225411/bTCh20YN_400x400.jpg"
+          src={tweetInfo.profile_image_url}
           alt="Andrej's pic"
         />
         <div>
