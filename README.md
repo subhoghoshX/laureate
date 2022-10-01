@@ -48,7 +48,7 @@ This is where you want to demonstrate the technologies you used in this project 
    cd laureate
    ```
 
-4. Install dependencies with `npm install` in both client and server folder
+4. Install dependencies with `yarn install` in both client and server folder
 
    ```bash
    yarn install
