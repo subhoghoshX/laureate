@@ -1,7 +1,7 @@
 import { useTweetStore } from "../../store/tweet";
 
 export default function CardInner() {
-  const tweetInfo = useTweetStore((state: any) => state.tweetInfo);
+  const tweetInfo = useTweetStore((state) => state.tweetInfo);
 
   return (
     <div className="max-w-screen-sm rounded-xl bg-white/70 px-8 py-7 shadow-md backdrop-blur-md">

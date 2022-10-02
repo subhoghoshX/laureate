@@ -3,13 +3,13 @@ import { useMemo } from "react";
 import { useCardStore, useGradientStore } from "../../store";
 
 export default function CardOuter({ rootRef }: any) {
-  const gradients = useGradientStore((state: any) => state.gradients);
+  const gradients = useGradientStore((state) => state.gradients);
   const gradient = useMemo(
     () => gradients.filter((gradient: any) => gradient.selected)[0],
     [gradients],
   );
 
-  const rounded = useCardStore((state: any) => state.rounded);
+  const rounded = useCardStore((state) => state.rounded);
 
   return (
     <div

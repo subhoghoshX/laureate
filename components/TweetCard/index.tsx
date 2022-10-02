@@ -3,23 +3,23 @@ import { useEffect } from "react";
 import CardResizable from "./CardResizable";
 
 export default function TweetCard({ rootRef }: any) {
-  const spaceDown = usePanStore((state: any) => state.spaceDown);
-  const changeSpaceDown = usePanStore((state: any) => state.changeSpaceDown);
-  const mouseDown = usePanStore((state: any) => state.mouseDown);
-  const setMouseDown = usePanStore((state: any) => state.setMouseDown);
-  const moveBy = usePanStore((state: any) => state.moveBy);
-  const setMoveBy = usePanStore((state: any) => state.setMoveBy);
+  const spaceDown = usePanStore((state) => state.spaceDown);
+  const setSpaceDown = usePanStore((state) => state.setSpaceDown);
+  const mouseDown = usePanStore((state) => state.mouseDown);
+  const setMouseDown = usePanStore((state) => state.setMouseDown);
+  const moveBy = usePanStore((state) => state.moveBy);
+  const setMoveBy = usePanStore((state) => state.setMoveBy);
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
       if (e.keyCode === 32) {
-        changeSpaceDown(true);
+        setSpaceDown(true);
       }
     });
 
     document.addEventListener("keyup", (e) => {
       if (e.keyCode === 32) {
-        changeSpaceDown(false);
+        setSpaceDown(false);
       }
     });
   }, []);

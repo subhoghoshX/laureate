@@ -8,7 +8,7 @@ interface Props {
 export default function Header({ setIsPanelOpen }: Props) {
   const [url, setUrl] = useState("");
 
-  const setTweetInfo = useTweetStore((state: any) => state.setTweetInfo);
+  const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
 
   async function handleSumbit(e: any) {
     e.preventDefault();
