@@ -32,7 +32,7 @@ export default function TweetCard({ rootRef }: any) {
   }
   function mouseMoveHandler(e: any) {
     if (mouseDown && spaceDown) {
-      setMoveBy({ x: moveBy.x + e.movementX, y: moveBy.y + e.movementY });
+      setMoveBy({ X: moveBy.X + e.movementX, Y: moveBy.Y + e.movementY });
     }
   }
 

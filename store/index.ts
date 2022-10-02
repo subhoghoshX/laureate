@@ -127,7 +127,7 @@ export const useGradientStore = create<GradientState>((set) => ({
 export const usePanStore = create<PanState>((set) => ({
   spaceDown: false,
   mouseDown: false,
-  moveBy: { x: 0, y: 0 },
+  moveBy: { X: 0, Y: 0 },
   setSpaceDown: (spaceDown) => {
     set(() => ({ spaceDown }));
   },
