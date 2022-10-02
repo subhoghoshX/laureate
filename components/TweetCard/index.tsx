@@ -42,7 +42,7 @@ export default function TweetCard({ rootRef }: any) {
       onMouseUp={mouseUpHandler}
       onMouseMove={mouseMoveHandler}
       style={{
-        transform: `translate(${moveBy.x}px, ${moveBy.y}px)`,
+        transform: `translate(${moveBy.X}px, ${moveBy.Y}px)`,
       }}
       className={`${
         spaceDown
