@@ -22,7 +22,7 @@ export const useCardStore = create<CardState>((set) => ({
     }));
   },
   incrementRounded: (radius, final) => {
-    set((state: any) => ({
+    set((state) => ({
       rounded: final ? radius : state.rounded + radius,
     }));
   },

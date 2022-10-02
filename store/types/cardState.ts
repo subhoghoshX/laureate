@@ -6,5 +6,5 @@ export interface CardState {
   incrementCardWidth: (height: number) => void;
   changeWidth: (width: number) => void;
   incrementCardHeight: (height: number) => void;
-  incrementRounded: (radius: number, final: boolean) => void;
+  incrementRounded: (radius: number, final?: boolean) => void;
 }
