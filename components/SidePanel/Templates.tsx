@@ -35,27 +35,27 @@ export default function Templates() {
           </div>
         </div>
 
-      <div className="rounded-lg border-2 p-3">
-        <div className="flex gap-x-2">
-          <div className="h-6 w-6 shrink-0 rounded-full bg-gray-300"></div>
+        <div className="rounded-lg border-2 p-3">
+          <div className="flex gap-x-2">
+            <div className="h-6 w-6 shrink-0 rounded-full bg-gray-300"></div>
 
-          <div className="w-full space-y-1">
-            <div className="flex items-center gap-x-1">
-              <div className="h-2 w-12 rounded-full bg-gray-300"></div>
-              <div className="h-1 w-10 rounded-full bg-gray-300"></div>
-            </div>
-            <div className="w-full space-y-0.5 pt-0.5">
-              <div className="h-1.5 rounded-full bg-gray-300"></div>
-              <div className="h-1.5 rounded-full bg-gray-300"></div>
-              <div className="h-1.5 rounded-full bg-gray-300"></div>
-              <div className="h-1.5 rounded-full bg-gray-300"></div>
-              <div className="h-1.5 rounded-full bg-gray-300"></div>
-              <div className="h-1.5 w-1/2 rounded-full bg-gray-300"></div>
+            <div className="w-full space-y-1">
+              <div className="flex items-center gap-x-1">
+                <div className="h-2 w-12 rounded-full bg-gray-300"></div>
+                <div className="h-1 w-10 rounded-full bg-gray-300"></div>
+              </div>
+              <div className="w-full space-y-0.5 pt-0.5">
+                <div className="h-1.5 rounded-full bg-gray-300"></div>
+                <div className="h-1.5 rounded-full bg-gray-300"></div>
+                <div className="h-1.5 rounded-full bg-gray-300"></div>
+                <div className="h-1.5 rounded-full bg-gray-300"></div>
+                <div className="h-1.5 rounded-full bg-gray-300"></div>
+                <div className="h-1.5 w-1/2 rounded-full bg-gray-300"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   );
 }

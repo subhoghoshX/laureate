@@ -26,8 +26,7 @@ export const useCardStore = create<CardState>((set) => ({
       rounded: final ? radius : state.rounded + radius,
     }));
   },
-}
-));
+}));
 
 export const useArrowStore = create<ArrowState>((set) => ({
   showArrow: false,
@@ -55,8 +54,7 @@ export const useArrowStore = create<ArrowState>((set) => ({
   setY: (Y) => {
     set(() => ({ Y }));
   },
-}
-));
+}));
 
 export const useGradientStore = create<GradientState>((set) => ({
   gradients: [
@@ -121,8 +119,7 @@ export const useGradientStore = create<GradientState>((set) => ({
       };
     });
   },
-})
-);
+}));
 
 export const usePanStore = create<PanState>((set) => ({
   spaceDown: false,
@@ -137,5 +134,4 @@ export const usePanStore = create<PanState>((set) => ({
   setMoveBy: (moveBy) => {
     set(() => ({ moveBy }));
   },
-}
-));
+}));
