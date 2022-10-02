@@ -9,7 +9,7 @@ export default function CardOuter({ rootRef }: any) {
     [gradients],
   );
 
-  const rounded = useCardStore((state: any) => state.rounded);
+  const rounded = useCardStore((state) => state.rounded);
 
   return (
     <div

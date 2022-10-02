@@ -101,11 +101,11 @@ export default function Size() {
   }
 
   const [round, setRound] = useState("16");
-  const incrementRounded = useCardStore((state: any) => state.incrementRounded);
-  const rounded = useCardStore((state: any) => state.rounded);
+  const incrementRounded = useCardStore((state) => state.incrementRounded);
+  const rounded = useCardStore((state) => state.rounded);
 
   useEffect(() => {
-    setRound(rounded);
+    setRound(rounded + "");
   }, [rounded]);
   function roundKeyDown(e: any) {
     if (e.keyCode === 38) {
@@ -114,7 +114,7 @@ export default function Size() {
       incrementRounded(-1);
     } else if (e.keyCode === 13) {
       if (Number.isNaN(Number(round))) {
-        setRound(rounded);
+        setRound(rounded + "");
       } else {
         incrementRounded(Number(round), true);
       }
@@ -208,7 +208,7 @@ export default function Size() {
             onChange={(e) => setRound(e.target.value)}
             onBlur={() =>
               Number.isNaN(Number(round))
-                ? setRound(rounded)
+                ? setRound(rounded + "")
                 : incrementRounded(Number(round), true)
             }
             onKeyDown={roundKeyDown}
