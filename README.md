@@ -15,6 +15,7 @@ A web app that helps you to transform your tweets into beautiful images with dif
 * [Tech Stack](#tech-stack)
 * [Installation](#installation)
 * [Contributing](#contributing)
+* [Pull requests](#pull-requests)
 * [License](#license)
 
 ## Demo
