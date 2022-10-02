@@ -2,12 +2,15 @@
 
 A web app that helps you to transform your tweets into beautiful images with different gradient and color combinations.
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+## Pull requests
+
+**Please ask first before starting work on any significant new features.**
+
+It's never a fun experience to have your pull request declined after investing a lot of time and effort into a new feature. To avoid this from happening, we request that contributors create [a feature request](https://github.com/subhoghoshX/laureate/discussions/new) to first discuss any significant new ideas.
 
 ## Image of the application (Demo)
 
-![Laureate](https://user-images.githubusercontent.com/107422421/193412168-dc91299b-678a-4781-9351-2cfc1108b5a1.png)
+![image](https://user-images.githubusercontent.com/108616679/193447938-0b9c32ab-3983-401b-8c2f-bd23c9c4e8be.png)
 
 ## Table of Contents
 
@@ -66,11 +69,6 @@ This is where you want to demonstrate the technologies you used in this project 
 - Any contributions you make are greatly appreciated.
 - Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
-## Pull requests
-
-**Please ask first before starting work on any significant new features.**
-
-It's never a fun experience to have your pull request declined after investing a lot of time and effort into a new feature. To avoid this from happening, we request that contributors create [a feature request](https://github.com/subhoghoshX/laureate/discussions/new) to first discuss any significant new ideas.
 ## License
 
 Laureate is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
