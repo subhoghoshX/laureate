@@ -4,6 +4,7 @@ import { CardState, GradientState, ArrowState, PanState } from "./types";
 export const useCardStore = create<CardState>((set) => ({
   height: 332,
   width: 672,
+  rounded: 16,
   changeHeight: (height) => {
     set(() => ({ height }));
   },
@@ -18,6 +19,11 @@ export const useCardStore = create<CardState>((set) => ({
   incrementCardHeight: (height) => {
     set((state) => ({
       height: state.height + height,
+    }));
+  },
+  incrementRounded: (radius, final) => {
+    set((state: any) => ({
+      rounded: final ? radius : state.rounded + radius,
     }));
   },
 }
@@ -119,17 +125,17 @@ export const useGradientStore = create<GradientState>((set) => ({
 );
 
 export const usePanStore = create<PanState>((set) => ({
-    spaceDown: false,
-    mouseDown: false,
-    moveBy: { x: 0, y: 0 },
-    setSpaceDown: (spaceDown) => {
-      set(() => ({ spaceDown }));
-    },
-    setMouseDown: (mouseDown) => {
-      set(() => ({ mouseDown }));
-    },
-    setMoveBy: (moveBy) => {
-      set(() => ({ moveBy }));
-    },
-  }
+  spaceDown: false,
+  mouseDown: false,
+  moveBy: { x: 0, y: 0 },
+  setSpaceDown: (spaceDown) => {
+    set(() => ({ spaceDown }));
+  },
+  setMouseDown: (mouseDown) => {
+    set(() => ({ mouseDown }));
+  },
+  setMoveBy: (moveBy) => {
+    set(() => ({ moveBy }));
+  },
+}
 ));
