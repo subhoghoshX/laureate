@@ -5,9 +5,7 @@ import CardOuter from "./CardOuter";
 export default function ResizableTweet({ rootRef }: any) {
   const cardWidth = useCardStore((state) => state.width);
   const cardHeight = useCardStore((state) => state.height);
-  const incrementCardWidth = useCardStore(
-    (state) => state.incrementCardWidth,
-  );
+  const incrementCardWidth = useCardStore((state) => state.incrementCardWidth);
   const incrementCardHeight = useCardStore(
     (state) => state.incrementCardHeight,
   );

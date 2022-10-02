@@ -9,4 +9,4 @@ export type Gradient = {
   from: string;
   to: string;
   selected: boolean;
-}
+};

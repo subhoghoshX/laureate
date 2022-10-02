@@ -10,4 +10,4 @@ export interface PanState {
 export type MoveBy = {
   X: number;
   Y: number;
-}
+};

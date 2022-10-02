@@ -42,9 +42,7 @@ export default function Size() {
     }
   }
 
-  const changeVisibility = useArrowStore(
-    (state) => state.changeVisibility,
-  );
+  const changeVisibility = useArrowStore((state) => state.changeVisibility);
 
   const changeX = useArrowStore((state) => state.changeX);
   const changeY = useArrowStore((state) => state.changeY);
@@ -81,9 +79,7 @@ export default function Size() {
     });
   }, []);
 
-  const incrementCardWidth = useCardStore(
-    (state) => state.incrementCardWidth,
-  );
+  const incrementCardWidth = useCardStore((state) => state.incrementCardWidth);
 
   const incrementCardHeight = useCardStore(
     (state) => state.incrementCardHeight,

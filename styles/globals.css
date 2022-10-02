@@ -3,37 +3,37 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        line-height: 0.4;
-        vertical-align: text-bottom;
-    }
+  body {
+    line-height: 0.4;
+    vertical-align: text-bottom;
+  }
 }
 
 @layer utilities {
-    .scrollbar::-webkit-scrollbar {
-        width: 8px;
-    }
-    
-    .scrollbar::-webkit-scrollbar-thumb {
-        @apply bg-gray-400 rounded-full;
-        border: 2px solid white;
-    }
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
 
-    .scrollbar::-webkit-scrollbar-thumb:hover {
-        @apply bg-gray-500 rounded-full;
-    }
-    
-    .scrollbar {
-        scrollbar-color: transparent transparent;
-    }
-    
-    .scrollbar:hover {
-        scrollbar-color: theme('colors.gray[400]') transparent;
-    }
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-gray-400;
+    border: 2px solid white;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply rounded-full bg-gray-500;
+  }
+
+  .scrollbar {
+    scrollbar-color: transparent transparent;
+  }
+
+  .scrollbar:hover {
+    scrollbar-color: theme("colors.gray[400]") transparent;
+  }
 }
 
 @supports (scrollbar-width: thin) {
-    .firefox-padding-fix {
-        @apply !p-5;
-    }
+  .firefox-padding-fix {
+    @apply !p-5;
+  }
 }
