@@ -1,4 +1,4 @@
-import { useCardStore, useGradientStore } from "../../store";
+import { useCardStore } from "../../store/card";
 import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
 

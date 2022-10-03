@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useArrowStore, useCardStore, useGradientStore } from "../../store";
+import { useArrowStore } from "../../store/arrow";
+import { useCardStore } from "../../store/card";
 
 export default function Size() {
   const [width, setWidth] = useState("672");

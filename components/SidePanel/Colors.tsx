@@ -1,4 +1,4 @@
-import { useGradientStore } from "../../store";
+import { useGradientStore } from "../../store/gradient";
 
 export default function Colors() {
   const gradients = useGradientStore((state) => state.gradients);

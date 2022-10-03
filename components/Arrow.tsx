@@ -1,4 +1,4 @@
-import { useArrowStore } from "../store";
+import { useArrowStore } from "../store/arrow";
 
 export default function Arrow() {
   const showArrow = useArrowStore((state) => state.showArrow);
