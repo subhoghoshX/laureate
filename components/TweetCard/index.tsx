@@ -1,4 +1,4 @@
-import { usePanStore } from "../../store";
+import { usePanStore } from "../../store/pan";
 import { useEffect } from "react";
 import CardResizable from "./CardResizable";
 

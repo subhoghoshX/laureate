@@ -1,6 +1,7 @@
 import CardInner from "./CardInner";
 import { useMemo } from "react";
-import { useCardStore, useGradientStore } from "../../store";
+import { useCardStore } from "../../store/card";
+import { useGradientStore } from "../../store/gradient";
 
 export default function CardOuter({ rootRef }: any) {
   const gradients = useGradientStore((state) => state.gradients);
