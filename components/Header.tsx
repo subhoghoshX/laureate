@@ -20,7 +20,7 @@ export default function Header({ setIsPanelOpen }: Props) {
 
     const data = await res.json();
 
-    setTweetInfo({
+    setTweetInfo(() => ({
       profile_image_url: data.includes.users[0].profile_image_url.replace(
         "_normal",
         "",
@@ -31,7 +31,7 @@ export default function Header({ setIsPanelOpen }: Props) {
       retweet_count: data.data.public_metrics.retweet_count,
       reply_count: data.data.public_metrics.reply_count,
       like_count: data.data.public_metrics.like_count,
-    });
+    }));
   }
 
   return (
