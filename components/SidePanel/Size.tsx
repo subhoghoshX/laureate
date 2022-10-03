@@ -6,6 +6,7 @@ export default function Size() {
   const [widthBuffer, setWidthBuffer] = useState("672");
   const cardWidth = useCardStore((state) => state.width);
   const changeWidth = useCardStore((state) => state.changeWidth);
+  const incrementCardWidth = useCardStore((state) => state.incrementCardWidth);
   useEffect(() => {
     setWidthBuffer(cardWidth + "");
   }, [cardWidth]);
@@ -26,6 +27,9 @@ export default function Size() {
   const [heightBuffer, setHeightBuffer] = useState("332");
   const cardHeight = useCardStore((state) => state.height);
   const changeHeight = useCardStore((state) => state.changeHeight);
+  const incrementCardHeight = useCardStore(
+    (state) => state.incrementCardHeight,
+  );
   useEffect(() => {
     setHeightBuffer(cardHeight + "");
   }, [cardHeight]);
@@ -43,10 +47,29 @@ export default function Size() {
     }
   }
 
+  const [radiusBuffer, setRadiusBuffer] = useState("16");
+  const rounded = useCardStore((state) => state.rounded);
+  const incrementRounded = useCardStore((state) => state.incrementRounded);
+  useEffect(() => {
+    setRadiusBuffer(rounded + "");
+  }, [rounded]);
+  function roundKeyDown(e: any) {
+    if (e.keyCode === 38) {
+      incrementRounded(1);
+    } else if (e.keyCode === 40) {
+      incrementRounded(-1);
+    } else if (e.keyCode === 13) {
+      if (Number.isNaN(Number(radiusBuffer))) {
+        setRadiusBuffer(rounded + "");
+      } else {
+        incrementRounded(Number(radiusBuffer), true);
+      }
+    }
+  }
+
   const changeVisibility = useArrowStore((state) => state.changeVisibility);
 
   const changeX = useArrowStore((state) => state.changeX);
-  const changeY = useArrowStore((state) => state.changeY);
   const setX = useArrowStore((state) => state.setX);
   const setY = useArrowStore((state) => state.setY);
 
@@ -68,12 +91,6 @@ export default function Size() {
     });
   }, []);
 
-  const incrementCardWidth = useCardStore((state) => state.incrementCardWidth);
-
-  const incrementCardHeight = useCardStore(
-    (state) => state.incrementCardHeight,
-  );
-
   function incrementDimension(e: any) {
     changeX(e.movementX);
     switch (e.target.attributes["data-name"].value) {
@@ -85,27 +102,6 @@ export default function Size() {
         break;
       case "radius":
         incrementRounded(e.movementX);
-    }
-  }
-
-  const [radiusBuffer, setRadiusBuffer] = useState("16");
-  const incrementRounded = useCardStore((state) => state.incrementRounded);
-  const rounded = useCardStore((state) => state.rounded);
-
-  useEffect(() => {
-    setRadiusBuffer(rounded + "");
-  }, [rounded]);
-  function roundKeyDown(e: any) {
-    if (e.keyCode === 38) {
-      incrementRounded(1);
-    } else if (e.keyCode === 40) {
-      incrementRounded(-1);
-    } else if (e.keyCode === 13) {
-      if (Number.isNaN(Number(radiusBuffer))) {
-        setRadiusBuffer(rounded + "");
-      } else {
-        incrementRounded(Number(radiusBuffer), true);
-      }
     }
   }
 
