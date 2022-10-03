@@ -49,7 +49,7 @@ export default function Header({ setIsPanelOpen }: Props) {
       </svg>
       <form className="relative ml-auto flex w-1/2" onSubmit={handleSumbit}>
         <input
-          className="w-full rounded-full bg-slate-200 px-6 py-2.5 text-sm ring-blue-300 focus:outline-none focus:ring-2"
+          className="w-full rounded-full bg-slate-200 px-6 py-2.5 pr-16 text-sm ring-blue-300 focus:outline-none focus:ring-2"
           type="text"
           placeholder="Paste tweet link here"
           value={url}
