@@ -14,11 +14,11 @@ It's never a fun experience to have your pull request declined after investing a
 
 ## Table of Contents
 
-* [Demo](#demo)
-* [Tech Stack](#tech-stack)
-* [Installation](#installation)
-* [Contributing](#contributing)
-* [License](#license)
+- [Demo](#demo)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Demo
 
@@ -29,12 +29,12 @@ View the application at [Deployed Project Link](https://laureate.netlify.app/)
 ## Tech Stack
 
 This is where you want to demonstrate the technologies you used in this project and provide any links.
-| Technology | Description                               | Link ↘️          |
-|------------|-------------------------------------------|--------           |
-| NextJs     | The React Framework                       |https://nextjs.org/|
-|Tailwind CSS| Utility-first CSS framework               |https://tailwindcss.com/|
-| Zustand    | Bear necessities for state management     |https://github.com/pmndrs/zustand|
-| Twitter api| For fetching tweet data                   |https://developer.twitter.com/en/docs/twitter-api| 
+| Technology | Description | Link ↘️ |
+|------------|-------------------------------------------|-------- |
+| NextJs | The React Framework |https://nextjs.org/|
+|Tailwind CSS| Utility-first CSS framework |https://tailwindcss.com/|
+| Zustand | Bear necessities for state management |https://github.com/pmndrs/zustand|
+| Twitter api| For fetching tweet data |https://developer.twitter.com/en/docs/twitter-api|
 
 ## Installation
 
@@ -62,7 +62,7 @@ This is where you want to demonstrate the technologies you used in this project 
    ```bash
    yarn start
    ```
- 
+
 ## Contributing
 
 - Contributions make the open source community such an amazing place to learn, inspire, and create.

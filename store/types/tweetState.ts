@@ -1,7 +1,7 @@
 export interface TweetState {
   tweetInfo: TweetInfo;
   setTweetInfo: (tweetInfo: TweetInfo) => void;
-};
+}
 
 export type TweetInfo = {
   profile_image_url: string;
