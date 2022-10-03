@@ -50,8 +50,6 @@ export default function Size() {
   const setX = useArrowStore((state) => state.setX);
   const setY = useArrowStore((state) => state.setY);
 
-  const widthRef = useRef<HTMLLabelElement>(null);
-
   function mouseDownHandler(e: any) {
     changeVisibility(true);
     setX(e.clientX - 10);
@@ -59,18 +57,12 @@ export default function Size() {
     e.target.requestPointerLock();
   }
 
-  const heightRef = useRef<HTMLLabelElement>(null);
-
   useEffect(() => {
     document.addEventListener("pointerlockchange", () => {
-      if (
-        document.pointerLockElement === widthRef.current ||
-        document.pointerLockElement === heightRef.current ||
-        document.pointerLockElement === roundedRef.current
-      ) {
-        document.addEventListener("mousemove", incrementWidth);
+      if (document.pointerLockElement) {
+        document.addEventListener("mousemove", incrementDimension);
       } else {
-        document.removeEventListener("mousemove", incrementWidth);
+        document.removeEventListener("mousemove", incrementDimension);
         changeVisibility(false);
       }
     });
@@ -82,14 +74,17 @@ export default function Size() {
     (state) => state.incrementCardHeight,
   );
 
-  function incrementWidth(e: any) {
+  function incrementDimension(e: any) {
     changeX(e.movementX);
-    if (e.target === widthRef.current) {
-      incrementCardWidth(e.movementX);
-    } else if (e.target === heightRef.current) {
-      incrementCardHeight(e.movementX);
-    } else if (e.target === roundedRef.current) {
-      incrementRounded(e.movementX);
+    switch (e.target.attributes["data-name"].value) {
+      case "width":
+        incrementCardWidth(e.movementX);
+        break;
+      case "height":
+        incrementCardHeight(e.movementX);
+        break;
+      case "radius":
+        incrementRounded(e.movementX);
     }
   }
 
@@ -114,8 +109,6 @@ export default function Size() {
     }
   }
 
-  const roundedRef = useRef<HTMLLabelElement>(null);
-
   return (
     <div className="firefox-padding-fix p-5 pr-3">
       <h2 className="font-bold">Size</h2>
@@ -123,13 +116,13 @@ export default function Size() {
         <div className="flex w-1/2 gap-x-3">
           <label
             htmlFor=""
-            ref={widthRef}
             className="cursor-ew-resize font-mono text-slate-500"
             onMouseDown={mouseDownHandler}
             onMouseUp={() => {
               document.exitPointerLock();
               changeVisibility(false);
             }}
+            data-name="width"
           >
             W
           </label>
@@ -156,7 +149,7 @@ export default function Size() {
               document.exitPointerLock();
               changeVisibility(false);
             }}
-            ref={heightRef}
+            data-name="height"
           >
             H
           </label>
@@ -183,7 +176,7 @@ export default function Size() {
               document.exitPointerLock();
               changeVisibility(false);
             }}
-            ref={roundedRef}
+            data-name="radius"
           >
             R
           </label>
