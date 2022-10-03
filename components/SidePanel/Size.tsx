@@ -67,16 +67,14 @@ export default function Size() {
     }
   }
 
-  const changeVisibility = useArrowStore((state) => state.changeVisibility);
-
-  const changeX = useArrowStore((state) => state.changeX);
+  const setIsArrowVisible = useArrowStore((state) => state.setIsArrowVisible);
   const setX = useArrowStore((state) => state.setX);
   const setY = useArrowStore((state) => state.setY);
 
   function mouseDownHandler(e: any) {
-    changeVisibility(true);
-    setX(e.clientX - 10);
-    setY(e.clientY - 10);
+    setIsArrowVisible(() => true);
+    setX(() => e.clientX - 10);
+    setY(() => e.clientY - 10);
     e.target.requestPointerLock();
   }
 
@@ -86,13 +84,13 @@ export default function Size() {
         document.addEventListener("mousemove", incrementDimension);
       } else {
         document.removeEventListener("mousemove", incrementDimension);
-        changeVisibility(false);
+        setIsArrowVisible(() => false);
       }
     });
   }, []);
 
   function incrementDimension(e: any) {
-    changeX(e.movementX);
+    setX((X) => X + e.movementX);
     switch (e.target.attributes["data-name"].value) {
       case "width":
         incrementCardWidth(e.movementX);
@@ -116,7 +114,7 @@ export default function Size() {
             onMouseDown={mouseDownHandler}
             onMouseUp={() => {
               document.exitPointerLock();
-              changeVisibility(false);
+              setIsArrowVisible(() => false);
             }}
             data-name="width"
           >
@@ -143,7 +141,7 @@ export default function Size() {
             onMouseDown={mouseDownHandler}
             onMouseUp={() => {
               document.exitPointerLock();
-              changeVisibility(false);
+              setIsArrowVisible(() => false);
             }}
             data-name="height"
           >
@@ -170,7 +168,7 @@ export default function Size() {
             onMouseDown={mouseDownHandler}
             onMouseUp={() => {
               document.exitPointerLock();
-              changeVisibility(false);
+              setIsArrowVisible(() => false);
             }}
             data-name="radius"
           >

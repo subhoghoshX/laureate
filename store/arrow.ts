@@ -2,29 +2,24 @@ import create from "zustand";
 import { ArrowState } from "./types";
 
 export const useArrowStore = create<ArrowState>((set) => ({
-  showArrow: false,
+  isArrowVisible: false,
   X: 0,
   Y: 0,
-  changeVisibility: (showArrow) => {
-    set(() => ({ showArrow }));
+  setIsArrowVisible(callback) {
+    set((state) => ({ isArrowVisible: callback(state.isArrowVisible) }));
   },
-  changeX: (X) => {
+  setX(callback) {
     set((state) => {
       if (state.X > window.innerWidth) {
         return { X: -20 };
       } else if (state.X < -20) {
         return { X: window.innerWidth };
+      } else {
+        return { X: callback(state.X) };
       }
-      return { X: state.X + X };
     });
   },
-  changeY: (Y) => {
-    set((state) => ({ Y: state.Y + Y }));
-  },
-  setX: (X) => {
-    set(() => ({ X }));
-  },
-  setY: (Y) => {
-    set(() => ({ Y }));
+  setY(callback) {
+    set((state) => ({ Y: callback(state.Y) }));
   },
 }));
