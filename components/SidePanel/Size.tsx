@@ -52,15 +52,11 @@ export default function Size() {
 
   const widthRef = useRef<HTMLLabelElement>(null);
 
-  function widthMouseDownHandler(e: any) {
+  function mouseDownHandler(e: any) {
     changeVisibility(true);
     setX(e.clientX - 10);
     setY(e.clientY - 10);
-    if (widthRef.current && widthRef.current === e.target) {
-      widthRef.current.requestPointerLock();
-    } else if (heightRef.current && heightRef.current === e.target) {
-      heightRef.current.requestPointerLock();
-    }
+    e.target.requestPointerLock();
   }
 
   const heightRef = useRef<HTMLLabelElement>(null);
@@ -120,16 +116,6 @@ export default function Size() {
 
   const roundedRef = useRef<HTMLLabelElement>(null);
 
-  function roundedMouseDownHandler(e: any) {
-    changeVisibility(true);
-    setX(e.clientX - 10);
-    setY(e.clientY - 10);
-    console.log(roundedRef.current);
-    if (roundedRef.current) {
-      roundedRef.current.requestPointerLock();
-    }
-  }
-
   return (
     <div className="firefox-padding-fix p-5 pr-3">
       <h2 className="font-bold">Size</h2>
@@ -139,7 +125,7 @@ export default function Size() {
             htmlFor=""
             ref={widthRef}
             className="cursor-ew-resize font-mono text-slate-500"
-            onMouseDown={widthMouseDownHandler}
+            onMouseDown={mouseDownHandler}
             onMouseUp={() => {
               document.exitPointerLock();
               changeVisibility(false);
@@ -165,7 +151,7 @@ export default function Size() {
           <label
             htmlFor=""
             className="cursor-ew-resize font-mono text-slate-500"
-            onMouseDown={widthMouseDownHandler}
+            onMouseDown={mouseDownHandler}
             onMouseUp={() => {
               document.exitPointerLock();
               changeVisibility(false);
@@ -187,11 +173,12 @@ export default function Size() {
             type="text"
           />
         </div>
+
         <div className="flex w-1/2 gap-x-3">
           <label
             htmlFor=""
             className="cursor-ew-resize font-mono text-slate-500"
-            onMouseDown={roundedMouseDownHandler}
+            onMouseDown={mouseDownHandler}
             onMouseUp={() => {
               document.exitPointerLock();
               changeVisibility(false);
