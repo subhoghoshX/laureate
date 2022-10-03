@@ -47,16 +47,53 @@ export default function Header({ setIsPanelOpen }: Props) {
           fill="#323232"
         />
       </svg>
-      <form className="w-1/2" onSubmit={handleSumbit}>
+      <form className="relative ml-auto flex w-1/2" onSubmit={handleSumbit}>
         <input
-          className="w-full rounded-full bg-slate-200 px-6 py-2.5 text-sm"
+          className="w-full rounded-full bg-slate-200 px-6 py-2.5 text-sm ring-blue-300 focus:outline-none focus:ring-2"
           type="text"
           placeholder="Paste tweet link here"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
+        <button
+          type="submit"
+          className="group absolute inset-y-0 right-0 flex w-14 items-center justify-center rounded-r-full bg-slate-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6 stroke-slate-700 group-hover:stroke-slate-900"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </button>
       </form>
-      <div className="flex gap-x-3">
+      <div className="relative mr-auto h-10 w-10">
+        <button className="flex h-full w-full items-center justify-center rounded-full bg-slate-200">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div className="flex w-56 justify-end gap-x-4">
         <button>
           <svg
             width="24"
