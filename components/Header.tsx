@@ -8,6 +8,8 @@ interface Props {
 export default function Header({ setIsPanelOpen }: Props) {
   const [url, setUrl] = useState("");
 
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+
   const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
 
   async function handleSumbit(e: any) {
@@ -75,7 +77,11 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
       </form>
-      <div className="relative mr-auto h-10 w-10">
+
+      <div
+        className="relative mr-auto h-10 w-10"
+        onClick={() => setIsDemoOpen((c) => !c)}
+      >
         <button className="flex h-full w-full items-center justify-center rounded-full bg-slate-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +98,29 @@ export default function Header({ setIsPanelOpen }: Props) {
             />
           </svg>
         </button>
+        <aside
+          className={`h-72 w-60 content-center self-end overflow-hidden p-2 transition-transform duration-200 ease-out ${
+            isDemoOpen ? "translate-y-0" : "hidden translate-y-60"
+          }`}
+        >
+          <div className="absolute h-60 w-60 bg-white p-3 text-sm shadow-sm shadow-black">
+            <ul className="list-disc p-3">
+              <li>
+                Paste a tweet link in the field above to generate the image
+              </li>
+              <li>
+                move your mouse cursor to the edge of the card to resize it
+              </li>
+              <li>press space and left mouse button to move the tweet card</li>
+              <li>
+                in the side panel you can change width, height, border radius,
+                colors, layouts and many more things
+              </li>
+            </ul>
+          </div>
+        </aside>
       </div>
+
       <div className="flex w-56 justify-end gap-x-4">
         <button>
           <svg
