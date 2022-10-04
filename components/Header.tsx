@@ -96,18 +96,17 @@ export default function Header({ setIsPanelOpen }: Props) {
       <div className="flex w-56 justify-end gap-x-4">
         <button>
           <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6"
           >
             <path
-              d="M21.752 15.002C20.5633 15.4975 19.2879 15.7517 18 15.75C12.615 15.75 8.25 11.385 8.25 5.99999C8.25 4.66999 8.516 3.40299 8.998 2.24799C7.22147 2.9891 5.70397 4.23934 4.63663 5.84124C3.56928 7.44314 2.99984 9.32507 3 11.25C3 16.635 7.365 21 12.75 21C14.6749 21.0002 16.5568 20.4307 18.1587 19.3634C19.7606 18.296 21.0109 16.7785 21.752 15.002V15.002Z"
-              stroke="#323232"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
             />
           </svg>
         </button>
@@ -127,7 +126,7 @@ export default function Header({ setIsPanelOpen }: Props) {
               rx="3"
               fill="white"
               stroke="#323232"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <path
               d="M13.5 3.5H18C19.3807 3.5 20.5 4.61929 20.5 6V18C20.5 19.3807 19.3807 20.5 18 20.5H13.5V3.5Z"
