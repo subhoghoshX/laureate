@@ -99,11 +99,11 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
         <aside
-          className={`h-90 absolute w-60 right-0 top-16 self-end overflow-hidden transition-transform duration-200 ease-out ${
+          className={`h-90 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] absolute w-60 right-0 top-14 rounded-md self-end overflow-hidden transition-transform duration-200 ease-out ${
             isDemoOpen ? "translate-y-0" : "hidden translate-y-60"
           }`}
         >
-            <ul className="h-full w-full bg-white pl-6 p-1 py-4 text-sm shadow list-disc">
+            <ul className="h-full w-full bg-white pl-6 p-1 py-4 text-sm list-disc">
               <li>
                 Paste a tweet link in the field above to generate the image
               </li>
