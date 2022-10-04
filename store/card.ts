@@ -4,26 +4,14 @@ import { CardState } from "./types";
 export const useCardStore = create<CardState>((set) => ({
   height: 332,
   width: 672,
-  rounded: 16,
-  changeHeight: (height) => {
-    set(() => ({ height }));
+  radius: 16,
+  setHeight(callback) {
+    set((state) => ({ height: callback(state.height) }));
   },
-  incrementCardWidth: (width) => {
-    set((state) => ({
-      width: state.width + width,
-    }));
+  setWidth(callback) {
+    set((state) => ({ width: callback(state.width) }));
   },
-  changeWidth: (width) => {
-    set(() => ({ width: width }));
-  },
-  incrementCardHeight: (height) => {
-    set((state) => ({
-      height: state.height + height,
-    }));
-  },
-  incrementRounded: (radius, final) => {
-    set((state) => ({
-      rounded: final ? radius : state.rounded + radius,
-    }));
+  setRadius(callback) {
+    set((state) => ({ radius: callback(state.radius) }));
   },
 }));

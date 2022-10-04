@@ -3,36 +3,39 @@ import { useEffect } from "react";
 import CardResizable from "./CardResizable";
 
 export default function TweetCard({ rootRef }: any) {
-  const spaceDown = usePanStore((state) => state.spaceDown);
-  const setSpaceDown = usePanStore((state) => state.setSpaceDown);
-  const mouseDown = usePanStore((state) => state.mouseDown);
-  const setMouseDown = usePanStore((state) => state.setMouseDown);
+  const isSpaceDown = usePanStore((state) => state.isSpaceDown);
+  const setIsSpaceDown = usePanStore((state) => state.setIsSpaceDown);
+  const isMouseDown = usePanStore((state) => state.isMouseDown);
+  const setIsMouseDown = usePanStore((state) => state.setIsMouseDown);
   const moveBy = usePanStore((state) => state.moveBy);
   const setMoveBy = usePanStore((state) => state.setMoveBy);
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
       if (e.keyCode === 32) {
-        setSpaceDown(true);
+        setIsSpaceDown(() => true);
       }
     });
 
     document.addEventListener("keyup", (e) => {
       if (e.keyCode === 32) {
-        setSpaceDown(false);
+        setIsSpaceDown(() => false);
       }
     });
   }, []);
 
   function mouseDownHandler() {
-    setMouseDown(true);
+    setIsMouseDown(() => true);
   }
   function mouseUpHandler() {
-    setMouseDown(false);
+    setIsMouseDown(() => false);
   }
   function mouseMoveHandler(e: any) {
-    if (mouseDown && spaceDown) {
-      setMoveBy({ X: moveBy.X + e.movementX, Y: moveBy.Y + e.movementY });
+    if (isMouseDown && isSpaceDown) {
+      setMoveBy(() => ({
+        X: moveBy.X + e.movementX,
+        Y: moveBy.Y + e.movementY,
+      }));
     }
   }
 
@@ -45,8 +48,8 @@ export default function TweetCard({ rootRef }: any) {
         transform: `translate(${moveBy.X}px, ${moveBy.Y}px)`,
       }}
       className={`${
-        spaceDown
-          ? mouseDown
+        isSpaceDown
+          ? isMouseDown
             ? "cursor-grabbing select-none"
             : "cursor-grab select-auto"
           : ""

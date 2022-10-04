@@ -2,16 +2,16 @@ import create from "zustand";
 import { PanState } from "./types";
 
 export const usePanStore = create<PanState>((set) => ({
-  spaceDown: false,
-  mouseDown: false,
+  isSpaceDown: false,
+  isMouseDown: false,
   moveBy: { X: 0, Y: 0 },
-  setSpaceDown: (spaceDown) => {
-    set(() => ({ spaceDown }));
+  setIsSpaceDown(callback) {
+    set((state) => ({ isSpaceDown: callback(state.isSpaceDown) }));
   },
-  setMouseDown: (mouseDown) => {
-    set(() => ({ mouseDown }));
+  setIsMouseDown(callback) {
+    set((state) => ({ isMouseDown: callback(state.isMouseDown) }));
   },
-  setMoveBy: (moveBy) => {
-    set(() => ({ moveBy }));
+  setMoveBy(callback) {
+    set((state) => ({ moveBy: callback(state.moveBy) }));
   },
 }));

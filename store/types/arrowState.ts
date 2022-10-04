@@ -1,10 +1,8 @@
 export interface ArrowState {
-  showArrow: boolean;
+  isArrowVisible: boolean;
   X: number;
   Y: number;
-  changeVisibility: (showArrow: boolean) => void;
-  changeX: (X: number) => void;
-  changeY: (Y: number) => void;
-  setX: (X: number) => void;
-  setY: (Y: number) => void;
+  setIsArrowVisible: (callback: (isArrowVisible: boolean) => boolean) => void;
+  setX: (callback: (X: number) => number) => void;
+  setY: (callback: (Y: number) => number) => void;
 }

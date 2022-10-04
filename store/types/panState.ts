@@ -1,10 +1,10 @@
 export interface PanState {
-  spaceDown: boolean;
-  mouseDown: boolean;
+  isSpaceDown: boolean;
+  isMouseDown: boolean;
   moveBy: MoveBy;
-  setSpaceDown: (spaceDown: boolean) => void;
-  setMouseDown: (mouseDown: boolean) => void;
-  setMoveBy: (moveBy: MoveBy) => void;
+  setIsSpaceDown: (callback: (isSpaceDown: boolean) => boolean) => void;
+  setIsMouseDown: (callback: (mouseDown: boolean) => boolean) => void;
+  setMoveBy: (callback: (moveBy: MoveBy) => MoveBy) => void;
 }
 
 export type MoveBy = {
