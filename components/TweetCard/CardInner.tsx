@@ -1,12 +1,17 @@
+import { useCardStore } from "../../store/card";
 import { useTemplateStore } from "../../store/template";
 import { useTweetStore } from "../../store/tweet";
 
 export default function CardInner() {
   const tweetInfo = useTweetStore((state) => state.tweetInfo);
   const selectedTemplate = useTemplateStore((state) => state.selectedTemplate);
+  const opacity = useCardStore((state) => state.opacity);
 
   return (
-    <div className="max-w-screen-sm rounded-xl bg-white/70 px-8 py-7 shadow-md backdrop-blur-md">
+    <div
+      className="max-w-screen-sm rounded-xl bg-white/70 px-8 py-7 shadow-md backdrop-blur-md"
+      style={{ backgroundColor: `rgba(255,255,255, ${opacity / 100})` }}
+    >
       <div
         className={`flex gap-x-5 ${
           selectedTemplate === "third" ? "items-start" : "items-center"
