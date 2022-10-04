@@ -103,7 +103,7 @@ export default function Header({ setIsPanelOpen }: Props) {
             isDemoOpen ? "translate-y-0" : "hidden translate-y-60"
           }`}
         >
-            <ul className="h-full w-full bg-white pl-6 p-1 py-4 text-sm list-disc">
+            <ul className="h-full w-full bg-white pl-6 p-1 py-4 text-sm list-disc gray-700 space-y-2">
               <li>
                 Paste a tweet link in the field above to generate the image
               </li>
