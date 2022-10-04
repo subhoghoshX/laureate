@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useArrowStore } from "../../store/arrow";
 
 interface Props {
@@ -8,7 +8,9 @@ interface Props {
 }
 
 export default function ({ data, action: setData, label }: Props) {
+  const labelRef = useRef(null);
   const [dimensionBuffer, setDimensionBuffer] = useState("");
+  const [isPLRequested, setIsPLRequested] = useState(false);
   useEffect(() => {
     setDimensionBuffer(data + "");
   }, [data]);
@@ -34,17 +36,18 @@ export default function ({ data, action: setData, label }: Props) {
     setIsArrowVisible(() => true);
     setX(() => e.clientX - 10);
     setY(() => e.clientY - 10);
-    document.addEventListener("pointerlockchange", pointerLockChangeHandler);
+    if (!isPLRequested) {
+      document.addEventListener("pointerlockchange", pointerLockChangeHandler);
+      setIsPLRequested(true);
+    }
     e.target.requestPointerLock();
   }
 
   function pointerLockChangeHandler() {
-    if (document.pointerLockElement) {
+    if (document.pointerLockElement === labelRef.current) {
       document.addEventListener("mousemove", incrementDimension);
     } else {
-      console.log("after mouseup");
       document.removeEventListener("mousemove", incrementDimension);
-      setIsArrowVisible(() => false);
     }
   }
 
@@ -56,7 +59,6 @@ export default function ({ data, action: setData, label }: Props) {
   function mouseUpHandler() {
     document.exitPointerLock();
     setIsArrowVisible(() => false);
-    document.removeEventListener("pointerlockchange", pointerLockChangeHandler);
   }
 
   return (
@@ -66,7 +68,7 @@ export default function ({ data, action: setData, label }: Props) {
         className="cursor-ew-resize font-mono text-slate-500"
         onMouseDown={mouseDownHandler}
         onMouseUp={mouseUpHandler}
-        data-name="width"
+        ref={labelRef}
       >
         {label}
       </label>
