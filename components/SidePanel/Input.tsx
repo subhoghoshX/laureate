@@ -7,7 +7,7 @@ interface Props {
   label: string;
 }
 
-export default function ({ data, action: setData, label }: Props) {
+export default function Input({ data, action: setData, label }: Props) {
   const labelRef = useRef(null);
   const [dimensionBuffer, setDimensionBuffer] = useState("");
   const [isPLRequested, setIsPLRequested] = useState(false);

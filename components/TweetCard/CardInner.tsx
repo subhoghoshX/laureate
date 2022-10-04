@@ -49,7 +49,7 @@ export default function CardInner() {
       </div>
       <div
         className={`mt-2 text-zinc-900 ${
-          selectedTemplate === "second" ? "pl-20" : ""
+          selectedTemplate === "second" ? "pl-[76px]" : ""
         } ${selectedTemplate === "third" ? "hidden" : "block"}`}
       >
         <p
