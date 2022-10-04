@@ -5,64 +5,60 @@ import { useCardStore } from "../../store/card";
 export default function Size() {
   const [widthBuffer, setWidthBuffer] = useState("672");
   const cardWidth = useCardStore((state) => state.width);
-  const changeWidth = useCardStore((state) => state.changeWidth);
-  const incrementCardWidth = useCardStore((state) => state.incrementCardWidth);
+  const setWidth = useCardStore((state) => state.setWidth);
   useEffect(() => {
     setWidthBuffer(cardWidth + "");
   }, [cardWidth]);
   function widthKeyDown(e: any) {
     if (e.keyCode === 38) {
-      changeWidth(+widthBuffer + 1);
+      setWidth(() => +widthBuffer + 1);
     } else if (e.keyCode === 40) {
-      changeWidth(+widthBuffer - 1);
+      setWidth(() => +widthBuffer - 1);
     } else if (e.keyCode === 13) {
       if (Number.isNaN(Number(widthBuffer))) {
         setWidthBuffer(cardWidth + "");
       } else {
-        changeWidth(+widthBuffer);
+        setWidth(() => +widthBuffer);
       }
     }
   }
 
   const [heightBuffer, setHeightBuffer] = useState("332");
   const cardHeight = useCardStore((state) => state.height);
-  const changeHeight = useCardStore((state) => state.changeHeight);
-  const incrementCardHeight = useCardStore(
-    (state) => state.incrementCardHeight,
-  );
+  const setHeight = useCardStore((state) => state.setHeight);
   useEffect(() => {
     setHeightBuffer(cardHeight + "");
   }, [cardHeight]);
   function heightKeyDown(e: any) {
     if (e.keyCode === 38) {
-      changeHeight(+heightBuffer + 1);
+      setHeight(() => +heightBuffer + 1);
     } else if (e.keyCode === 40) {
-      changeHeight(+heightBuffer - 1);
+      setHeight(() => +heightBuffer - 1);
     } else if (e.keyCode === 13) {
       if (Number.isNaN(Number(heightBuffer))) {
         setHeightBuffer(cardHeight + "");
       } else {
-        changeHeight(+heightBuffer);
+        setHeight(() => +heightBuffer);
       }
     }
   }
 
   const [radiusBuffer, setRadiusBuffer] = useState("16");
-  const rounded = useCardStore((state) => state.rounded);
-  const incrementRounded = useCardStore((state) => state.incrementRounded);
+  const radius = useCardStore((state) => state.radius);
+  const setRadius = useCardStore((state) => state.setRadius);
   useEffect(() => {
-    setRadiusBuffer(rounded + "");
-  }, [rounded]);
+    setRadiusBuffer(radius + "");
+  }, [radius]);
   function roundKeyDown(e: any) {
     if (e.keyCode === 38) {
-      incrementRounded(1);
+      setRadius((radius) => radius + 1);
     } else if (e.keyCode === 40) {
-      incrementRounded(-1);
+      setRadius((radius) => radius - 1);
     } else if (e.keyCode === 13) {
       if (Number.isNaN(Number(radiusBuffer))) {
-        setRadiusBuffer(rounded + "");
+        setRadiusBuffer(radius + "");
       } else {
-        incrementRounded(Number(radiusBuffer), true);
+        setRadius((radius) => radius + Number(radiusBuffer));
       }
     }
   }
@@ -93,13 +89,13 @@ export default function Size() {
     setX((X) => X + e.movementX);
     switch (e.target.attributes["data-name"].value) {
       case "width":
-        incrementCardWidth(e.movementX);
+        setWidth((width) => width + e.movementX);
         break;
       case "height":
-        incrementCardHeight(e.movementX);
+        setHeight((height) => height + e.movementX);
         break;
       case "radius":
-        incrementRounded(e.movementX);
+        setRadius((radius) => radius + e.movementX);
     }
   }
 
@@ -126,7 +122,7 @@ export default function Size() {
             onBlur={() =>
               Number.isNaN(Number(widthBuffer))
                 ? setWidthBuffer(cardWidth + "")
-                : changeWidth(Number(widthBuffer))
+                : setWidth(() => Number(widthBuffer))
             }
             onKeyDown={widthKeyDown}
             className="w-full"
@@ -153,7 +149,7 @@ export default function Size() {
             onBlur={() =>
               Number.isNaN(Number(heightBuffer))
                 ? setHeightBuffer(cardHeight + "")
-                : changeHeight(Number(heightBuffer))
+                : setHeight(() => Number(heightBuffer))
             }
             onKeyDown={heightKeyDown}
             className="w-full"
@@ -179,8 +175,8 @@ export default function Size() {
             onChange={(e) => setRadiusBuffer(e.target.value)}
             onBlur={() =>
               Number.isNaN(Number(radiusBuffer))
-                ? setRadiusBuffer(rounded + "")
-                : incrementRounded(Number(radiusBuffer), true)
+                ? setRadiusBuffer(radius + "")
+                : setRadius((radius) => radius + Number(radiusBuffer))
             }
             onKeyDown={roundKeyDown}
             className="w-full"
