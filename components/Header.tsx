@@ -8,6 +8,8 @@ interface Props {
 export default function Header({ setIsPanelOpen }: Props) {
   const [url, setUrl] = useState("");
 
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+
   const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
 
   async function handleSumbit(e: any) {
@@ -75,8 +77,12 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
       </form>
+
       <div className="relative mr-auto h-10 w-10">
-        <button className="flex h-full w-full items-center justify-center rounded-full bg-slate-200">
+        <button
+          className="flex h-full w-full items-center justify-center rounded-full bg-slate-200"
+          onClick={() => setIsDemoOpen((c) => !c)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -92,7 +98,27 @@ export default function Header({ setIsPanelOpen }: Props) {
             />
           </svg>
         </button>
+        <aside
+          className={`h-90 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] absolute w-60 translate-x-[calc(50%-20px)] right-0 top-14 rounded-md self-end overflow-hidden transition-[transform,opacity] duration-200 ease-out ${
+            isDemoOpen ? "translate-y-0" : "opacity-0 translate-y-40 pointer-events-none"
+          }`}
+        >
+            <ul className="h-full w-full bg-white pl-6 p-1 py-4 text-sm list-disc text-gray-700 space-y-2">
+              <li>
+                Paste a tweet link in the field above to generate the image
+              </li>
+              <li>
+                move your mouse cursor to the edge of the card to resize it
+              </li>
+              <li>press &lt; space &gt; and left mouse button to move the tweet card</li>
+              <li>
+                in the side panel you can change width, height, border radius,
+                colors, layouts and many more things
+              </li>
+            </ul>
+        </aside>
       </div>
+
       <div className="flex w-56 justify-end gap-x-4">
         <button>
           <svg
