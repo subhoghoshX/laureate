@@ -100,7 +100,7 @@ export default function Header({ setIsPanelOpen }: Props) {
         </button>
         <aside
           className={`h-90 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] absolute w-60 translate-x-[calc(50%-20px)] right-0 top-14 rounded-md self-end overflow-hidden transition-transform duration-200 ease-out ${
-            isDemoOpen ? "translate-y-0" : "hidden translate-y-60"
+            isDemoOpen ? "translate-y-0" : "opacity-0 -translate-y-60 pointer-events-none"
           }`}
         >
             <ul className="h-full w-full bg-white pl-6 p-1 py-4 text-sm list-disc text-gray-700 space-y-2">
