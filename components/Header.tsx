@@ -78,11 +78,11 @@ export default function Header({ setIsPanelOpen }: Props) {
         </button>
       </form>
 
-      <div
-        className="relative mr-auto h-10 w-10"
-        onClick={() => setIsDemoOpen((c) => !c)}
-      >
-        <button className="flex h-full w-full items-center justify-center rounded-full bg-slate-200">
+      <div className="relative mr-auto h-10 w-10">
+        <button
+          className="flex h-full w-full items-center justify-center rounded-full bg-slate-200"
+          onClick={() => setIsDemoOpen((c) => !c)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -99,11 +99,11 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
         <aside
-          className={`h-72 w-60 content-center self-end overflow-hidden p-2 transition-transform duration-200 ease-out ${
+          className={`h-90 absolute w-60 content-center self-end overflow-hidden p-2 transition-transform duration-200 ease-out ${
             isDemoOpen ? "translate-y-0" : "hidden translate-y-60"
           }`}
         >
-          <div className="absolute h-60 w-60 bg-white p-3 text-sm shadow-sm shadow-black">
+          <div className="h-full w-full bg-white p-3 text-sm shadow">
             <ul className="list-disc p-3">
               <li>
                 Paste a tweet link in the field above to generate the image
