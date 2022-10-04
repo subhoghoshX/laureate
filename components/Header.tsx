@@ -99,7 +99,7 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
         <aside
-          className={`h-90 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] absolute w-60 right-0 top-14 rounded-md self-end overflow-hidden transition-transform duration-200 ease-out ${
+          className={`h-90 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] absolute w-60 translate-x-[calc(50%-20px)] right-0 top-14 rounded-md self-end overflow-hidden transition-transform duration-200 ease-out ${
             isDemoOpen ? "translate-y-0" : "hidden translate-y-60"
           }`}
         >
@@ -110,7 +110,7 @@ export default function Header({ setIsPanelOpen }: Props) {
               <li>
                 move your mouse cursor to the edge of the card to resize it
               </li>
-              <li>press space and left mouse button to move the tweet card</li>
+              <li>press &lt; space &gt; and left mouse button to move the tweet card</li>
               <li>
                 in the side panel you can change width, height, border radius,
                 colors, layouts and many more things
