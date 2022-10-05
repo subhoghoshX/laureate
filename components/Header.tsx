@@ -99,10 +99,8 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
         <aside
-          className={`h-90 absolute right-0 top-14 w-64 translate-x-[calc(50%-20px)] self-end overflow-hidden rounded-md bg-white opacity-0 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-[transform,opacity] duration-200 ease-out ${
-            isDemoOpen
-              ? "translate-y-0 !opacity-100"
-              : "pointer-events-none translate-y-40"
+          className={`h-90 absolute right-0 top-14 w-64 translate-x-[calc(50%-20px)] translate-y-40 self-end overflow-hidden rounded-md bg-white opacity-0 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-[transform,opacity] duration-200 ease-out ${
+            isDemoOpen ? "!translate-y-0 !opacity-100" : "pointer-events-none"
           }`}
         >
           <h2 className="px-4 pt-6 font-bold text-gray-700">
