@@ -1,3 +1,4 @@
+import Card from "./Card";
 import Colors from "./Colors";
 import Size from "./Size";
 import Templates from "./Templates";
@@ -21,6 +22,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
         <Size />
         <Colors />
         <Templates />
+        <Card />
       </div>
     </aside>
   );

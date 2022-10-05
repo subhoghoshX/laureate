@@ -1,6 +1,6 @@
 export interface TweetState {
   tweetInfo: TweetInfo;
-  setTweetInfo: (tweetInfo: TweetInfo) => void;
+  setTweetInfo: (callback: (tweetInfo: TweetInfo) => TweetInfo) => void;
 }
 
 export type TweetInfo = {

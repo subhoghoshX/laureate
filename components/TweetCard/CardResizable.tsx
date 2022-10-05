@@ -1,43 +1,41 @@
-import { useCardStore, useGradientStore } from "../../store";
+import { useCardStore } from "../../store/card";
 import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
 
 export default function ResizableTweet({ rootRef }: any) {
   const cardWidth = useCardStore((state) => state.width);
   const cardHeight = useCardStore((state) => state.height);
-  const incrementCardWidth = useCardStore((state) => state.incrementCardWidth);
-  const incrementCardHeight = useCardStore(
-    (state) => state.incrementCardHeight,
-  );
+  const setWidth = useCardStore((state) => state.setWidth);
+  const setHeight = useCardStore((state) => state.setHeight);
   function resizeHandler(e: any, dir: any) {
     switch (dir) {
       case "left":
-        incrementCardWidth(-e.movementX);
+        setWidth((width) => width - e.movementX);
         break;
       case "right":
-        incrementCardWidth(e.movementX);
+        setWidth((width) => width + e.movementX);
         break;
       case "top":
-        incrementCardHeight(-e.movementY);
+        setHeight((height) => height - e.movementY);
         break;
       case "bottom":
-        incrementCardHeight(e.movementY);
+        setHeight((height) => height + e.movementY);
         break;
       case "topLeft":
-        incrementCardWidth(-e.movementX);
-        incrementCardHeight(-e.movementY);
+        setWidth((width) => width - e.movementX);
+        setHeight((height) => height - e.movementY);
         break;
       case "topRight":
-        incrementCardWidth(e.movementX);
-        incrementCardHeight(-e.movementY);
+        setWidth((width) => width + e.movementX);
+        setHeight((height) => height - e.movementY);
         break;
       case "bottomLeft":
-        incrementCardWidth(-e.movementX);
-        incrementCardHeight(e.movementY);
+        setWidth((width) => width - e.movementX);
+        setHeight((height) => height + e.movementY);
         break;
       case "bottomRight":
-        incrementCardWidth(e.movementX);
-        incrementCardHeight(e.movementY);
+        setWidth((width) => width + e.movementX);
+        setHeight((height) => height + e.movementY);
         break;
     }
   }

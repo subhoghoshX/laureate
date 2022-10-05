@@ -1,23 +1,28 @@
-import { useGradientStore } from "../../store";
+import { useGradientStore } from "../../store/gradient";
 
 export default function Colors() {
   const gradients = useGradientStore((state) => state.gradients);
-  const selectGradient = useGradientStore((state) => state.selectGradient);
+  const selectedGradient = useGradientStore((state) => state.selectedGradient);
+  const setSelectedGradient = useGradientStore(
+    (state) => state.setSelectedGradient,
+  );
 
   return (
     <div className="firefox-padding-fix border-t p-5 pr-3">
       <h2 className="font-bold">Colors</h2>
       <div className="mt-3 grid grid-cols-4 gap-3">
-        {gradients.map((gradient: any) => (
+        {gradients.map((gradient) => (
           <button
             key={gradient.id}
             style={{
               background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
             }}
             className={`h-9 w-9 rounded-lg ${
-              gradient.selected ? `ring-2` : ""
+              JSON.stringify(gradient) === JSON.stringify(selectedGradient)
+                ? `ring-2`
+                : ""
             }`}
-            onClick={() => selectGradient(gradient.id)}
+            onClick={() => setSelectedGradient(() => gradient)}
           ></button>
         ))}
       </div>
