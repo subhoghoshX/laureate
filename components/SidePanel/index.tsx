@@ -1,3 +1,4 @@
+import Card from "./Card";
 import Colors from "./Colors";
 import Size from "./Size";
 import Templates from "./Templates";
@@ -10,7 +11,9 @@ export default function SidePanel({ isPanelOpen }: Props) {
   return (
     <aside
       className={`h-full w-60 self-end overflow-hidden p-2 transition-transform duration-200 ease-out ${
-        isPanelOpen ? "translate-x-0" : "translate-x-60"
+        isPanelOpen
+          ? "translate-x-0 lg:translate-x-60"
+          : "translate-x-60 lg:translate-x-0"
       }`}
     >
       <div
@@ -19,6 +22,7 @@ export default function SidePanel({ isPanelOpen }: Props) {
         <Size />
         <Colors />
         <Templates />
+        <Card />
       </div>
     </aside>
   );

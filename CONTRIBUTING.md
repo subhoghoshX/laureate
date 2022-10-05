@@ -1,14 +1,12 @@
 # Welcome to Laureate contributing guide <!-- omit in toc -->
 
-Thank you for investing your time in contributing to our project! Any contribution you make will be reflected on [Laureate](https://laureate.netlify.app/) :sparkles:. 
+Thank you for investing your time in contributing to our project! Any contribution you make will be reflected on [Laureate](https://laureate.netlify.app/) :sparkles:.
 
 In this guide, you will get an overview on how to contribute, open issues, open a PR, review and merge it.
-
 
 ## New contributor guide
 
 To get an overview of the project, read the [README](README.md). The README contains everything you need to get yourself started with your contributions to our Open Source Project.
-
 
 ## Getting started
 
@@ -26,6 +24,7 @@ After you have solved an issue, open a Pull Request for review.
 ### Make Changes
 
 For any changes you make, be it solving an existing / new Issue, or contributing a new feature, make sure you:
+
 - Fork the repository, if not already done.
 - Ensure the base branch of your repository is in sync with that of the OS project.
 - Create a new branch in your forked repository, specifically for the task you are doing.
@@ -38,6 +37,7 @@ After you've made your changes, make sure to self review to verify its working, 
 ### Pull Request
 
 When you're finished with the changes, and have commited the same, create a pull request, also known as a PR.
+
 - Head over to your repository and branch you want to merge. Click on **Contribute** and select **Open pull request**.
 - Fill the form with a title relavant to the changes / additions that you're making, and add a relevant description and create a pull request.
 - Be sure to check out the PR later, as we may request that you do some changes, before we merge the PR. The details of what needs to be changed can be found as comments in the PR.

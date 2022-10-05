@@ -1,15 +1,11 @@
 import CardInner from "./CardInner";
-import { useMemo } from "react";
-import { useCardStore, useGradientStore } from "../../store";
+import { useCardStore } from "../../store/card";
+import { useGradientStore } from "../../store/gradient";
 
 export default function CardOuter({ rootRef }: any) {
-  const gradients = useGradientStore((state: any) => state.gradients);
-  const gradient = useMemo(
-    () => gradients.filter((gradient: any) => gradient.selected)[0],
-    [gradients],
-  );
+  const gradient = useGradientStore((state) => state.selectedGradient);
 
-  const rounded = useCardStore((state: any) => state.rounded);
+  const radius = useCardStore((state) => state.radius);
   const cardScale = useCardStore((state: any) => state.scale);
 
   return (
@@ -17,10 +13,10 @@ export default function CardOuter({ rootRef }: any) {
       ref={rootRef}
       style={{
         background: `linear-gradient(to bottom right, ${gradient.from}, ${gradient.to})`,
-        borderRadius: `${rounded}px`,
+        borderRadius: `${radius}px`,
         transform: `scale(${cardScale})`
       }}
-      className="flex h-full items-center justify-center overflow-hidden py-16 px-20 leading-normal"
+      className="flex h-full items-center justify-center overflow-hidden py-16 px-20 leading-normal shadow-md"
     >
       <CardInner />
     </div>

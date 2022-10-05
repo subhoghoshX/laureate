@@ -1,13 +1,13 @@
-import { useArrowStore } from "../store";
+import { useArrowStore } from "../store/arrow";
 
 export default function Arrow() {
-  const showArrow = useArrowStore((state: any) => state.showArrow);
-  const arrowX = useArrowStore((state: any) => state.X);
-  const arrowY = useArrowStore((state: any) => state.Y);
+  const isArrowVisible = useArrowStore((state) => state.isArrowVisible);
+  const arrowX = useArrowStore((state) => state.X);
+  const arrowY = useArrowStore((state) => state.Y);
 
   return (
     <>
-      {showArrow && (
+      {isArrowVisible && (
         <span
           className="fixed z-20 text-sm font-bold"
           style={{ left: arrowX, top: arrowY }}
