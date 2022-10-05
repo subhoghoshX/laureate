@@ -15,16 +15,19 @@ export default function Input({ data, action: setData, label }: Props) {
     setDataBuffer(data + "");
   }, [data]);
   function keyDownHandler(e: any) {
-    if (e.keyCode === 38) {
-      setData(() => +dataBuffer + 1);
-    } else if (e.keyCode === 40) {
-      setData(() => +dataBuffer - 1);
-    } else if (e.keyCode === 13) {
-      if (Number.isNaN(Number(dataBuffer))) {
-        setDataBuffer(data + "");
-      } else {
-        setData(() => +dataBuffer);
-      }
+    switch (e.code) {
+      case "ArrowUp":
+        setData(() => +dataBuffer + 1);
+        break;
+      case "ArrowDown":
+        setData(() => +dataBuffer - 1);
+        break;
+      case "Enter":
+        Number.isNaN(Number(dataBuffer))
+          ? setDataBuffer(data + "")
+          : setData(() => +dataBuffer);
+      default:
+        break;
     }
   }
 
