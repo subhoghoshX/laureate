@@ -6,6 +6,7 @@ export const useCardStore = create<CardState>((set) => ({
   width: 672,
   radius: 16,
   opacity: 70,
+  font: "system-ui",
   setHeight(callback) {
     set((state) => ({ height: callback(state.height) }));
   },
@@ -17,5 +18,8 @@ export const useCardStore = create<CardState>((set) => ({
   },
   setOpacity(callback) {
     set((state) => ({ opacity: callback(state.opacity) }));
+  },
+  setFont(callback) {
+    set((state) => ({ font: callback(state.font) }));
   },
 }));

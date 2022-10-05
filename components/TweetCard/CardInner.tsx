@@ -6,11 +6,15 @@ export default function CardInner() {
   const tweetInfo = useTweetStore((state) => state.tweetInfo);
   const selectedTemplate = useTemplateStore((state) => state.selectedTemplate);
   const opacity = useCardStore((state) => state.opacity);
+  const font = useCardStore((state) => state.font);
 
   return (
     <div
       className="max-w-screen-sm rounded-xl bg-white/70 px-8 py-7 shadow-md backdrop-blur-md"
-      style={{ backgroundColor: `rgba(255,255,255, ${opacity / 100})` }}
+      style={{
+        backgroundColor: `rgba(255,255,255, ${opacity / 100})`,
+        fontFamily: font,
+      }}
     >
       <div
         className={`flex gap-x-5 ${
