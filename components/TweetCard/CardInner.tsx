@@ -13,7 +13,7 @@ export default function CardInner() {
       className="max-w-screen-sm rounded-xl bg-white/70 px-8 py-7 shadow-md backdrop-blur-md"
       style={{
         backgroundColor: `rgba(255,255,255, ${opacity / 100})`,
-        fontFamily: font,
+        fontFamily: [...font].join(","),
       }}
     >
       <div

@@ -24,7 +24,7 @@ export default function Card() {
       const head = document.head;
       head.appendChild(style);
     }
-    setFont(() => font.replaceAll("+", " "));
+    setFont((f) => new Set([font.replaceAll("+", " "), ...f]));
     option.setAttribute("data-fetched", "true");
   }
 
