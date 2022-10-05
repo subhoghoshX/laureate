@@ -1,12 +1,33 @@
 import { useCardStore } from "../../store/card";
 import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
+import { useEffect, useRef } from "react";
 
 export default function ResizableTweet({ rootRef }: any) {
-  const cardWidth = useCardStore((state) => state.width);
-  const cardHeight = useCardStore((state) => state.height);
+  const cardWidth = useCardStore((state: any) => state.width);
+  const cardHeight = useCardStore((state: any) => state.height);
   const setWidth = useCardStore((state) => state.setWidth);
   const setHeight = useCardStore((state) => state.setHeight);
+  const setScale = useCardStore((state) => state.setScale);
+  const cardRef = useRef<Resizable>(null);
+
+  useEffect(changeScale, [cardWidth]);
+  useEffect(() => {
+    window.addEventListener('resize', changeScale);
+
+    return () => {
+      window.removeEventListener('resize', changeScale);
+    }
+  }, [])
+
+  function changeScale() {
+    const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    const currentCardWidth = cardRef.current?.size.width || cardWidth;
+    const newScale = (width - 20) / currentCardWidth;
+
+    setScale(() => newScale > 1 ? 1 : newScale);
+  }
+
   function resizeHandler(e: any, dir: any) {
     switch (dir) {
       case "left":
@@ -45,6 +66,7 @@ export default function ResizableTweet({ rootRef }: any) {
       defaultSize={{ width: cardWidth, height: cardHeight }}
       size={{ width: cardWidth, height: cardHeight }}
       onResize={resizeHandler}
+      ref={cardRef}
     >
       <CardOuter rootRef={rootRef} />
     </Resizable>

@@ -4,6 +4,7 @@ import { CardState } from "./types";
 export const useCardStore = create<CardState>((set) => ({
   height: 332,
   width: 672,
+  scale: 1,
   radius: 16,
   opacity: 70,
   font: new Set(["system-ui", "sans-serif"]),
@@ -12,6 +13,9 @@ export const useCardStore = create<CardState>((set) => ({
   },
   setWidth(callback) {
     set((state) => ({ width: callback(state.width) }));
+  },
+  setScale(callback) {
+    set((state) => ({ scale: callback(state.scale) }));
   },
   setRadius(callback) {
     set((state) => ({ radius: callback(state.radius) }));
