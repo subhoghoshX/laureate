@@ -99,23 +99,23 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
         <aside
-          className={`h-90 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] absolute w-60 translate-x-[calc(50%-20px)] right-0 top-14 rounded-md self-end overflow-hidden transition-[transform,opacity] duration-200 ease-out ${
-            isDemoOpen ? "translate-y-0" : "opacity-0 translate-y-40 pointer-events-none"
+          className={`h-90 absolute right-0 top-14 w-60 translate-x-[calc(50%-20px)] self-end overflow-hidden rounded-md shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-[transform,opacity] duration-200 ease-out ${
+            isDemoOpen
+              ? "translate-y-0"
+              : "pointer-events-none translate-y-40 opacity-0"
           }`}
         >
-            <ul className="h-full w-full bg-white pl-6 p-1 py-4 text-sm list-disc text-gray-700 space-y-2">
-              <li>
-                Paste a tweet link in the field above to generate the image
-              </li>
-              <li>
-                move your mouse cursor to the edge of the card to resize it
-              </li>
-              <li>press &lt; space &gt; and left mouse button to move the tweet card</li>
-              <li>
-                in the side panel you can change width, height, border radius,
-                colors, layouts and many more things
-              </li>
-            </ul>
+          <ul className="h-full w-full list-disc space-y-2 bg-white p-1 py-4 pl-6 text-sm text-gray-700">
+            <li>Paste a tweet link in the field above to generate the image</li>
+            <li>move your mouse cursor to the edge of the card to resize it</li>
+            <li>
+              press &lt; space &gt; and left mouse button to move the tweet card
+            </li>
+            <li>
+              in the side panel you can change width, height, border radius,
+              colors, layouts and many more things
+            </li>
+          </ul>
         </aside>
       </div>
 
