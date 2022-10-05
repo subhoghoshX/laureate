@@ -99,21 +99,33 @@ export default function Header({ setIsPanelOpen }: Props) {
           </svg>
         </button>
         <aside
-          className={`h-90 absolute right-0 top-14 w-60 translate-x-[calc(50%-20px)] self-end overflow-hidden rounded-md shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-[transform,opacity] duration-200 ease-out ${
+          className={`h-90 absolute right-0 top-14 w-64 translate-x-[calc(50%-20px)] self-end overflow-hidden rounded-md bg-white opacity-0 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] transition-[transform,opacity] duration-200 ease-out ${
             isDemoOpen
-              ? "translate-y-0"
-              : "pointer-events-none translate-y-40 opacity-0"
+              ? "translate-y-0 !opacity-100"
+              : "pointer-events-none translate-y-40"
           }`}
         >
-          <ul className="h-full w-full list-disc space-y-2 bg-white p-1 py-4 pl-6 text-sm text-gray-700">
-            <li>Paste a tweet link in the field above to generate the image</li>
-            <li>move your mouse cursor to the edge of the card to resize it</li>
+          <h2 className="px-4 pt-6 font-bold text-gray-700">
+            How to use the app
+          </h2>
+          <ul className="h-full w-full list-disc space-y-3 p-5 pl-8 pb-7 text-justify text-sm text-gray-700">
             <li>
-              press &lt; space &gt; and left mouse button to move the tweet card
+              To generate the image, paste a tweet link into the input field
+              above.
             </li>
             <li>
-              in the side panel you can change width, height, border radius,
-              colors, layouts and many more things
+              To resize the card, move your mouse cursor to the card's edge.
+            </li>
+            <li>
+              To move the card, press{" "}
+              <span className="rounded bg-gray-200 px-1 pb-0.5">space</span> and
+              the left mouse button.
+            </li>
+            <li className="[&>span]:font-semibold">
+              You can change the <span>color</span>, <span>width</span>,{" "}
+              <span>height</span>, <span>border radius</span>,{" "}
+              <span>layouts</span>, and many other settings in the side panel on
+              the right.
             </li>
           </ul>
         </aside>
