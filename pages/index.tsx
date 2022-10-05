@@ -15,20 +15,34 @@ export default function Home() {
       <Head>
         <title>Laureate</title>
         <meta name="title" content="Laureate" />
-        <meta name="description" content="Transform your tweets into beautiful images" />
+        <meta
+          name="description"
+          content="Transform your tweets into beautiful images"
+        />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://laureate.netlify.app/" />
         <meta property="og:title" content="Laureate" />
-        <meta property="og:description" content="Transform your tweets into beautiful images" />
-        <meta property="og:image" content="https://laureate.netlify.app/preview.png" />
+        <meta
+          property="og:description"
+          content="Transform your tweets into beautiful images"
+        />
+        <meta
+          property="og:image"
+          content="https://laureate.netlify.app/preview.png"
+        />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://laureate.netlify.app/" />
         <meta property="twitter:title" content="Laureate" />
-        <meta property="twitter:description" content="Transform your tweets into beautiful images" />
-        <meta property="twitter:image" content="https://laureate.netlify.app/preview.png" />
-
+        <meta
+          property="twitter:description"
+          content="Transform your tweets into beautiful images"
+        />
+        <meta
+          property="twitter:image"
+          content="https://laureate.netlify.app/preview.png"
+        />
       </Head>
       <div className="relative">
         <Arrow />
