@@ -114,7 +114,8 @@ export default function Header({ setIsPanelOpen }: Props) {
               above.
             </li>
             <li>
-              To resize the card, move your mouse cursor to the card's edge.
+              To resize the card, move your mouse cursor to the card&apos;s
+              edge.
             </li>
             <li>
               To move the card, press{" "}
