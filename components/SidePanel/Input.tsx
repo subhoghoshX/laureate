@@ -9,21 +9,21 @@ interface Props {
 
 export default function Input({ data, action: setData, label }: Props) {
   const labelRef = useRef(null);
-  const [dimensionBuffer, setDimensionBuffer] = useState("");
+  const [dataBuffer, setDataBuffer] = useState("");
   const [isPLRequested, setIsPLRequested] = useState(false);
   useEffect(() => {
-    setDimensionBuffer(data + "");
+    setDataBuffer(data + "");
   }, [data]);
   function keyDownHandler(e: any) {
     if (e.keyCode === 38) {
-      setData(() => +dimensionBuffer + 1);
+      setData(() => +dataBuffer + 1);
     } else if (e.keyCode === 40) {
-      setData(() => +dimensionBuffer - 1);
+      setData(() => +dataBuffer - 1);
     } else if (e.keyCode === 13) {
-      if (Number.isNaN(Number(dimensionBuffer))) {
-        setDimensionBuffer(data + "");
+      if (Number.isNaN(Number(dataBuffer))) {
+        setDataBuffer(data + "");
       } else {
-        setData(() => +dimensionBuffer);
+        setData(() => +dataBuffer);
       }
     }
   }
@@ -73,12 +73,12 @@ export default function Input({ data, action: setData, label }: Props) {
         {label}
       </label>
       <input
-        value={dimensionBuffer}
-        onChange={(e) => setDimensionBuffer(e.target.value)}
+        value={dataBuffer}
+        onChange={(e) => setDataBuffer(e.target.value)}
         onBlur={() =>
-          Number.isNaN(Number(dimensionBuffer))
-            ? setDimensionBuffer(data + "")
-            : setData(() => Number(dimensionBuffer))
+          Number.isNaN(Number(dataBuffer))
+            ? setDataBuffer(data + "")
+            : setData(() => Number(dataBuffer))
         }
         onKeyDown={keyDownHandler}
         className="w-full"
