@@ -12,13 +12,13 @@ export default function TweetCard({ rootRef }: any) {
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
-      if (e.key === " ") {
+      if (e.code === "Space") {
         setIsSpaceDown(() => true);
       }
     });
 
     document.addEventListener("keyup", (e) => {
-      if (e.key === " ") {
+      if (e.code === "Space") {
         setIsSpaceDown(() => false);
       }
     });

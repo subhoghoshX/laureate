@@ -23,9 +23,10 @@ export default function Input({ data, action: setData, label }: Props) {
         setData(() => +dataBuffer - 1);
         break;
       case "Enter":
-        setOrResetDataBuffer();
-      default:
+        setDataOrResetDataBuffer();
         break;
+      default:
+      // Do nothing
     }
   }
 
@@ -62,7 +63,7 @@ export default function Input({ data, action: setData, label }: Props) {
     setIsArrowVisible(() => false);
   }
 
-  function setOrResetDataBuffer() {
+  function setDataOrResetDataBuffer() {
     return dataBuffer && !Number.isNaN(Number(dataBuffer))
       ? setData(() => +dataBuffer)
       : setDataBuffer(data + "");
@@ -82,7 +83,7 @@ export default function Input({ data, action: setData, label }: Props) {
       <input
         value={dataBuffer}
         onChange={(e) => setDataBuffer(e.target.value)}
-        onBlur={setOrResetDataBuffer}
+        onBlur={setDataOrResetDataBuffer}
         onClick={(e: any) => e.target.select()}
         onKeyDown={keyDownHandler}
         className="block w-[63%] cursor-default focus:outline-none"
