@@ -62,16 +62,16 @@ export default function Input({ data, action: setData, label }: Props) {
   }
 
   return (
-    <div className="flex w-1/2 gap-x-3">
-      <label
-        htmlFor=""
-        className="cursor-ew-resize font-mono text-slate-500"
+    <label className="flex h-7 border border-transparent text-xs focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 hover:border-gray-200 hover:focus-within:border-blue-500">
+      <span
+        className="flex w-[37%] cursor-ew-resize select-none items-center justify-center text-slate-500"
+        ref={labelRef}
         onMouseDown={mouseDownHandler}
         onMouseUp={mouseUpHandler}
-        ref={labelRef}
       >
         {label}
-      </label>
+      </span>
+
       <input
         value={dataBuffer}
         onChange={(e) => setDataBuffer(e.target.value)}
@@ -80,10 +80,11 @@ export default function Input({ data, action: setData, label }: Props) {
             ? setDataBuffer(data + "")
             : setData(() => Number(dataBuffer))
         }
+        onClick={(e: any) => e.target.select()}
         onKeyDown={keyDownHandler}
-        className="w-full"
+        className="block w-[63%] cursor-default focus:outline-none"
         type="text"
       />
-    </div>
+    </label>
   );
 }
