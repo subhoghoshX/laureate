@@ -1,9 +1,6 @@
 import { useCardStore } from "../../store/card";
-import Input from "./Input";
 
 export default function Card() {
-  const opacity = useCardStore((state) => state.opacity);
-  const setOpacity = useCardStore((state) => state.setOpacity);
   const setFont = useCardStore((state) => state.setFont);
 
   async function onChangeHandler(e: any) {
@@ -30,10 +27,7 @@ export default function Card() {
 
   return (
     <div className="firefox-padding-fix border-t p-5 pr-3">
-      <h2 className="font-bold">Card</h2>
-      <form className="mt-4 flex flex-wrap gap-y-4">
-        <Input label="Opacity" data={opacity} action={setOpacity} />
-      </form>
+      <h2 className="font-bold">Text</h2>
       <div className="mt-4">
         <label htmlFor="fonts">Font</label>
         <select name="fonts" id="fonts" onChange={onChangeHandler}>
