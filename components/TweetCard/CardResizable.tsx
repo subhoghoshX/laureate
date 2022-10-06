@@ -45,6 +45,7 @@ export default function ResizableTweet({ rootRef }: any) {
       defaultSize={{ width: cardWidth, height: cardHeight }}
       size={{ width: cardWidth, height: cardHeight }}
       onResize={resizeHandler}
+      className="lg:-translate-x-24"
     >
       <CardOuter rootRef={rootRef} />
     </Resizable>
