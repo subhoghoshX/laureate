@@ -15,16 +15,17 @@ export default function Input({ data, action: setData, label }: Props) {
     setDataBuffer(data + "");
   }, [data]);
   function keyDownHandler(e: any) {
-    if (e.keyCode === 38) {
-      setData(() => +dataBuffer + 1);
-    } else if (e.keyCode === 40) {
-      setData(() => +dataBuffer - 1);
-    } else if (e.keyCode === 13) {
-      if (Number.isNaN(Number(dataBuffer))) {
-        setDataBuffer(data + "");
-      } else {
-        setData(() => +dataBuffer);
-      }
+    switch (e.code) {
+      case "ArrowUp":
+        setData(() => +dataBuffer + 1);
+        break;
+      case "ArrowDown":
+        setData(() => +dataBuffer - 1);
+        break;
+      case "Enter":
+        setOrResetDataBuffer();
+      default:
+        break;
     }
   }
 
@@ -61,6 +62,12 @@ export default function Input({ data, action: setData, label }: Props) {
     setIsArrowVisible(() => false);
   }
 
+  function setOrResetDataBuffer() {
+    return dataBuffer && !Number.isNaN(Number(dataBuffer))
+      ? setData(() => +dataBuffer)
+      : setDataBuffer(data + "");
+  }
+
   return (
     <label className="flex h-7 border border-transparent text-xs focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 hover:border-gray-200 hover:focus-within:border-blue-500">
       <span
@@ -75,11 +82,7 @@ export default function Input({ data, action: setData, label }: Props) {
       <input
         value={dataBuffer}
         onChange={(e) => setDataBuffer(e.target.value)}
-        onBlur={() =>
-          Number.isNaN(Number(dataBuffer))
-            ? setDataBuffer(data + "")
-            : setData(() => Number(dataBuffer))
-        }
+        onBlur={setOrResetDataBuffer}
         onClick={(e: any) => e.target.select()}
         onKeyDown={keyDownHandler}
         className="block w-[63%] cursor-default focus:outline-none"
