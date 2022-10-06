@@ -8,18 +8,18 @@ export const useCardStore = create<CardState>((set) => ({
   opacity: 70,
   font: new Set(["system-ui", "sans-serif"]),
   setHeight(callback) {
-    set((state) => ({ height: callback(state.height) }));
+    set(({ height }) => ({ height: callback(height) }));
   },
   setWidth(callback) {
-    set((state) => ({ width: callback(state.width) }));
+    set(({ width }) => ({ width: callback(width) }));
   },
   setRadius(callback) {
-    set((state) => ({ radius: callback(state.radius) }));
+    set(({ radius }) => ({ radius: callback(radius) }));
   },
   setOpacity(callback) {
-    set((state) => ({ opacity: callback(state.opacity) }));
+    set(({ opacity }) => ({ opacity: callback(opacity) }));
   },
   setFont(callback) {
-    set((state) => ({ font: callback(state.font) }));
+    set(({ font }) => ({ font: callback(font) }));
   },
 }));

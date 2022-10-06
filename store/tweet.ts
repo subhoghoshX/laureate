@@ -13,6 +13,6 @@ export const useTweetStore = create<TweetState>((set) => ({
     like_count: 323,
   },
   setTweetInfo(callback) {
-    set((state) => ({ tweetInfo: callback(state.tweetInfo) }));
+    set(({ tweetInfo }) => ({ tweetInfo: callback(tweetInfo) }));
   },
 }));

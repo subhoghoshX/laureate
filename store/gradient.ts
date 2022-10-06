@@ -46,9 +46,11 @@ export const useGradientStore = create<GradientState>((set) => ({
     },
   ],
   setSelectedGradient(callback) {
-    set((state) => ({ selectedGradient: callback(state.selectedGradient) }));
+    set(({ selectedGradient }) => ({
+      selectedGradient: callback(selectedGradient),
+    }));
   },
   setGradients(callback) {
-    set((state) => ({ gradients: callback(state.gradients) }));
+    set(({ gradients }) => ({ gradients: callback(gradients) }));
   },
 }));

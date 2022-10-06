@@ -1,6 +1,6 @@
 import html2canvas from "html2canvas";
 
-export default function ExportButton({ rootRef }: any) {
+export default function ExportButton({ rootRef, className }: any) {
   async function exportPNG() {
     if (rootRef.current !== undefined) {
       const canvas = await html2canvas(rootRef.current, {
@@ -36,7 +36,9 @@ export default function ExportButton({ rootRef }: any) {
   }
 
   return (
-    <div className="group flex h-11 w-32 items-center justify-center overflow-hidden rounded-full bg-black text-white transition-[width] delay-300 hover:w-56 hover:delay-[0ms]">
+    <div
+      className={`group flex h-full w-32 items-center justify-center overflow-hidden rounded-full bg-black text-white transition-[width] delay-300 hover:w-56 hover:delay-[0ms]  ${className}`}
+    >
       <div className="absolute opacity-100 transition-opacity delay-200 group-hover:opacity-0 group-hover:delay-[0ms]">
         Export
       </div>
