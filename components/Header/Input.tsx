@@ -7,9 +7,9 @@ export default function Input() {
   const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
 
   async function handleSumbit(e: any) {
-    if (!url) return;
-
     e.preventDefault();
+
+    if (!url) return;
 
     const res = await fetch("/api/hello", {
       method: "post",

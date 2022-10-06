@@ -1,6 +1,6 @@
 import Text from "./Text";
 import Colors from "./Colors";
-import Size from "./Size";
+import Size from "./Card";
 import Templates from "./Templates";
 
 interface Props {
