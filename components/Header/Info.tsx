@@ -25,7 +25,7 @@ export default function Info() {
         </svg>
       </button>
       <aside
-        className={`h-90 absolute -right-[108px] top-14 w-64 translate-y-40 self-end overflow-hidden rounded-md bg-white opacity-0 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] ease-out ${
+        className={`h-90 absolute -right-[108px] top-14 z-10 w-64 translate-y-40 self-end overflow-hidden rounded-md bg-white opacity-0 shadow-[1px_1px_5px_rgba(0,0,0,0.25)] ease-out ${
           isDemoOpen
             ? "!translate-y-0 !opacity-100 transition-[transform,opacity] duration-200"
             : "pointer-events-none transition-[transform,opacity] duration-200"

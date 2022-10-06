@@ -9,17 +9,17 @@ export const useArrowStore = create<ArrowState>((set) => ({
     set((state) => ({ isArrowVisible: callback(state.isArrowVisible) }));
   },
   setX(callback) {
-    set((state) => {
-      if (state.X > window.innerWidth) {
+    set(({ X }) => {
+      if (X > window.innerWidth) {
         return { X: -20 };
-      } else if (state.X < -20) {
+      } else if (X < -20) {
         return { X: window.innerWidth };
       } else {
-        return { X: callback(state.X) };
+        return { X: callback(X) };
       }
     });
   },
   setY(callback) {
-    set((state) => ({ Y: callback(state.Y) }));
+    set(({ Y }) => ({ Y: callback(Y) }));
   },
 }));

@@ -52,7 +52,7 @@ export default function Home() {
           <div className="absolute inset-0 z-[-10] flex items-center justify-center">
             <TweetCard rootRef={rootRef} />
           </div>
-          <div className="absolute bottom-8 z-[-5] flex w-full justify-center">
+          <div className="absolute bottom-8 z-[-5] flex h-11 w-full justify-center">
             <ExportButton rootRef={rootRef} />
           </div>
         </div>
