@@ -14,10 +14,7 @@ export default function Input({ data, action: setData, label }: Props) {
   useEffect(() => {
     setDataBuffer(`${data}`);
   }, [data]);
-
-  const keyDownHandler: React.KeyboardEventHandler<HTMLInputElement> = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-  ) => {
+  function keyDownHandler(e: any) {
     switch (e.code) {
       case "ArrowUp":
         setData(() => +dataBuffer + 1);
@@ -32,7 +29,7 @@ export default function Input({ data, action: setData, label }: Props) {
       default:
         break;
     }
-  };
+  }
 
   const setIsArrowVisible = useArrowStore((state) => state.setIsArrowVisible);
   const setX = useArrowStore((state) => state.setX);
