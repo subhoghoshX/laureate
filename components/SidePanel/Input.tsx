@@ -23,9 +23,7 @@ export default function Input({ data, action: setData, label }: Props) {
         setData(() => +dataBuffer - 1);
         break;
       case "Enter":
-        Number.isNaN(Number(dataBuffer))
-          ? setDataBuffer(data + "")
-          : setData(() => +dataBuffer);
+        setOrResetDataBuffer();
       default:
         break;
     }
@@ -64,6 +62,12 @@ export default function Input({ data, action: setData, label }: Props) {
     setIsArrowVisible(() => false);
   }
 
+  function setOrResetDataBuffer() {
+    return dataBuffer && !Number.isNaN(Number(dataBuffer))
+      ? setData(() => +dataBuffer)
+      : setDataBuffer(data + "");
+  }
+
   return (
     <div className="flex w-1/2 gap-x-3">
       <label
@@ -78,11 +82,7 @@ export default function Input({ data, action: setData, label }: Props) {
       <input
         value={dataBuffer}
         onChange={(e) => setDataBuffer(e.target.value)}
-        onBlur={() =>
-          Number.isNaN(Number(dataBuffer))
-            ? setDataBuffer(data + "")
-            : setData(() => Number(dataBuffer))
-        }
+        onBlur={setOrResetDataBuffer}
         onKeyDown={keyDownHandler}
         className="w-full"
         type="text"
