@@ -11,8 +11,10 @@ export default function Templates() {
       <h2 className="font-bold">Templates</h2>
       <div className="mt-4 space-y-4">
         <div
-          className={`rounded-lg p-3.5 ring-2 ring-gray-200 transition-shadow dark:ring-neutral-600 ${
-            selectedTemplate === "first" ? "ring-blue-400" : ""
+          className={`rounded-lg p-3.5 ring-2 transition-shadow ${
+            selectedTemplate === "first"
+              ? "ring-blue-400"
+              : "ring-gray-200 dark:ring-neutral-600"
           }`}
           onClick={() => setSelectedTemplate(() => "first")}
         >
@@ -32,8 +34,10 @@ export default function Templates() {
         </div>
 
         <div
-          className={`rounded-lg p-3.5 ring-2 ring-gray-200 transition-shadow dark:ring-neutral-600 ${
-            selectedTemplate === "second" ? "ring-blue-400" : ""
+          className={`rounded-lg p-3.5 ring-2 transition-shadow ${
+            selectedTemplate === "second"
+              ? "ring-blue-400"
+              : "ring-gray-200 dark:ring-neutral-600"
           }`}
           onClick={() => setSelectedTemplate(() => "second")}
         >
@@ -53,8 +57,10 @@ export default function Templates() {
         </div>
 
         <div
-          className={`rounded-lg p-3.5 ring-2 ring-gray-200 transition-shadow dark:ring-neutral-600 ${
-            selectedTemplate === "third" ? "ring-blue-400" : ""
+          className={`rounded-lg p-3.5 ring-2 transition-shadow ${
+            selectedTemplate === "third"
+              ? "ring-blue-400"
+              : "ring-gray-200 dark:ring-neutral-600"
           }`}
           onClick={() => setSelectedTemplate(() => "third")}
         >
