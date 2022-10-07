@@ -35,7 +35,7 @@ export default function Input() {
   return (
     <form className="relative ml-auto flex w-1/2" onSubmit={handleSumbit}>
       <input
-        className="w-full rounded-full bg-slate-200 px-6 py-2.5 pr-16 text-sm ring-blue-300 focus:outline-none focus:ring-2"
+        className="w-full rounded-full bg-slate-200 px-6 py-2.5 pr-16 text-sm ring-blue-400 focus:outline-none focus:ring-2 dark:bg-[#3c3c3c] dark:text-white dark:placeholder-white"
         type="text"
         placeholder="Paste tweet link here"
         value={url}
@@ -43,7 +43,7 @@ export default function Input() {
       />
       <button
         type="submit"
-        className="group absolute inset-y-0 right-0 flex w-14 items-center justify-center rounded-r-full bg-slate-300"
+        className="group absolute inset-y-0 right-0 flex w-14 items-center justify-center rounded-r-full bg-slate-300 dark:bg-[#5c5c5c] dark:hover:bg-[#6c6c6c]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ export default function Input() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="h-6 w-6 stroke-slate-700 group-hover:stroke-slate-900"
+          className="h-6 w-6 stroke-slate-700 group-hover:stroke-slate-900 dark:stroke-gray-300 dark:group-hover:stroke-white"
         >
           <path
             strokeLinecap="round"

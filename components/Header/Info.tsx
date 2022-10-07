@@ -6,7 +6,7 @@ export default function Info() {
   return (
     <div className="relative mr-auto h-10 w-10">
       <button
-        className="flex h-full w-full items-center justify-center rounded-full bg-slate-200"
+        className="group flex h-full w-full items-center justify-center rounded-full bg-slate-200 dark:bg-[#3c3c3c]"
         onClick={() => setIsDemoOpen((c) => !c)}
       >
         <svg
@@ -15,7 +15,7 @@ export default function Info() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="h-6 w-6"
+          className="h-6 w-6 dark:stroke-gray-200 dark:group-hover:stroke-white"
         >
           <path
             strokeLinecap="round"

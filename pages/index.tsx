@@ -5,13 +5,16 @@ import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
 import ExportButton from "../components/ExportButton";
 import Arrow from "../components/Arrow";
+import { useDarkStore } from "../store/dark";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const rootRef = useRef();
 
+  const isDark = useDarkStore((state) => state.isDark);
+
   return (
-    <div>
+    <div className={`${isDark ? "dark" : ""}`}>
       <Head>
         <title>Laureate</title>
         <meta name="title" content="Laureate" />
