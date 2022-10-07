@@ -8,7 +8,7 @@ export default function Colors() {
   );
 
   return (
-    <div className="firefox-padding-fix border-t p-5 pr-3">
+    <div className="firefox-padding-fix border-t p-5 pr-3 dark:border-[#5c5c5c]">
       <h2 className="font-bold">Colors</h2>
       <div className="mt-3 grid grid-cols-4 gap-3">
         {gradients.map((gradient) => (
@@ -19,7 +19,7 @@ export default function Colors() {
             }}
             className={`h-9 w-9 rounded-lg ${
               JSON.stringify(gradient) === JSON.stringify(selectedGradient)
-                ? `ring-2`
+                ? `ring-2 ring-blue-400`
                 : ""
             }`}
             onClick={() => setSelectedGradient(() => gradient)}
