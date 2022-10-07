@@ -52,7 +52,7 @@ export default function Home() {
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">
           <Header setIsPanelOpen={setIsPanelOpen} rootRef={rootRef} />
           <SidePanel isPanelOpen={isPanelOpen} />
-          <div className="absolute inset-0 z-[-10] flex items-center justify-center dark:bg-[#c0c0c0]">
+          <div className="absolute inset-0 z-[-10] flex items-center justify-center dark:bg-[#121212]">
             <TweetCard rootRef={rootRef} />
           </div>
           <div className="absolute bottom-8 z-[-5] flex h-11 w-full justify-center lg:hidden">
