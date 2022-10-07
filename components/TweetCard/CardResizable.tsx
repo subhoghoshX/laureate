@@ -3,14 +3,6 @@ import { Resizable, ResizeDirection } from "re-resizable";
 import CardOuter from "./CardOuter";
 
 
-const MIN_ALLOWED_CARD_SIZE = 0;
-
-function calculateNewSize(calculatorCallback: () => number) {
-  const newSize = calculatorCallback();
-
-  return newSize <= MIN_ALLOWED_CARD_SIZE ? MIN_ALLOWED_CARD_SIZE : newSize;
-};
-
 export default function ResizableTweet({ rootRef }: any) {
   const cardWidth = useCardStore((state) => state.width);
   const cardHeight = useCardStore((state) => state.height);
@@ -20,32 +12,32 @@ export default function ResizableTweet({ rootRef }: any) {
   function resizeHandler(e: any, dir: ResizeDirection) {
     switch (dir) {
       case "left":
-        setWidth((width) => calculateNewSize(() => width - e.movementX));
+        setWidth((width) => width - e.movementX);
         break;
       case "right":
-        setWidth((width) => calculateNewSize(() => width + e.movementX));
+        setWidth((width) => width + e.movementX);
         break;
       case "top":
-        setHeight((height) => calculateNewSize(() => height - e.movementY));
+        setHeight((height) => height - e.movementY);
         break;
       case "bottom":
-        setHeight((height) => calculateNewSize(() => height + e.movementY));
+        setHeight((height) => height + e.movementY);
         break;
       case "topLeft":
-        setWidth((width) => calculateNewSize(() => width - e.movementX));
-        setHeight((height) => calculateNewSize(() => height - e.movementY));
+        setWidth((width) => width - e.movementX);
+        setHeight((height) => height - e.movementY);
         break;
       case "topRight":
-        setWidth((width) => calculateNewSize(() => width + e.movementX));
-        setHeight((height) => calculateNewSize(() => height - e.movementY));
+        setWidth((width) => width + e.movementX);
+        setHeight((height) => height - e.movementY);
         break;
       case "bottomLeft":
-        setWidth((width) => calculateNewSize(() => width - e.movementX));
-        setHeight((height) => calculateNewSize(() => height + e.movementY));
+        setWidth((width) => width - e.movementX);
+        setHeight((height) => height + e.movementY);
         break;
       case "bottomRight":
-        setWidth((width) => calculateNewSize(() => width + e.movementX));
-        setHeight((height) => calculateNewSize(() => height + e.movementY));
+        setWidth((width) => width + e.movementX);
+        setHeight((height) => height + e.movementY);
         break;
     }
   }
