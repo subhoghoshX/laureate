@@ -17,7 +17,7 @@ export const useCardStore = create<CardState>((set) => ({
     set(({ width }) => ({ width: getValueInRange(callback(width), MIN_ALLOWED_SIZE) }));
   },
   setRadius(callback) {
-    set(({ radius }) => ({ radius: getValueInRange(callback(radius), MIN_ALLOWED_RADIUS, MAX_ALLOWED_RADIUS) }));
+    set(({ radius }) => ({ radius: getValueInRange(callback(radius), MIN_ALLOWED_RADIUS) }));
   },
   setOpacity(callback) {
     set(({ opacity }) => ({ opacity: getValueInRange(callback(opacity), MIN_ALLOWED_OPACITY, MAX_ALLOWED_OPACITY) }));
