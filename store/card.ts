@@ -1,5 +1,5 @@
 import create from "zustand";
-import { MAX_ALLOWED_OPACITY, MAX_ALLOWED_RADIUS, MIN_ALLOWED_OPACITY, MIN_ALLOWED_RADIUS, MIN_ALLOWED_SIZE, } from "./constants";
+import { MAX_ALLOWED_OPACITY, MIN_ALLOWED_OPACITY, MIN_ALLOWED_RADIUS, MIN_ALLOWED_SIZE, } from "./constants";
 import { CardState } from "./types";
 import { getValueInRange } from "./utils";
 
