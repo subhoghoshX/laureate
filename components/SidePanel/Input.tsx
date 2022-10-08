@@ -23,9 +23,10 @@ export default function Input({ data, action: setData, label }: Props) {
         setData(() => +dataBuffer - 1);
         break;
       case "Enter":
-        setOrResetDataBuffer();
-      default:
+        setDataOrResetDataBuffer();
         break;
+      default:
+      // Do nothing
     }
   }
 
@@ -62,16 +63,16 @@ export default function Input({ data, action: setData, label }: Props) {
     setIsArrowVisible(() => false);
   }
 
-  function setOrResetDataBuffer() {
+  function setDataOrResetDataBuffer() {
     return dataBuffer && !Number.isNaN(Number(dataBuffer))
       ? setData(() => +dataBuffer)
       : setDataBuffer(data + "");
   }
 
   return (
-    <label className="flex h-7 border border-transparent text-xs focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 hover:border-gray-200 hover:focus-within:border-blue-500">
+    <label className="flex h-7 border border-transparent text-xs focus-within:border-blue-400 focus-within:ring-1 focus-within:ring-blue-400 hover:border-gray-200 hover:focus-within:border-blue-400 dark:hover:border-[#4c4c4c] dark:hover:focus-within:border-blue-400">
       <span
-        className="flex w-[37%] cursor-ew-resize select-none items-center justify-center text-slate-500"
+        className="flex w-[37%] cursor-ew-resize select-none items-center justify-center text-slate-500 dark:text-[#808080]"
         ref={labelRef}
         onMouseDown={mouseDownHandler}
         onMouseUp={mouseUpHandler}
@@ -82,10 +83,10 @@ export default function Input({ data, action: setData, label }: Props) {
       <input
         value={dataBuffer}
         onChange={(e) => setDataBuffer(e.target.value)}
-        onBlur={setOrResetDataBuffer}
+        onBlur={setDataOrResetDataBuffer}
         onClick={(e: any) => e.target.select()}
         onKeyDown={keyDownHandler}
-        className="block w-[63%] cursor-default focus:outline-none"
+        className="block w-[63%] cursor-default focus:outline-none dark:bg-transparent dark:text-white"
         type="text"
       />
     </label>

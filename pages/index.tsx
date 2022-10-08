@@ -5,13 +5,16 @@ import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
 import ExportButton from "../components/ExportButton";
 import Arrow from "../components/Arrow";
+import { useDarkStore } from "../store/dark";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const rootRef = useRef();
 
+  const isDark = useDarkStore((state) => state.isDark);
+
   return (
-    <div>
+    <div className={`${isDark ? "dark" : ""}`}>
       <Head>
         <title>Laureate</title>
         <meta name="title" content="Laureate" />
@@ -49,7 +52,7 @@ export default function Home() {
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">
           <Header setIsPanelOpen={setIsPanelOpen} rootRef={rootRef} />
           <SidePanel isPanelOpen={isPanelOpen} />
-          <div className="absolute inset-0 z-[-10] flex items-center justify-center">
+          <div className="absolute inset-0 z-[-10] flex items-center justify-center dark:bg-[#121212]">
             <TweetCard rootRef={rootRef} />
           </div>
           <div className="absolute bottom-8 z-[-5] flex h-11 w-full justify-center lg:hidden">

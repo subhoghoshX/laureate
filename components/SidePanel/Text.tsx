@@ -26,11 +26,16 @@ export default function Card() {
   }
 
   return (
-    <div className="firefox-padding-fix border-t p-5 pr-3">
+    <div className="firefox-padding-fix border-t p-5 pr-3 dark:border-[#5c5c5c]">
       <h2 className="font-bold">Text</h2>
-      <div className="mt-4">
+      <div className="mt-4 dark:text-white">
         <label htmlFor="fonts">Font</label>
-        <select name="fonts" id="fonts" onChange={onChangeHandler}>
+        <select
+          name="fonts"
+          id="fonts"
+          onChange={onChangeHandler}
+          className="dark:bg-black"
+        >
           <option value="system-ui">System UI</option>
           <option value="Comic+Neue">Comic Neue</option>
           <option value="Inter">Inter</option>
