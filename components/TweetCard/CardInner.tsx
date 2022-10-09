@@ -4,6 +4,7 @@ import { useTweetStore } from "../../store/tweet";
 
 export default function CardInner() {
   const tweetInfo = useTweetStore((state) => state.tweetInfo);
+  const { profile_image_url, name, username, text } = tweetInfo;
   const selectedTemplate = useTemplateStore((state) => state.selectedTemplate);
   const opacity = useCardStore((state) => state.opacity);
   const font = useCardStore((state) => state.font);
@@ -23,8 +24,8 @@ export default function CardInner() {
       >
         <img
           className="h-14 w-14 rounded-full"
-          src={tweetInfo.profile_image_url}
-          alt={`${tweetInfo.name}'s pic`}
+          src={profile_image_url}
+          alt={`${name}'s pic`}
         />
         <div>
           <div
@@ -32,8 +33,8 @@ export default function CardInner() {
               selectedTemplate === "third" ? "flex items-center gap-x-2" : ""
             }`}
           >
-            <h2 className="font-bold text-zinc-900">{tweetInfo.name}</h2>
-            <p className="text-xs text-zinc-900">@{tweetInfo.username}</p>
+            <h2 className="font-bold text-zinc-900">{name}</h2>
+            <p className="text-xs text-zinc-900">@{username}</p>
           </div>
           <div
             className={`mt-2 text-zinc-900 ${
@@ -42,7 +43,7 @@ export default function CardInner() {
           >
             <p
               dangerouslySetInnerHTML={{
-                __html: tweetInfo.text.replaceAll(
+                __html: text.replaceAll(
                   "\n",
                   "<br style='display: block; margin: 12px 0; content: \" \"' />",
                 ),
@@ -58,7 +59,7 @@ export default function CardInner() {
       >
         <p
           dangerouslySetInnerHTML={{
-            __html: tweetInfo.text.replaceAll(
+            __html: text.replaceAll(
               "\n",
               "<br style='display: block; margin: 12px 0; content: \" \"' />",
             ),

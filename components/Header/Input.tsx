@@ -16,19 +16,20 @@ export default function Input() {
       body: JSON.stringify({ tweetUrl: url }),
     });
 
-    const data = await res.json();
+    const dataObj = await res.json();
+    const { includes, data } = dataObj;
 
     setTweetInfo(() => ({
       profile_image_url: data.includes.users[0].profile_image_url.replace(
         "_normal",
         "",
       ),
-      name: data.includes.users[0].name,
-      username: data.includes.users[0].username,
-      text: data.data.text,
-      retweet_count: data.data.public_metrics.retweet_count,
-      reply_count: data.data.public_metrics.reply_count,
-      like_count: data.data.public_metrics.like_count,
+      name: includes.users[0].name,
+      username: includes.users[0].username,
+      text: data.text,
+      retweet_count: data.public_metrics.retweet_count,
+      reply_count: data.public_metrics.reply_count,
+      like_count: data.public_metrics.like_count,
     }));
   }
 
