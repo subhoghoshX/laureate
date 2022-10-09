@@ -24,7 +24,7 @@ export default function CardInner() {
         <img
           className="h-14 w-14 rounded-full"
           src={tweetInfo.profile_image_url}
-          alt="Andrej's pic"
+          alt={`${tweetInfo.name}'s pic`}
         />
         <div>
           <div
