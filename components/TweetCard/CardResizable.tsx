@@ -13,8 +13,7 @@ export default function ResizableTweet({ rootRef }: any) {
   const cardHeight = useCardStore((state) => state.height);
   const setWidth = useCardStore((state) => state.setWidth);
   const setHeight = useCardStore((state) => state.setHeight);
-
-  function resizeHandler(e: any, dir: ResizeDirection) {
+  function resizeHandler(e: any, dir: any) {
     switch (dir) {
       case "left":
         setWidthBuffer((width) => width - e.movementX);
