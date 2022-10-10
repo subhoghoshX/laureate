@@ -1,5 +1,5 @@
 import { useCardStore } from "../../store/card";
-import { Resizable, ResizeDirection } from "re-resizable";
+import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
 import { useEffect, useState } from "react";
 import { MIN_ALLOWED_HEIGHT, MIN_ALLOWED_WIDTH } from "../../store/constants";
