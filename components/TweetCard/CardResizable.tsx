@@ -70,8 +70,8 @@ export default function ResizableTweet({ rootRef }: any) {
       onResize={resizeHandler}
       onResizeStop={resizeStopHandler}
       className="lg:-translate-x-24"
-      minHeight={300}
-      minWidth={500}
+      minHeight={MIN_ALLOWED_HEIGHT}
+      minWidth={MIN_ALLOWED_WIDTH}
     >
       <CardOuter rootRef={rootRef} />
     </Resizable>
