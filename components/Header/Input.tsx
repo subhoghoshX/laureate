@@ -16,11 +16,10 @@ export default function Input() {
       body: JSON.stringify({ tweetUrl: url }),
     });
 
-    const dataObj = await res.json();
-    const { includes, data } = dataObj;
+    const { includes, data } = await res.json();
 
     setTweetInfo(() => ({
-      profile_image_url: data.includes.users[0].profile_image_url.replace(
+      profile_image_url: includes.users[0].profile_image_url.replace(
         "_normal",
         "",
       ),
