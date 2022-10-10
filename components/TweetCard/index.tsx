@@ -1,10 +1,10 @@
 import { usePanStore } from "../../store/pan";
-import { useEffect } from "react";
+import {useCallback, useEffect} from "react";
 import CardResizable from "./CardResizable";
 
 export default function TweetCard({ rootRef }: any) {
   const isSpaceDown = usePanStore((state) => state.isSpaceDown);
-  const setIsSpaceDown = usePanStore((state) => state.setIsSpaceDown);
+  const setIsSpaceDown = usePanStore(useCallback((state) => state.setIsSpaceDown, []));
   const isMouseDown = usePanStore((state) => state.isMouseDown);
   const setIsMouseDown = usePanStore((state) => state.setIsMouseDown);
   const moveBy = usePanStore((state) => state.moveBy);
@@ -22,7 +22,7 @@ export default function TweetCard({ rootRef }: any) {
         setIsSpaceDown(() => false);
       }
     });
-  }, []);
+  }, [setIsSpaceDown]);
 
   function mouseDownHandler() {
     setIsMouseDown(() => true);
