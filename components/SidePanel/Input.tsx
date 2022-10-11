@@ -23,9 +23,9 @@ export default function Input({ data, action: setData, label }: Props) {
         setData(() => +dataBuffer - 1);
         break;
       case "Enter":
-        case "NumpadEnter":
-          setDataOrResetDataBuffer();
-          break;
+      case "NumpadEnter":
+        setDataOrResetDataBuffer();
+        break;
       default:
       // Do nothing
     }
