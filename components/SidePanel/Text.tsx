@@ -1,7 +1,13 @@
 import { useCardStore } from "../../store/card";
+import { Switch } from "@headlessui/react";
+import { useTweetStore } from "../../store/tweet";
 
 export default function Card() {
   const setFont = useCardStore((state) => state.setFont);
+  const isMetricsVisible = useTweetStore((state) => state.isMetricsVisible);
+  const setIsMetricsVisible = useTweetStore(
+    (state) => state.setIsMetricsVisible,
+  );
 
   async function onChangeHandler(e: any) {
     const s = e.target;
@@ -42,6 +48,25 @@ export default function Card() {
           <option value="Reggae+One">Reggae One</option>
         </select>
       </div>
+
+      <Switch.Group>
+        <div className="flex items-center">
+          <Switch.Label className="mr-4">Public Metrics</Switch.Label>
+          <Switch
+            checked={isMetricsVisible}
+            onChange={(val: boolean) => setIsMetricsVisible(() => val)}
+            className={`${
+              isMetricsVisible ? "bg-blue-600" : "bg-gray-200"
+            } relative inline-flex h-6 w-11 items-center rounded-full transition-colors`}
+          >
+            <span
+              className={`${
+                isMetricsVisible ? "translate-x-6" : "translate-x-1"
+              } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+            />
+          </Switch>
+        </div>
+      </Switch.Group>
     </div>
   );
 }

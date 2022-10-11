@@ -12,7 +12,13 @@ export const useTweetStore = create<TweetState>((set) => ({
     reply_count: 26,
     like_count: 323,
   },
+  isMetricsVisible: false,
   setTweetInfo(callback) {
     set(({ tweetInfo }) => ({ tweetInfo: callback(tweetInfo) }));
+  },
+  setIsMetricsVisible(callback) {
+    set(({ isMetricsVisible }) => ({
+      isMetricsVisible: callback(isMetricsVisible),
+    }));
   },
 }));
