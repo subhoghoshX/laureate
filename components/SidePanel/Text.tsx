@@ -79,7 +79,7 @@ export default function Card() {
                   <Listbox.Option
                     key={fontIdx}
                     className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      `relative cursor-default select-none py-2 pl-8 pr-4 ${
                         active ? "bg-amber-100 text-amber-900" : "text-gray-900"
                       }`
                     }
@@ -95,8 +95,8 @@ export default function Card() {
                           {font.name}
                         </span>
                         {selected ? (
-                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                          <span className="absolute inset-y-0 left-0 flex items-center pl-2 text-amber-600">
+                            <CheckIcon className="h-4 w-4" aria-hidden="true" />
                           </span>
                         ) : null}
                       </>
