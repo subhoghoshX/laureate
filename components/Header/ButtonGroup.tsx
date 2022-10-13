@@ -1,6 +1,7 @@
 import { MutableRefObject } from "react";
 import { useDarkStore } from "../../store/dark";
 import ExportButton from "../ExportButton";
+import { MoonIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   setIsPanelOpen: (callback: (c: boolean) => boolean) => void;
@@ -20,7 +21,7 @@ export default function ButtonGroup({ setIsPanelOpen, rootRef }: Props) {
           href="https://github.com/subhoghoshX/laureate"
         >
           <svg
-            className="h-6 w-6 fill-[#323232] dark:fill-white"
+            className="h-[22px] w-[22px] fill-[#323232] dark:fill-white"
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
@@ -33,20 +34,7 @@ export default function ButtonGroup({ setIsPanelOpen, rootRef }: Props) {
           className="relative z-10"
           onClick={() => setIsDark((isDark) => !isDark)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-6 w-6 dark:stroke-white"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
-            />
-          </svg>
+          <MoonIcon className="h-6 w-6 dark:stroke-white" />
         </button>
         <div className="absolute hidden h-10 w-full items-center justify-center lg:flex">
           <ExportButton className="z-20" rootRef={rootRef} />
@@ -56,27 +44,15 @@ export default function ButtonGroup({ setIsPanelOpen, rootRef }: Props) {
           onClick={() => setIsPanelOpen((c) => !c)}
         >
           <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="h-5 w-5 dark:fill-white"
+            viewBox="0 0 16 16"
           >
-            <rect
-              x="3"
-              y="3"
-              width="18"
-              height="18"
-              rx="3"
-              fill="white"
-              stroke="#323232"
-              strokeWidth="2"
-            />
-            <path
-              d="M13.5 3.5H18C19.3807 3.5 20.5 4.61929 20.5 6V18C20.5 19.3807 19.3807 20.5 18 20.5H13.5V3.5Z"
-              fill="#AFAFAF"
-              stroke="#323232"
-            />
+            <path d="M2 2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h12z" />
+            <path d="M13 4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V4z" />
           </svg>
         </button>
       </div>
