@@ -12,6 +12,8 @@
     "format:fix": "prettier . --write --ignore-unknown"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
     "html2canvas": "^1.4.1",
     "next": "12.3.1",
     "re-resizable": "^6.9.9",

@@ -1,6 +1,10 @@
 export interface TweetState {
   tweetInfo: TweetInfo;
+  isMetricsVisible: boolean;
   setTweetInfo: (callback: (tweetInfo: TweetInfo) => TweetInfo) => void;
+  setIsMetricsVisible: (
+    callback: (isMetricsVisible: boolean) => boolean,
+  ) => void;
 }
 
 export type TweetInfo = {
