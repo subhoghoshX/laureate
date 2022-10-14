@@ -5,16 +5,14 @@ import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
 import ExportButton from "../components/ExportButton";
 import Arrow from "../components/Arrow";
-import { useDarkStore } from "../store/dark";
+import Script from "next/script";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const rootRef = useRef();
 
-  const isDark = useDarkStore((state) => state.isDark);
-
   return (
-    <div className={`${isDark ? "dark" : ""}`}>
+    <>
       <Head>
         <title>Laureate</title>
         <meta name="title" content="Laureate" />
@@ -47,6 +45,19 @@ export default function Home() {
           content="https://laureate.netlify.app/preview.png"
         />
       </Head>
+
+      <Script
+        id="laureate-theme"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            JSON.parse(localStorage.getItem("isDark"))
+              ? document.documentElement.classList.add('dark')
+              : document.documentElement.classList.remove('dark');
+            `,
+        }}
+      />
+
       <div className="relative">
         <Arrow />
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">
@@ -60,6 +71,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
