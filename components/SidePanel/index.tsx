@@ -19,8 +19,8 @@ export default function SidePanel({ isPanelOpen }: Props) {
       >
         <Size />
         <Colors />
-        <Templates />
         <Text />
+        <Templates />
       </div>
     </aside>
   );

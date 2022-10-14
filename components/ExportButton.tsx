@@ -1,4 +1,8 @@
 import html2canvas from "html2canvas";
+import {
+  ArrowDownTrayIcon,
+  DocumentDuplicateIcon,
+} from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
 export default function ExportButton({ rootRef, className }: any) {
