@@ -49,7 +49,7 @@ export default function ExportButton({ rootRef, className }: any) {
 
   return (
     <div
-      className={`group flex h-full w-32 items-center justify-center overflow-hidden rounded-full bg-black text-white transition-[width] delay-300 hover:w-56 hover:delay-[0ms]  ${className}`}
+      className={`group flex h-full w-32 items-center justify-center overflow-hidden rounded-full bg-black text-white transition-[width] delay-300 hover:w-56 hover:delay-[0ms] dark:bg-white dark:text-neutral-800  ${className}`}
     >
       <div className="absolute opacity-100 transition-opacity delay-200 group-hover:opacity-0 group-hover:delay-[0ms]">
         Export
@@ -57,14 +57,14 @@ export default function ExportButton({ rootRef, className }: any) {
       <div className="h-full w-56 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:delay-150">
         <div className="flex h-full w-full -translate-x-[62px] items-center transition-transform delay-1000 group-hover:translate-x-0 group-hover:delay-[0ms]">
           <button
-            className="flex h-full w-1/2 items-center gap-x-1.5 pl-6 hover:bg-neutral-900"
+            className="flex h-full w-1/2 items-center gap-x-1.5 pl-6 hover:bg-neutral-900 dark:hover:bg-neutral-200"
             onClick={exportPNG}
           >
             <SaveIcon className="h-5 w-5" />
             <span>Save</span>
           </button>
           <button
-            className="flex h-full w-1/2 items-center gap-x-1.5 pl-4 hover:bg-neutral-900"
+            className="flex h-full w-1/2 items-center gap-x-1.5 pl-4 hover:bg-neutral-900 dark:hover:bg-neutral-200"
             onClick={copytoClipboard}
           >
             <CopyIcon className="h-5 w-5" />
