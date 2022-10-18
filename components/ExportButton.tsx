@@ -1,10 +1,14 @@
 import html2canvas from "html2canvas";
 import {
+  CheckIcon,
   ArrowDownTrayIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
 
 export default function ExportButton({ rootRef, className }: any) {
+  const [SaveIcon, setSaveIcon] = useIcon([ArrowDownTrayIcon, CheckIcon]);
+
   async function exportPNG() {
     if (rootRef.current !== undefined) {
       const canvas = await html2canvas(rootRef.current, {
@@ -20,8 +24,11 @@ export default function ExportButton({ rootRef, className }: any) {
       a.download = "tweet.png";
       a.click();
       a.remove();
+      setSaveIcon(true);
     }
   }
+
+  const [CopyIcon, setCopyIcon] = useIcon([DocumentDuplicateIcon, CheckIcon]);
 
   async function copytoClipboard() {
     if (rootRef.current !== undefined) {
@@ -36,6 +43,7 @@ export default function ExportButton({ rootRef, className }: any) {
         const data = [new ClipboardItem({ "image/png": blob })];
         navigator.clipboard.write(data);
       });
+      setCopyIcon(true);
     }
   }
 
@@ -52,18 +60,32 @@ export default function ExportButton({ rootRef, className }: any) {
             className="flex h-full w-1/2 items-center gap-x-1.5 pl-6 hover:bg-neutral-900"
             onClick={exportPNG}
           >
-            <ArrowDownTrayIcon className="h-5 w-5" />
+            <SaveIcon className="h-5 w-5" />
             <span>Save</span>
           </button>
           <button
             className="flex h-full w-1/2 items-center gap-x-1.5 pl-4 hover:bg-neutral-900"
             onClick={copytoClipboard}
           >
-            <DocumentDuplicateIcon className="h-5 w-5" />
+            <CopyIcon className="h-5 w-5" />
             <span>Copy</span>
           </button>
         </div>
       </div>
     </div>
   );
+}
+
+function useIcon(icons: any, time = 1000) {
+  const [showSecondIcon, setShowSecondIcon] = useState(false);
+
+  useEffect(() => {
+    let tm: ReturnType<typeof setTimeout>;
+    if (showSecondIcon) {
+      tm = setTimeout(() => setShowSecondIcon(false), time);
+    }
+    return () => tm && clearTimeout(tm);
+  });
+
+  return [showSecondIcon ? icons[1] : icons[0], setShowSecondIcon];
 }
