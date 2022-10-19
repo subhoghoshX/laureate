@@ -1,13 +1,13 @@
 export function getValueInRange(value: number, min?: number, max?: number) {
-    let valueInRange = value;
+  let valueInRange = value;
 
-    if (min !== undefined) {
-        valueInRange = Math.max(valueInRange, min);
-    }
+  if (min !== undefined) {
+    valueInRange = Math.max(valueInRange, min);
+  }
 
-    if (max != undefined) {
-        valueInRange = Math.min(valueInRange, max);
-    }
+  if (max != undefined) {
+    valueInRange = Math.min(valueInRange, max);
+  }
 
-    return valueInRange;;
-};
+  return valueInRange;
+}

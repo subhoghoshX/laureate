@@ -18,7 +18,7 @@
     @apply rounded-full bg-gray-400;
     border: 2px solid white;
   }
-  
+
   .dark .scrollbar::-webkit-scrollbar-thumb {
     border: 2px solid #2c2c2c;
   }
@@ -30,7 +30,7 @@
   .dark .scrollbar::-webkit-scrollbar-thumb {
     @apply bg-[#5c5c5c];
   }
-  
+
   .dark .scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-[#c0c0c0];
   }
