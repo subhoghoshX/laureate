@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTweetStore } from "../../store/tweet";
+import toast from "react-hot-toast";
 
 export default function Input() {
   const [url, setUrl] = useState("");
@@ -16,20 +17,22 @@ export default function Input() {
       body: JSON.stringify({ tweetUrl: url }),
     });
 
-    const { includes, data } = await res.json();
-
-    setTweetInfo(() => ({
-      profile_image_url: includes.users[0].profile_image_url.replace(
-        "_normal",
-        "",
-      ),
-      name: includes.users[0].name,
-      username: includes.users[0].username,
-      text: data.text,
-      retweet_count: data.public_metrics.retweet_count,
-      reply_count: data.public_metrics.reply_count,
-      like_count: data.public_metrics.like_count,
-    }));
+    res.json()
+      .then(({includes, data}) => {
+        setTweetInfo(() => ({
+          profile_image_url: includes.users[0].profile_image_url.replace(
+              "_normal",
+              "",
+          ),
+          name: includes.users[0].name,
+          username: includes.users[0].username,
+          text: data.text,
+          retweet_count: data.public_metrics.retweet_count,
+          reply_count: data.public_metrics.reply_count,
+          like_count: data.public_metrics.like_count,
+        }));
+      })
+      .catch(() => toast.error("Error encountered while fetching tweet"));
   }
 
   return (
