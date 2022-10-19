@@ -41,14 +41,11 @@ export default function CardInner() {
               selectedTemplate === "third" ? "block" : "hidden"
             }`}
           >
-            <p
-              dangerouslySetInnerHTML={{
-                __html: text.replaceAll(
-                  "\n",
-                  "<br style='display: block; margin: 12px 0; content: \" \"' />",
-                ),
-              }}
-            ></p>
+            <div className="space-y-3">
+              {text.split("\n\n").map((content, index) => (
+                <p key={index}>{content}</p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -57,14 +54,11 @@ export default function CardInner() {
           selectedTemplate === "second" ? "pl-[76px]" : ""
         } ${selectedTemplate === "third" ? "hidden" : "block"}`}
       >
-        <p
-          dangerouslySetInnerHTML={{
-            __html: text.replaceAll(
-              "\n",
-              "<br style='display: block; margin: 12px 0; content: \" \"' />",
-            ),
-          }}
-        ></p>
+        <div className="space-y-3">
+          {text.split("\n\n").map((content, index) => (
+            <p key={index}>{content}</p>
+          ))}
+        </div>
       </div>
     </div>
   );
