@@ -1,7 +1,7 @@
 import { useCardStore } from "../../store/card";
 import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
-import { useEffect, useState } from "react";
+import {useCallback, useEffect, useState} from "react";
 import { MIN_ALLOWED_HEIGHT, MIN_ALLOWED_WIDTH } from "../../store/constants";
 
 export default function ResizableTweet({ rootRef }: any) {
@@ -10,8 +10,8 @@ export default function ResizableTweet({ rootRef }: any) {
 
   const cardWidth = useCardStore((state) => state.width);
   const cardHeight = useCardStore((state) => state.height);
-  const setWidth = useCardStore((state) => state.setWidth);
-  const setHeight = useCardStore((state) => state.setHeight);
+  const setWidth = useCardStore(useCallback((state) => state.setWidth, []));
+  const setHeight = useCardStore(useCallback((state) => state.setHeight, []));
   function resizeHandler(e: any, dir: any) {
     switch (dir) {
       case "left":
@@ -57,11 +57,11 @@ export default function ResizableTweet({ rootRef }: any) {
 
   useEffect(() => {
     setWidth(() => widthBuffer);
-  }, [widthBuffer]);
+  }, [setWidth, widthBuffer]);
 
   useEffect(() => {
     setHeight(() => heightBuffer);
-  }, [heightBuffer]);
+  }, [setHeight, heightBuffer]);
 
   return (
     <Resizable
