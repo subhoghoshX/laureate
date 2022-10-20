@@ -42,7 +42,7 @@ export default function CardInner() {
       >
         <img
           className="h-14 w-14 rounded-full"
-          src={profile_image_url || imageData}
+          src={imageData || profile_image_url}
         />
         <div>
           <div
