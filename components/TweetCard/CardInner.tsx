@@ -12,15 +12,20 @@ export default function CardInner() {
   const font = useCardStore((state) => state.font);
 
   // Firefox fix
-  const [imageData, setImageData] = useState('');
+  const [imageData, setImageData] = useState("");
 
   useEffect(() => {
-    if(navigator.userAgent.indexOf('Firefox') > -1) {
-      fetch('/api/get-image', {method: 'post', body: JSON.stringify({imageUrl: profile_image_url})}).then(res => res.json()).then(data => {
-        setImageData(data.imageData);
+    if (navigator.userAgent.indexOf("Firefox") > -1) {
+      fetch("/api/get-image", {
+        method: "post",
+        body: JSON.stringify({ imageUrl: profile_image_url }),
       })
+        .then((res) => res.json())
+        .then((data) => {
+          setImageData(data.imageData);
+        });
     }
-  }, [tweetInfo])
+  }, [tweetInfo]);
 
   return (
     <div
@@ -37,7 +42,7 @@ export default function CardInner() {
       >
         <img
           className="h-14 w-14 rounded-full"
-          src={ imageData || profile_image_url}
+          src={imageData || profile_image_url}
           alt={`${name}'s pic`}
         />
         <div>
