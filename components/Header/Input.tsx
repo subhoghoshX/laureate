@@ -30,6 +30,8 @@ export default function Input() {
       reply_count: data.public_metrics.reply_count,
       like_count: data.public_metrics.like_count,
     }));
+
+    setUrl("");
   }
 
   return (
