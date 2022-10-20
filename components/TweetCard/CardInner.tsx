@@ -1,13 +1,26 @@
+import { useEffect, useState } from "react";
 import { useCardStore } from "../../store/card";
 import { useTemplateStore } from "../../store/template";
 import { useTweetStore } from "../../store/tweet";
 
 export default function CardInner() {
   const tweetInfo = useTweetStore((state) => state.tweetInfo);
+  const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
   const { profile_image_url, name, username, text } = tweetInfo;
   const selectedTemplate = useTemplateStore((state) => state.selectedTemplate);
   const opacity = useCardStore((state) => state.opacity);
   const font = useCardStore((state) => state.font);
+
+  // Firefox fix
+  const [imageData, setImageData] = useState('');
+
+  useEffect(() => {
+    if(navigator.userAgent.indexOf('Firefox') > -1) {
+      fetch('/api/get-image', {method: 'post', body: JSON.stringify({imageUrl: profile_image_url})}).then(res => res.json()).then(data => {
+        setImageData(data.imageData);
+      })
+    }
+  }, [tweetInfo])
 
   return (
     <div
@@ -24,7 +37,7 @@ export default function CardInner() {
       >
         <img
           className="h-14 w-14 rounded-full"
-          src={profile_image_url}
+          src={ imageData || profile_image_url}
           alt={`${name}'s pic`}
         />
         <div>
