@@ -49,7 +49,7 @@ export default function Card() {
     }
 
     onChangeHandler(selectedFont);
-  }, [selectedFont]);
+  }, [selectedFont, setFont]);
 
   return (
     <div className="firefox-padding-fix border-t p-5 pr-3 dark:border-[#5c5c5c]">
