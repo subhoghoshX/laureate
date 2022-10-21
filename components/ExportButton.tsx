@@ -54,7 +54,7 @@ export default function ExportButton({ rootRef, className }: any) {
       <div className="absolute opacity-100 transition-opacity delay-200 group-hover:opacity-0 group-hover:delay-[0ms]">
         Export
       </div>
-      <div className="h-full w-56 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:delay-150">
+      <div className="h-full w-56 scale-0 opacity-0 transition-[opacity_transform] duration-500 group-hover:scale-100 group-hover:opacity-100 group-hover:delay-150">
         <div className="flex h-full w-full -translate-x-[62px] items-center transition-transform delay-1000 group-hover:translate-x-0 group-hover:delay-[0ms]">
           <button
             className="flex h-full w-1/2 items-center gap-x-1.5 pl-6 hover:bg-neutral-900 dark:hover:bg-neutral-200"
