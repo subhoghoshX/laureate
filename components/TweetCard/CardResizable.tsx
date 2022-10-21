@@ -57,11 +57,11 @@ export default function ResizableTweet({ rootRef }: any) {
 
   useEffect(() => {
     setWidth(() => widthBuffer);
-  }, [widthBuffer]);
+  }, [widthBuffer, setWidth]);
 
   useEffect(() => {
     setHeight(() => heightBuffer);
-  }, [heightBuffer]);
+  }, [heightBuffer, setHeight]);
 
   return (
     <Resizable
