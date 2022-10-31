@@ -1,5 +1,4 @@
 import { MutableRefObject } from "react";
-import ExportButton from "../ExportButton";
 import { MoonIcon } from "@heroicons/react/24/outline";
 
 interface Props {
@@ -20,7 +19,7 @@ export default function ButtonGroup({ setIsPanelOpen, rootRef }: Props) {
 
   return (
     <div className="h-full w-auto pl-4 lg:w-56">
-      <div className="relative flex h-full items-center justify-end gap-x-4 md:justify-between">
+      <div className="relative flex h-full items-center justify-end gap-x-4">
         <a
           className="z-10"
           target="_blank"
@@ -40,9 +39,6 @@ export default function ButtonGroup({ setIsPanelOpen, rootRef }: Props) {
         <button className="relative z-10" onClick={toggleDark}>
           <MoonIcon className="h-6 w-6 dark:stroke-white" />
         </button>
-        <div className="absolute hidden h-10 w-full items-center justify-center lg:flex">
-          <ExportButton className="z-20" rootRef={rootRef} />
-        </div>
         <button
           className="relative z-10 lg:hidden"
           onClick={() => setIsPanelOpen((c) => !c)}

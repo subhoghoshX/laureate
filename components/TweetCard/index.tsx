@@ -22,7 +22,7 @@ export default function TweetCard({ rootRef }: any) {
         setIsSpaceDown(() => false);
       }
     });
-  }, []);
+  }, [setIsSpaceDown]);
 
   function mouseDownHandler() {
     setIsMouseDown(() => true);

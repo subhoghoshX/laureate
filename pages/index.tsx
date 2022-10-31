@@ -66,8 +66,11 @@ export default function Home() {
           <div className="absolute inset-0 z-[-10] flex items-center justify-center dark:bg-[#121212]">
             <TweetCard rootRef={rootRef} />
           </div>
-          <div className="absolute bottom-8 z-[-5] flex h-11 w-full justify-center lg:hidden">
-            <ExportButton rootRef={rootRef} />
+          <div className="absolute bottom-8 z-[-5] flex h-12 w-full justify-center">
+            <ExportButton
+              rootRef={rootRef}
+              className="w-36 lg:-translate-x-24"
+            />
           </div>
         </div>
       </div>

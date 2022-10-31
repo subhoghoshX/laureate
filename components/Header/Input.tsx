@@ -30,12 +30,14 @@ export default function Input() {
       reply_count: data.public_metrics.reply_count,
       like_count: data.public_metrics.like_count,
     }));
+
+    setUrl("");
   }
 
   return (
     <form className="relative ml-auto flex w-1/2" onSubmit={handleSumbit}>
       <input
-        className="w-full rounded-full bg-slate-200 px-6 py-2.5 pr-16 text-sm ring-blue-400 focus:outline-none focus:ring-2 dark:bg-[#3c3c3c] dark:text-white dark:placeholder-white"
+        className="w-full rounded-full bg-slate-200 px-6 py-2.5 pr-16 text-sm ring-blue-400 focus:outline-none focus:ring-2 dark:bg-[#3c3c3c] dark:text-white dark:placeholder-neutral-400"
         type="text"
         placeholder="Paste tweet link here"
         value={url}

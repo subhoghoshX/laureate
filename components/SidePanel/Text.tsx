@@ -49,7 +49,7 @@ export default function Card() {
     }
 
     onChangeHandler(selectedFont);
-  }, [selectedFont]);
+  }, [selectedFont, setFont]);
 
   return (
     <div className="firefox-padding-fix border-t p-5 pr-3 dark:border-[#5c5c5c]">
@@ -59,7 +59,7 @@ export default function Card() {
         <div className="mt-3 flex items-center gap-x-4">
           <Listbox.Label className="text-gray-500">Font</Listbox.Label>
           <div className="relative mt-1 flex-grow">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 dark:bg-neutral-600 dark:text-white sm:text-sm">
               <span className="block truncate">{selectedFont.name}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
@@ -74,13 +74,15 @@ export default function Card() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-neutral-600 sm:text-sm">
                 {fonts.map((font, fontIdx) => (
                   <Listbox.Option
                     key={fontIdx}
                     className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-8 pr-4 ${
-                        active ? "bg-amber-100 text-amber-900" : "text-gray-900"
+                      `relative cursor-default select-none py-2 pl-3 pr-4 ${
+                        active
+                          ? "bg-amber-100 text-amber-900"
+                          : "text-gray-900 dark:text-white"
                       }`
                     }
                     value={font}
@@ -95,7 +97,7 @@ export default function Card() {
                           {font.name}
                         </span>
                         {selected ? (
-                          <span className="absolute inset-y-0 left-0 flex items-center pl-2 text-amber-600">
+                          <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-amber-600 dark:text-amber-500">
                             <CheckIcon className="h-4 w-4" aria-hidden="true" />
                           </span>
                         ) : null}
@@ -118,7 +120,9 @@ export default function Card() {
             checked={isMetricsVisible}
             onChange={(val: boolean) => setIsMetricsVisible(() => val)}
             className={`${
-              isMetricsVisible ? "bg-blue-600" : "bg-gray-200"
+              isMetricsVisible
+                ? "bg-blue-600"
+                : "bg-gray-200 dark:bg-neutral-600"
             } relative inline-flex h-6 w-11 items-center rounded-full transition-colors`}
           >
             <span
