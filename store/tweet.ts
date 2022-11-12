@@ -13,7 +13,7 @@ export const useTweetStore = create<TweetState>((set) => ({
     like_count: 323,
     created_at: "2022-09-12T06:40:30.000Z",
   },
-  isMetricsVisible: false,
+  isMetricsVisible: true,
   isTimestampVisible: false,
   setTweetInfo(callback) {
     set(({ tweetInfo }) => ({ tweetInfo: callback(tweetInfo) }));

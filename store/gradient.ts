@@ -2,12 +2,12 @@ import create from "zustand";
 import { GradientState } from "./types";
 
 export const useGradientStore = create<GradientState>((set) => ({
-  selectedGradient: { id: 1, from: "#F12711", to: "#F5AF19" },
+  selectedGradient: { id: 1, from: "#EECDA3", to: "#EF629F" },
   gradients: [
     {
       id: 1,
-      from: "#F12711",
-      to: "#F5AF19",
+      from: "#EECDA3",
+      to: "#EF629F",
     },
     {
       id: 2,
@@ -41,8 +41,8 @@ export const useGradientStore = create<GradientState>((set) => ({
     },
     {
       id: 8,
-      from: "#EECDA3",
-      to: "#EF629F",
+      from: "#F12711",
+      to: "#F5AF19",
     },
   ],
   setSelectedGradient(callback) {

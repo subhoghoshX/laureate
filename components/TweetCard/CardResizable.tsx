@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { MIN_ALLOWED_HEIGHT, MIN_ALLOWED_WIDTH } from "../../store/constants";
 
 export default function ResizableTweet({ rootRef }: any) {
-  const [widthBuffer, setWidthBuffer] = useState(672);
-  const [heightBuffer, setHeightBuffer] = useState(332);
+  const [widthBuffer, setWidthBuffer] = useState(750);
+  const [heightBuffer, setHeightBuffer] = useState(375);
 
   const cardWidth = useCardStore((state) => state.width);
   const cardHeight = useCardStore((state) => state.height);
