@@ -13,7 +13,7 @@ export default async function handler(req: ApiReq, res: ApiRes<Data>) {
     let data;
 
     if (id) {
-      const url = `https://api.twitter.com/2/tweets/${id}?expansions=author_id&user.fields=profile_image_url&tweet.fields=public_metrics`;
+      const url = `https://api.twitter.com/2/tweets/${id}?expansions=author_id&user.fields=profile_image_url&tweet.fields=public_metrics,created_at`;
 
       const res = await fetch(url, {
         headers: new Headers({
@@ -23,6 +23,8 @@ export default async function handler(req: ApiReq, res: ApiRes<Data>) {
 
       data = await res.json();
     }
+
+    console.log(typeof data.data.created_at);
 
     res.status(200).json(data);
   } catch (e) {

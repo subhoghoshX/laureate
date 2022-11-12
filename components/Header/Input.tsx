@@ -29,6 +29,7 @@ export default function Input() {
       retweet_count: data.public_metrics.retweet_count,
       reply_count: data.public_metrics.reply_count,
       like_count: data.public_metrics.like_count,
+      created_at: data.created_at,
     }));
 
     setUrl("");
