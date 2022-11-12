@@ -24,8 +24,6 @@ export default async function handler(req: ApiReq, res: ApiRes<Data>) {
       data = await res.json();
     }
 
-    console.log(typeof data.data.created_at);
-
     res.status(200).json(data);
   } catch (e) {
     res
