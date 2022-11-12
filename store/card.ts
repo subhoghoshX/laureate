@@ -10,8 +10,8 @@ import { CardState } from "./types";
 import { getValueInRange } from "./utils";
 
 export const useCardStore = create<CardState>((set) => ({
-  height: 332,
-  width: 672,
+  height: 375,
+  width: 750,
   radius: 16,
   opacity: 70,
   font: new Set(["system-ui", "sans-serif"]),
