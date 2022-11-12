@@ -84,13 +84,17 @@ export default function CardInner() {
           selectedTemplate === "second" ? "pl-[76px]" : ""
         } ${selectedTemplate === "third" ? "hidden" : "block"}`}
       >
-        <div className="space-y-3">
+        <div
+          className={`space-y-3 ${
+            isTimestampVisible || isMatricsVisible ? "mb-5" : ""
+          }`}
+        >
           {text.split("\n\n").map((content, index) => (
             <p key={index}>{content}</p>
           ))}
         </div>
         <div
-          className={`mt-4 flex gap-2 text-neutral-500 ${
+          className={`flex gap-2 text-neutral-500 ${
             isTimestampVisible ? "block" : "hidden"
           }`}
         >
@@ -99,7 +103,7 @@ export default function CardInner() {
           <span>{date}</span>
         </div>
         <div
-          className={`mt-4 flex gap-x-3 ${
+          className={`mt-2 flex gap-x-3 ${
             isMatricsVisible ? "block" : "hidden"
           }`}
         >
