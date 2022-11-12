@@ -6,10 +6,11 @@ import { useTweetStore } from "../../store/tweet";
 export default function CardInner() {
   const tweetInfo = useTweetStore((state) => state.tweetInfo);
   const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
-  const { profile_image_url, name, username, text } = tweetInfo;
+  const { profile_image_url, name, username, text, retweet_count, reply_count, like_count } = tweetInfo;
   const selectedTemplate = useTemplateStore((state) => state.selectedTemplate);
   const opacity = useCardStore((state) => state.opacity);
   const font = useCardStore((state) => state.font);
+  const isMatricsVisible = useTweetStore((state) => state.isMetricsVisible);
 
   // Firefox fix
   const [imageData, setImageData] = useState("");
@@ -75,6 +76,20 @@ export default function CardInner() {
           {text.split("\n\n").map((content, index) => (
             <p key={index}>{content}</p>
           ))}
+        </div>
+        <div className={`flex mt-4 gap-x-3 ${isMatricsVisible ? 'block' : 'hidden'}`}>
+          <div>
+            <span>{new Intl.NumberFormat('en', {notation: 'compact'}).format(reply_count)}</span>
+            <span className="text-neutral-500 ml-1">replies</span>
+          </div>
+          <div>
+            <span>{new Intl.NumberFormat('en', {notation: 'compact'}).format(retweet_count)}</span>
+            <span className="text-neutral-500 ml-1">shares</span>
+          </div>
+          <div>
+            <span>{new Intl.NumberFormat('en', {notation: 'compact'}).format(like_count)}</span>
+            <span className="text-neutral-500 ml-1">likes</span>
+          </div>
         </div>
       </div>
     </div>
