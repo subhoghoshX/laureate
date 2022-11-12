@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useCardStore } from "../../store/card";
 import { useTemplateStore } from "../../store/template";
 import { useTweetStore } from "../../store/tweet";
+import formatDate from "../../utils/formatDate";
 
 export default function CardInner() {
   const tweetInfo = useTweetStore((state) => state.tweetInfo);
@@ -14,11 +15,14 @@ export default function CardInner() {
     retweet_count,
     reply_count,
     like_count,
+    created_at,
   } = tweetInfo;
+  const [time, date] = formatDate(created_at);
   const selectedTemplate = useTemplateStore((state) => state.selectedTemplate);
   const opacity = useCardStore((state) => state.opacity);
   const font = useCardStore((state) => state.font);
   const isMatricsVisible = useTweetStore((state) => state.isMetricsVisible);
+  const isTimestampVisible = useTweetStore((state) => state.isTimestampVisible);
 
   // Firefox fix
   const [imageData, setImageData] = useState("");
@@ -84,6 +88,15 @@ export default function CardInner() {
           {text.split("\n\n").map((content, index) => (
             <p key={index}>{content}</p>
           ))}
+        </div>
+        <div
+          className={`mt-4 flex gap-2 text-neutral-500 ${
+            isTimestampVisible ? "block" : "hidden"
+          }`}
+        >
+          <span>{time}</span>
+          <span>&bull;</span>
+          <span>{date}</span>
         </div>
         <div
           className={`mt-4 flex gap-x-3 ${

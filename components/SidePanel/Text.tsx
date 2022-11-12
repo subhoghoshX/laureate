@@ -26,6 +26,11 @@ export default function Card() {
     (state) => state.setIsMetricsVisible,
   );
 
+  const isTimestampVisible = useTweetStore((state) => state.isTimestampVisible);
+  const setIsTimestampVisible = useTweetStore(
+    (state) => state.setIsTimestampVisible,
+  );
+
   const [selectedFont, setSelectedFont] = useState(fonts[0]);
 
   useEffect(() => {
@@ -128,6 +133,27 @@ export default function Card() {
             <span
               className={`${
                 isMetricsVisible ? "translate-x-6" : "translate-x-1"
+              } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+            />
+          </Switch>
+        </div>
+      </Switch.Group>
+
+      <Switch.Group>
+        <div className="mt-3 flex items-center justify-between">
+          <Switch.Label className="mr-4 text-gray-500">Timestamp</Switch.Label>
+          <Switch
+            checked={isTimestampVisible}
+            onChange={(val: boolean) => setIsTimestampVisible(() => val)}
+            className={`${
+              isTimestampVisible
+                ? "bg-blue-600"
+                : "bg-gray-200 dark:bg-neutral-600"
+            } relative inline-flex h-6 w-11 items-center rounded-full transition-colors`}
+          >
+            <span
+              className={`${
+                isTimestampVisible ? "translate-x-6" : "translate-x-1"
               } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
             />
           </Switch>
