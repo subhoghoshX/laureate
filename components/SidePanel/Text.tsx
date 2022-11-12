@@ -141,9 +141,7 @@ export default function Card() {
 
       <Switch.Group>
         <div className="mt-3 flex items-center justify-between">
-          <Switch.Label className="mr-4 text-gray-500">
-            Timestamp
-          </Switch.Label>
+          <Switch.Label className="mr-4 text-gray-500">Timestamp</Switch.Label>
           <Switch
             checked={isTimestampVisible}
             onChange={(val: boolean) => setIsTimestampVisible(() => val)}

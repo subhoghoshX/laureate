@@ -89,7 +89,11 @@ export default function CardInner() {
             <p key={index}>{content}</p>
           ))}
         </div>
-        <div className={`mt-4 flex gap-2 text-neutral-500 ${isTimestampVisible ? "block" : "hidden"}`}>
+        <div
+          className={`mt-4 flex gap-2 text-neutral-500 ${
+            isTimestampVisible ? "block" : "hidden"
+          }`}
+        >
           <span>{time}</span>
           <span>&bull;</span>
           <span>{date}</span>
