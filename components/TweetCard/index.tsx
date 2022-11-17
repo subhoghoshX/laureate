@@ -1,8 +1,12 @@
 import { usePanStore } from "../../store/pan";
-import { useEffect } from "react";
+import { MutableRefObject, useEffect } from "react";
 import CardResizable from "./CardResizable";
 
-export default function TweetCard({ rootRef }: any) {
+interface Props {
+  rootRef: MutableRefObject<HTMLDivElement | null>
+}
+
+export default function TweetCard({ rootRef }: Props) {
   const isSpaceDown = usePanStore((state) => state.isSpaceDown);
   const setIsSpaceDown = usePanStore((state) => state.setIsSpaceDown);
   const isMouseDown = usePanStore((state) => state.isMouseDown);

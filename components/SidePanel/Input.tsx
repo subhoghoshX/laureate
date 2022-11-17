@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useArrowStore } from "../../store/arrow";
 
 interface Props {
@@ -14,7 +14,7 @@ export default function Input({ data, action: setData, label }: Props) {
   useEffect(() => {
     setDataBuffer(data + "");
   }, [data]);
-  function keyDownHandler(e: any) {
+  function keyDownHandler(e: KeyboardEvent) {
     switch (e.code) {
       case "ArrowUp":
         setData(() => +dataBuffer + 1);
@@ -54,7 +54,7 @@ export default function Input({ data, action: setData, label }: Props) {
     }
   }
 
-  function incrementDimension(e: any) {
+  function incrementDimension(e: MouseEvent) {
     setX((X) => X + e.movementX);
     setData((data) => data + e.movementX);
   }

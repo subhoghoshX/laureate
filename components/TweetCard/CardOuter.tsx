@@ -1,8 +1,13 @@
 import CardInner from "./CardInner";
 import { useCardStore } from "../../store/card";
 import { useGradientStore } from "../../store/gradient";
+import { LegacyRef, MutableRefObject } from "react";
 
-export default function CardOuter({ rootRef }: any) {
+interface Props {
+  rootRef: MutableRefObject<HTMLDivElement | null>
+}
+
+export default function CardOuter({ rootRef }: Props) {
   const gradient = useGradientStore((state) => state.selectedGradient);
 
   const radius = useCardStore((state) => state.radius);

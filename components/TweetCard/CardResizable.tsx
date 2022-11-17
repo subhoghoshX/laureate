@@ -1,10 +1,14 @@
 import { useCardStore } from "../../store/card";
 import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import { MIN_ALLOWED_HEIGHT, MIN_ALLOWED_WIDTH } from "../../store/constants";
 
-export default function ResizableTweet({ rootRef }: any) {
+interface Props {
+  rootRef: MutableRefObject<HTMLDivElement | null>
+}
+
+export default function ResizableTweet({ rootRef }: Props) {
   const [widthBuffer, setWidthBuffer] = useState(750);
   const [heightBuffer, setHeightBuffer] = useState(375);
 

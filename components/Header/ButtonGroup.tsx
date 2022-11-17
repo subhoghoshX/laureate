@@ -3,10 +3,9 @@ import { MoonIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   setIsPanelOpen: (callback: (c: boolean) => boolean) => void;
-  rootRef: MutableRefObject<undefined>;
 }
 
-export default function ButtonGroup({ setIsPanelOpen, rootRef }: Props) {
+export default function ButtonGroup({ setIsPanelOpen }: Props) {
   function toggleDark() {
     if (JSON.parse(localStorage.getItem("isDark") || "false")) {
       document.documentElement.classList.remove("dark");

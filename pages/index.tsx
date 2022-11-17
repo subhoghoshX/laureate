@@ -9,7 +9,7 @@ import Script from "next/script";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const rootRef = useRef();
+  const rootRef = useRef<null | HTMLDivElement>(null);
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function Home() {
       <div className="relative">
         <Arrow />
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">
-          <Header setIsPanelOpen={setIsPanelOpen} rootRef={rootRef} />
+          <Header setIsPanelOpen={setIsPanelOpen} />
           <SidePanel isPanelOpen={isPanelOpen} />
           <div className="absolute inset-0 z-[-10] flex items-center justify-center dark:bg-[#121212]">
             <TweetCard rootRef={rootRef} />

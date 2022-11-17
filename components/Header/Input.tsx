@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useTweetStore } from "../../store/tweet";
 
 export default function Input() {
@@ -6,7 +6,7 @@ export default function Input() {
 
   const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
 
-  async function handleSumbit(e: any) {
+  async function handleSumbit(e: FormEvent) {
     e.preventDefault();
 
     if (!url) return;
