@@ -1,3 +1,11 @@
+/*
+
+A fix for firefox browser and it's derivatives where "Enhanced Tracking Protection" is turned on.
+As those browsers block every requests to Twitter, even if it's just an image, I am sending an
+extra request to Twitter from my API to get the image and send it to the front-end.
+
+*/
+
 import type { NextApiRequest as ApiReq, NextApiResponse as ApiRes } from "next";
 
 export default async function handler(req: ApiReq, res: ApiRes) {

@@ -8,6 +8,7 @@ const token = process.env.BEARER_TOKEN;
 
 export default async function handler(req: ApiReq, res: ApiRes<Data>) {
   try {
+    // Extract the tweet id out of the URL
     const id = JSON.parse(req.body).tweetUrl.split(/[\/?]/g)[5];
 
     let data;
