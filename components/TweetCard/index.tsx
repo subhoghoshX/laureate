@@ -1,5 +1,5 @@
 import { usePanStore } from "../../store/pan";
-import { MutableRefObject, useEffect } from "react";
+import { MouseEvent, MutableRefObject, useEffect } from "react";
 import CardResizable from "./CardResizable";
 
 interface Props {
@@ -34,7 +34,7 @@ export default function TweetCard({ rootRef }: Props) {
   function mouseUpHandler() {
     setIsMouseDown(() => false);
   }
-  function mouseMoveHandler(e: any) {
+  function mouseMoveHandler(e: MouseEvent) {
     if (isMouseDown && isSpaceDown) {
       setMoveBy(() => ({
         X: moveBy.X + e.movementX,

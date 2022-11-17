@@ -46,18 +46,6 @@ export default function Home() {
         />
       </Head>
 
-      <Script
-        id="laureate-theme"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            JSON.parse(localStorage.getItem("isDark"))
-              ? document.documentElement.classList.add('dark')
-              : document.documentElement.classList.remove('dark');
-            `,
-        }}
-      />
-
       <div className="relative">
         <Arrow />
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">

@@ -1,9 +1,5 @@
 import type { NextApiRequest as ApiReq, NextApiResponse as ApiRes } from "next";
 
-// type Data = {
-//   imageData: string;
-// };
-
 export default async function handler(req: ApiReq, res: ApiRes) {
   try {
     const url = JSON.parse(req.body).imageUrl;
