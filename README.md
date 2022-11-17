@@ -6,7 +6,7 @@ An application that transforms tweets into beautiful images with various gradien
 
 View it live at https://laureate.netlify.app
 
-![image](https://user-images.githubusercontent.com/108616679/193447938-0b9c32ab-3983-401b-8c2f-bd23c9c4e8be.png)
+![image](https://user-images.githubusercontent.com/108616679/202442178-0e8c8918-626a-4263-888d-d94d64b27968.png)
 
 ## Table of Contents
 
@@ -22,13 +22,14 @@ Here a brief overview of the tech stack I've used in this project.
 | Technology | Description | Link ↘️ |
 |------------|-------------------------------------------|-------- |
 | NextJs | The React Framework |https://nextjs.org/|
+| TypeScript | JavaScript with types |https://www.typescriptlang.org/|
 |Tailwind CSS| Utility-first CSS framework |https://tailwindcss.com/|
 | Zustand | Bear necessities for state management |https://github.com/pmndrs/zustand|
 | Twitter api| For fetching tweet data |https://developer.twitter.com/en/docs/twitter-api|
 
 ## Project Structure
 
-It is a single page app and the entry point is `pages/index.tsx`. In `pages/index.tsx` you'll find that the layout of the app is broken into 4 major components `Header`, `Sidebar`, `TweetCard` and the `ExportButton`. All these components are located in the `components' folder.
+It is a single page app and the entry point is `pages/index.tsx`. In `pages/index.tsx` you'll find that the layout of the app is broken into 4 major components `Header`, `Sidebar`, `TweetCard` and the `ExportButton`. All these components are located in the `components` folder.
 
 ## Installation
 
