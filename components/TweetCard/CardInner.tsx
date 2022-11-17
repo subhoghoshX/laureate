@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCardStore } from "../../store/card";
 import { useTemplateStore } from "../../store/template";
@@ -31,7 +32,7 @@ export default function CardInner() {
     if (navigator.userAgent.indexOf("Firefox") > -1) {
       fetch("/api/get-image", {
         method: "post",
-        body: JSON.stringify({ imageUrl: profile_image_url }),
+        body: JSON.stringify({ imageUrl: tweetInfo.profile_image_url }),
       })
         .then((res) => res.json())
         .then((data) => {
@@ -53,9 +54,12 @@ export default function CardInner() {
           selectedTemplate === "third" ? "items-start" : "items-center"
         }`}
       >
-        <img
+        <Image
           className="h-14 w-14 rounded-full"
           src={imageData || profile_image_url}
+          alt="twitter pfp"
+          width={56}
+          height={56}
         />
         <div>
           <div
