@@ -28,9 +28,13 @@ export default function ButtonGroup({ setIsPanelOpen }: Props) {
         >
           <GitHubIcon className="h-[22px] w-[22px] fill-[#323232] dark:fill-white" />
         </a>
+
+        {/* Dark Mode Toggle Button*/}
         <button className="relative z-10" onClick={toggleDark}>
           <MoonIcon className="h-6 w-6 dark:stroke-white" />
         </button>
+
+        {/* Side Panel Toggle Button*/}
         <button
           className="relative z-10 lg:hidden"
           onClick={() => setIsPanelOpen((c) => !c)}

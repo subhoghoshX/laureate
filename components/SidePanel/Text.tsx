@@ -60,6 +60,7 @@ export default function Card() {
     <div className="firefox-padding-fix border-t p-5 pr-3 dark:border-[#5c5c5c]">
       <h2 className="font-bold">Text</h2>
 
+      {/*Font Select Menu*/}
       <Listbox value={selectedFont} onChange={setSelectedFont}>
         <div className="mt-3 flex items-center gap-x-4">
           <Listbox.Label className="text-gray-500">Font</Listbox.Label>
@@ -116,6 +117,7 @@ export default function Card() {
         </div>
       </Listbox>
 
+      {/* Public Metric Toggle */}
       <Switch.Group>
         <div className="mt-3 flex items-center justify-between">
           <Switch.Label className="mr-4 text-gray-500">
@@ -139,6 +141,7 @@ export default function Card() {
         </div>
       </Switch.Group>
 
+      {/* Timestamp Toggle Switch */}
       <Switch.Group>
         <div className="mt-3 flex items-center justify-between">
           <Switch.Label className="mr-4 text-gray-500">Timestamp</Switch.Label>

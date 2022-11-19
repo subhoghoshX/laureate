@@ -25,7 +25,7 @@ export default function CardInner() {
   const isMatricsVisible = useTweetStore((state) => state.isMetricsVisible);
   const isTimestampVisible = useTweetStore((state) => state.isTimestampVisible);
 
-  // Firefox fix
+  // As Firefox blocks images from Twitter, here the image is fetched manually
   const [imageData, setImageData] = useState("");
 
   useEffect(() => {

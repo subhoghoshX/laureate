@@ -6,6 +6,7 @@ export default function Input() {
 
   const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
 
+  // fetch tweet information from /api/tweet-info when a user submits tweet link
   async function handleSumbit(e: FormEvent) {
     e.preventDefault();
 

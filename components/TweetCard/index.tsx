@@ -14,6 +14,7 @@ export default function TweetCard({ rootRef }: Props) {
   const moveBy = usePanStore((state) => state.moveBy);
   const setMoveBy = usePanStore((state) => state.setMoveBy);
 
+  // The functionality to move Card when pressing Space key and dragging the mouse
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
       if (e.code === "Space") {

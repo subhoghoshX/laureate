@@ -14,6 +14,8 @@ export default function Input({ data, action: setData, label }: Props) {
   useEffect(() => {
     setDataBuffer(data + "");
   }, [data]);
+
+  // Increment or decrement value when pressing Arrow Up or Arrow Down keys on keyboard
   function keyDownHandler(e: KeyboardEvent) {
     switch (e.code) {
       case "ArrowUp":
@@ -35,6 +37,12 @@ export default function Input({ data, action: setData, label }: Props) {
   const setX = useArrowStore((state) => state.setX);
   const setY = useArrowStore((state) => state.setY);
 
+  /*
+
+    When a user moves their mouse cursor on to the input label and click left mouse
+    button enter into the Pointer Lock mode and the exit it when mouse is released.
+
+  */
   function mouseDownHandler(e: any) {
     setIsArrowVisible(() => true);
     setX(() => e.clientX - 10);
