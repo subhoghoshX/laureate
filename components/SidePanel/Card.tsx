@@ -18,10 +18,10 @@ export default function Size() {
     <div className="firefox-padding-fix p-5 pr-3">
       <h2 className="font-bold">Card</h2>
       <form className="-mx-3 mt-4 grid grid-cols-2 gap-y-1 gap-x-2">
-        <Input label="W" data={cardWidth} action={setWidth} />
-        <Input label="H" data={cardHeight} action={setHeight} />
-        <Input label="R" data={radius} action={setRadius} />
-        <Input label="O" data={opacity} action={setOpacity} />
+        <Input label="W" data={cardWidth} action={setWidth} title="Width" />
+        <Input label="H" data={cardHeight} action={setHeight} title="Height" />
+        <Input label="R" data={radius} action={setRadius} title="Radius" />
+        <Input label="O" data={opacity} action={setOpacity} title="Opacity" />
       </form>
     </div>
   );

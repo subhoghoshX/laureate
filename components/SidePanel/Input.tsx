@@ -5,9 +5,10 @@ interface Props {
   data: number;
   action: (callback: (dimension: number) => number) => void;
   label: string;
+  title: string;
 }
 
-export default function Input({ data, action: setData, label }: Props) {
+export default function Input({ data, action: setData, label, title }: Props) {
   const labelRef = useRef(null);
   const [dataBuffer, setDataBuffer] = useState("");
   const [isPLRequested, setIsPLRequested] = useState(false);
@@ -79,7 +80,10 @@ export default function Input({ data, action: setData, label }: Props) {
   }
 
   return (
-    <label className="flex h-7 border border-transparent text-xs focus-within:border-blue-400 focus-within:ring-1 focus-within:ring-blue-400 hover:border-gray-200 hover:focus-within:border-blue-400 dark:hover:border-[#4c4c4c] dark:hover:focus-within:border-blue-400">
+    <label
+      className="flex h-7 border border-transparent text-xs focus-within:border-blue-400 focus-within:ring-1 focus-within:ring-blue-400 hover:border-gray-200 hover:focus-within:border-blue-400 dark:hover:border-[#4c4c4c] dark:hover:focus-within:border-blue-400"
+      title={title}
+    >
       <span
         className="flex w-[37%] cursor-ew-resize select-none items-center justify-center text-slate-500 dark:text-[#808080]"
         ref={labelRef}
