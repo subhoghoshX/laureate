@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import { useEffect, useState } from "react";
 import { useCardStore } from "../../store/card";
 import { useTemplateStore } from "../../store/template";
@@ -55,7 +55,7 @@ export default function CardInner() {
         }`}
       >
         <Image
-          className="h-14 w-14 rounded-full"
+          className="rounded-full"
           src={imageData || profile_image_url}
           alt="twitter pfp"
           width={56}
