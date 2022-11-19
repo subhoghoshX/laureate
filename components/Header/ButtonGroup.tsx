@@ -1,6 +1,6 @@
 import { MutableRefObject } from "react";
 import { MoonIcon } from "@heroicons/react/24/outline";
-import { GitHubIcon, PanelIcon } from './Icons'
+import { GitHubIcon, PanelIcon } from "./Icons";
 
 interface Props {
   setIsPanelOpen: (callback: (c: boolean) => boolean) => void;

@@ -19,13 +19,13 @@ View it live at https://laureate.netlify.app
 
 Here a brief overview of the tech stack I've used in this project.
 
-| Technology | Description | Link ↘️ |
-|------------|-------------------------------------------|-------- |
-| NextJs | The React Framework |https://nextjs.org/|
-| TypeScript | JavaScript with types |https://www.typescriptlang.org/|
-|Tailwind CSS| Utility-first CSS framework |https://tailwindcss.com/|
-| Zustand | Bear necessities for state management |https://github.com/pmndrs/zustand|
-| Twitter api| For fetching tweet data |https://developer.twitter.com/en/docs/twitter-api|
+| Technology   | Description                           | Link ↘️                                           |
+| ------------ | ------------------------------------- | ------------------------------------------------- |
+| NextJs       | The React Framework                   | https://nextjs.org/                               |
+| TypeScript   | JavaScript with types                 | https://www.typescriptlang.org/                   |
+| Tailwind CSS | Utility-first CSS framework           | https://tailwindcss.com/                          |
+| Zustand      | Bear necessities for state management | https://github.com/pmndrs/zustand                 |
+| Twitter api  | For fetching tweet data               | https://developer.twitter.com/en/docs/twitter-api |
 
 ## Project Structure
 
@@ -70,7 +70,7 @@ All these components are located in the `components` folder. Each of those compo
 
 ## Contributing
 
-Any contributions you make are greatly appreciated. Check out our [contribution guidelines](/CONTRIBUTING.md) for more information. 
+Any contributions you make are greatly appreciated. Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
 Here are a few things on the roadmap that you can contribute to:
 

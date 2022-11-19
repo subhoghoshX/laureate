@@ -5,7 +5,7 @@ import { MutableRefObject, useEffect, useState } from "react";
 import { MIN_ALLOWED_HEIGHT, MIN_ALLOWED_WIDTH } from "../../store/constants";
 
 interface Props {
-  rootRef: MutableRefObject<HTMLDivElement | null>
+  rootRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 export default function ResizableTweet({ rootRef }: Props) {

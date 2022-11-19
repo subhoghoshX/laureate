@@ -4,7 +4,7 @@ import { useGradientStore } from "../../store/gradient";
 import { LegacyRef, MutableRefObject } from "react";
 
 interface Props {
-  rootRef: MutableRefObject<HTMLDivElement | null>
+  rootRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 export default function CardOuter({ rootRef }: Props) {

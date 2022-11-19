@@ -3,7 +3,7 @@ import { MouseEvent, MutableRefObject, useEffect } from "react";
 import CardResizable from "./CardResizable";
 
 interface Props {
-  rootRef: MutableRefObject<HTMLDivElement | null>
+  rootRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 export default function TweetCard({ rootRef }: Props) {
