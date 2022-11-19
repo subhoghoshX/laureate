@@ -32,16 +32,13 @@ Here a brief overview of the tech stack I've used in this project.
 It is a single page app and the entry point is `pages/index.tsx`. In `pages/index.tsx` you'll find that the layout of the app is broken into 4 major components:
 
 1. Header
-2. Sidebar
+2. SidePanel
 3. TweetCard
 4. ExportButton
 
 All these components are located in the `components` folder. Each of those components except `ExportButton` are broken into sub-components in their respective folders.
 
-
-![laureate-diagram](https://user-images.githubusercontent.com/108616679/202511353-32fbdc52-4b88-45f6-9055-80fdddb0459d.png)
-
-
+![laureate-diagram-labeled](https://user-images.githubusercontent.com/108616679/202859779-95e2ae3c-7927-4b48-87ac-c8df193052a6.png)
 
 ## Installation
 
