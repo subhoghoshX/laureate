@@ -11,7 +11,7 @@ export default function Input() {
 
     if (!url) return;
 
-    const res = await fetch("/api/hello", {
+    const res = await fetch("/api/tweet-info", {
       method: "post",
       body: JSON.stringify({ tweetUrl: url }),
     });
