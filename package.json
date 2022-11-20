@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prepare": "husky install",
     "format:check": "prettier . --check",
-    "format:fix": "prettier . --write --ignore-unknown"
+    "format:fix": "prettier . --write --ignore-unknown",
+    "test": "jest"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.3",
