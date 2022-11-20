@@ -1,4 +1,3 @@
-import Image from "next/future/image";
 import { useEffect, useState } from "react";
 import { useCardStore } from "../../store/card";
 import { useTemplateStore } from "../../store/template";
@@ -54,12 +53,10 @@ export default function CardInner() {
           selectedTemplate === "third" ? "items-start" : "items-center"
         }`}
       >
-        <Image
-          className="rounded-full"
+        <img
+          className="rounded-full h-14 w-14"
           src={imageData || profile_image_url}
           alt="twitter pfp"
-          width={56}
-          height={56}
         />
         <div>
           <div
