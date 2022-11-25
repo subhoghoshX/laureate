@@ -17,7 +17,7 @@ View it live at https://laureate.netlify.app
 
 ## Tech Stack
 
-Here a brief overview of the tech stack I've used in this project.
+Here is a brief overview of the tech stack I've used in this project.
 
 | Technology   | Description                           | Link ↘️                                           |
 | ------------ | ------------------------------------- | ------------------------------------------------- |
