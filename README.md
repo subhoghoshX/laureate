@@ -6,7 +6,7 @@ An application that transforms tweets into beautiful images with various gradien
 
 View it live at https://laureate.netlify.app
 
-![image](https://user-images.githubusercontent.com/108616679/202442178-0e8c8918-626a-4263-888d-d94d64b27968.png)
+![laureate-demo](https://user-images.githubusercontent.com/23008566/204241469-b3f49f17-c193-41fc-a681-1c264f031f2f.gif)
 
 ## Table of Contents
 
