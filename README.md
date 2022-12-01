@@ -79,5 +79,6 @@ Here are a few things on the roadmap that you can contribute to:
 - Refactor: Rewrite template chooser & the help menu component using Headless UI
 - Refactor: Rewrite ExportButton animation using Headless UI Transition component
 - Feature: Option to change the font size
+- Test: Add unit and integration tests
 
 **Note:** Please ask before working on anything significant. Always open an issue or discussion first, so that we're all on the same page about the approach you're taking and the tools and technologies you'll be to using.
