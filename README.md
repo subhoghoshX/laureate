@@ -76,7 +76,6 @@ Here are a few things on the roadmap that you can contribute to:
 
 - Feature: A custom color/gradient picker
 - Design: Polish the UI (if you're a pro designer definitely contribute)
-- Refactor: Rewrite template chooser & the help menu component using Headless UI
 - Refactor: Rewrite ExportButton animation using Headless UI Transition component
 - Feature: Option to change the font size
 - Test: Add unit and integration tests
