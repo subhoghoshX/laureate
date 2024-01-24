@@ -10,6 +10,7 @@ import { CardState } from "./types";
 import { getValueInRange } from "./utils";
 
 export const useCardStore = create<CardState>((set) => ({
+  scale: 1,
   height: 375,
   width: 750,
   radius: 16,
@@ -24,6 +25,9 @@ export const useCardStore = create<CardState>((set) => ({
     set(({ width }) => ({
       width: getValueInRange(callback(width), MIN_ALLOWED_WIDTH),
     }));
+  },
+  setScale(callback) {
+    set((state) => ({ scale: callback(state.scale) }));
   },
   setRadius(callback) {
     set(({ radius }) => ({

@@ -1,7 +1,7 @@
 import { useCardStore } from "../../store/card";
 import { Resizable } from "re-resizable";
 import CardOuter from "./CardOuter";
-import { MutableRefObject, useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState, useRef } from "react";
 import { MIN_ALLOWED_HEIGHT, MIN_ALLOWED_WIDTH } from "../../store/constants";
 
 interface Props {
@@ -16,6 +16,26 @@ export default function ResizableTweet({ rootRef }: Props) {
   const cardHeight = useCardStore((state) => state.height);
   const setWidth = useCardStore((state) => state.setWidth);
   const setHeight = useCardStore((state) => state.setHeight);
+  const setScale = useCardStore((state) => state.setScale);
+  const cardRef = useRef<Resizable>(null);
+
+  useEffect(changeScale, [cardWidth]);
+  useEffect(() => {
+    window.addEventListener('resize', changeScale);
+
+    return () => {
+      window.removeEventListener('resize', changeScale);
+    }
+  }, [])
+
+  function changeScale() {
+    const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    const currentCardWidth = cardRef.current?.size.width || cardWidth;
+    const newScale = (width - 20) / currentCardWidth;
+
+    setScale(() => newScale > 1 ? 1 : newScale);
+  }
+
   function resizeHandler(e: any, dir: any) {
     switch (dir) {
       case "left":
@@ -71,6 +91,7 @@ export default function ResizableTweet({ rootRef }: Props) {
     <Resizable
       size={{ width: cardWidth, height: cardHeight }}
       onResize={resizeHandler}
+      ref={cardRef}
       onResizeStop={resizeStopHandler}
       className="lg:-translate-x-24"
       minHeight={MIN_ALLOWED_HEIGHT}

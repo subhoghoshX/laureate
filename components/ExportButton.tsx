@@ -5,16 +5,18 @@ import {
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
+import { useCardStore } from "../store/card";
 
 export default function ExportButton({ rootRef, className }: any) {
   const [SaveIcon, setSaveIcon] = useIcon([ArrowDownTrayIcon, CheckIcon]);
+  const cardScale = useCardStore((state: any) => state.scale);
 
   async function exportPNG() {
     if (rootRef.current !== undefined) {
       const canvas = await html2canvas(rootRef.current, {
         allowTaint: true,
         useCORS: true,
-        scale: 3,
+        scale: 3 + 1/cardScale,
         backgroundColor: null,
       });
       const img = canvas.toDataURL("image/png", 1.0);
