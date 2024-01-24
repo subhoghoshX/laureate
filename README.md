@@ -1,44 +1,49 @@
 # Laureate
 
-A web app that helps you to transform your tweets into beautiful images with different gradient and color combinations.
+An application that transforms tweets into beautiful images with various gradients and customization options.
 
-## Pull requests
+## Preview
 
-**Please ask first before starting work on any significant new features.**
+View it live at https://laureate.netlify.app
 
-It's never a fun experience to have your pull request declined after investing a lot of time and effort into a new feature. To avoid this from happening, we request that contributors create [a feature request](https://github.com/subhoghoshX/laureate/discussions/new) to first discuss any significant new ideas.
-
-## Image of the application (Demo)
-
-![image](https://user-images.githubusercontent.com/108616679/193447938-0b9c32ab-3983-401b-8c2f-bd23c9c4e8be.png)
+![laureate-demo](https://user-images.githubusercontent.com/23008566/204241469-b3f49f17-c193-41fc-a681-1c264f031f2f.gif)
 
 ## Table of Contents
 
-- [Demo](#demo)
 - [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Contributing](#contributing)
-- [License](#license)
-
-## Demo
-
-Provide links to the deployed application for users to be able to view it easily. If you have any other links you would like to show here, feel free.
-
-View the application at [Deployed Project Link](https://laureate.netlify.app/)
 
 ## Tech Stack
 
-This is where you want to demonstrate the technologies you used in this project and provide any links.
-| Technology | Description | Link ↘️ |
-|------------|-------------------------------------------|-------- |
-| NextJs | The React Framework |https://nextjs.org/|
-|Tailwind CSS| Utility-first CSS framework |https://tailwindcss.com/|
-| Zustand | Bear necessities for state management |https://github.com/pmndrs/zustand|
-| Twitter api| For fetching tweet data |https://developer.twitter.com/en/docs/twitter-api|
+Here is a brief overview of the tech stack I've used in this project.
+
+| Technology   | Description                           | Link ↘️                                           |
+| ------------ | ------------------------------------- | ------------------------------------------------- |
+| NextJs       | The React Framework                   | https://nextjs.org/                               |
+| TypeScript   | JavaScript with types                 | https://www.typescriptlang.org/                   |
+| Tailwind CSS | Utility-first CSS framework           | https://tailwindcss.com/                          |
+| Zustand      | Bear necessities for state management | https://github.com/pmndrs/zustand                 |
+| Twitter api  | For fetching tweet data               | https://developer.twitter.com/en/docs/twitter-api |
+
+## Project Structure
+
+It is a single page app and the entry point is `pages/index.tsx`. In `pages/index.tsx` you'll find that the layout of the app is broken into 4 major components:
+
+1. Header
+2. SidePanel
+3. TweetCard
+4. ExportButton
+
+All these components are located in the `components` folder. Each of those components except `ExportButton` are broken into sub-components in their respective folders.
+
+![laureate-diagram-labeled](https://user-images.githubusercontent.com/108616679/202859779-95e2ae3c-7927-4b48-87ac-c8df193052a6.png)
 
 ## Installation
 
 1. [Fork](https://github.com/subhoghoshX/laureate/fork) the project. Click on the fork icon in the top right to get started
+
 2. Clone the project, you can use the following command:
 
    ```bash
@@ -65,10 +70,14 @@ This is where you want to demonstrate the technologies you used in this project 
 
 ## Contributing
 
-- Contributions make the open source community such an amazing place to learn, inspire, and create.
-- Any contributions you make are greatly appreciated.
-- Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
+Any contributions you make are greatly appreciated. Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
-## License
+Here are a few things on the roadmap that you can contribute to:
 
-Laureate is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- Feature: A custom color/gradient picker
+- Design: Polish the UI (if you're a pro designer definitely contribute)
+- Refactor: Rewrite ExportButton animation using Headless UI Transition component
+- Feature: Option to change the font size
+- Test: Add unit and integration tests
+
+**Note:** Please ask before working on anything significant. Always open an issue or discussion first, so that we're all on the same page about the approach you're taking and the tools and technologies you'll be to using.

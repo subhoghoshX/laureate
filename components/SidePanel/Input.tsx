@@ -1,30 +1,36 @@
-import { useEffect, useRef, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useArrowStore } from "../../store/arrow";
 
 interface Props {
   data: number;
   action: (callback: (dimension: number) => number) => void;
   label: string;
+  title: string;
 }
 
-export default function Input({ data, action: setData, label }: Props) {
+export default function Input({ data, action: setData, label, title }: Props) {
   const labelRef = useRef(null);
-  const [dimensionBuffer, setDimensionBuffer] = useState("");
+  const [dataBuffer, setDataBuffer] = useState("");
   const [isPLRequested, setIsPLRequested] = useState(false);
   useEffect(() => {
-    setDimensionBuffer(data + "");
+    setDataBuffer(data + "");
   }, [data]);
-  function keyDownHandler(e: any) {
-    if (e.keyCode === 38) {
-      setData(() => +dimensionBuffer + 1);
-    } else if (e.keyCode === 40) {
-      setData(() => +dimensionBuffer - 1);
-    } else if (e.keyCode === 13) {
-      if (Number.isNaN(Number(dimensionBuffer))) {
-        setDimensionBuffer(data + "");
-      } else {
-        setData(() => +dimensionBuffer);
-      }
+
+  // Increment or decrement value when pressing Arrow Up or Arrow Down keys on keyboard
+  function keyDownHandler(e: KeyboardEvent) {
+    switch (e.code) {
+      case "ArrowUp":
+        setData(() => +dataBuffer + 1);
+        break;
+      case "ArrowDown":
+        setData(() => +dataBuffer - 1);
+        break;
+      case "Enter":
+      case "NumpadEnter":
+        setDataOrResetDataBuffer();
+        break;
+      default:
+      // Do nothing
     }
   }
 
@@ -32,6 +38,12 @@ export default function Input({ data, action: setData, label }: Props) {
   const setX = useArrowStore((state) => state.setX);
   const setY = useArrowStore((state) => state.setY);
 
+  /*
+
+    When a user moves their mouse cursor on to the input label and click left mouse
+    button enter into the Pointer Lock mode and the exit it when mouse is released.
+
+  */
   function mouseDownHandler(e: any) {
     setIsArrowVisible(() => true);
     setX(() => e.clientX - 10);
@@ -51,7 +63,7 @@ export default function Input({ data, action: setData, label }: Props) {
     }
   }
 
-  function incrementDimension(e: any) {
+  function incrementDimension(e: MouseEvent) {
     setX((X) => X + e.movementX);
     setData((data) => data + e.movementX);
   }
@@ -61,29 +73,35 @@ export default function Input({ data, action: setData, label }: Props) {
     setIsArrowVisible(() => false);
   }
 
+  function setDataOrResetDataBuffer() {
+    return dataBuffer && !Number.isNaN(Number(dataBuffer))
+      ? setData(() => +dataBuffer)
+      : setDataBuffer(data + "");
+  }
+
   return (
-    <div className="flex w-1/2 gap-x-3">
-      <label
-        htmlFor=""
-        className="cursor-ew-resize font-mono text-slate-500"
+    <label
+      className="flex h-7 border border-transparent text-xs focus-within:border-blue-400 focus-within:ring-1 focus-within:ring-blue-400 hover:border-gray-200 hover:focus-within:border-blue-400 dark:hover:border-[#4c4c4c] dark:hover:focus-within:border-blue-400"
+      title={title}
+    >
+      <span
+        className="flex w-[37%] cursor-ew-resize select-none items-center justify-center text-slate-500 dark:text-[#808080]"
+        ref={labelRef}
         onMouseDown={mouseDownHandler}
         onMouseUp={mouseUpHandler}
-        ref={labelRef}
       >
         {label}
-      </label>
+      </span>
+
       <input
-        value={dimensionBuffer}
-        onChange={(e) => setDimensionBuffer(e.target.value)}
-        onBlur={() =>
-          Number.isNaN(Number(dimensionBuffer))
-            ? setDimensionBuffer(data + "")
-            : setData(() => Number(dimensionBuffer))
-        }
+        value={dataBuffer}
+        onChange={(e) => setDataBuffer(e.target.value)}
+        onBlur={setDataOrResetDataBuffer}
+        onClick={(e: any) => e.target.select()}
         onKeyDown={keyDownHandler}
-        className="w-full"
+        className="block w-[63%] cursor-default focus:outline-none dark:bg-transparent dark:text-white"
         type="text"
       />
-    </div>
+    </label>
   );
 }

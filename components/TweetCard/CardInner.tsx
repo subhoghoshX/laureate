@@ -1,12 +1,44 @@
+import { useEffect, useState } from "react";
 import { useCardStore } from "../../store/card";
 import { useTemplateStore } from "../../store/template";
 import { useTweetStore } from "../../store/tweet";
+import formatDate from "../../utils/formatDate";
 
 export default function CardInner() {
   const tweetInfo = useTweetStore((state) => state.tweetInfo);
+  const setTweetInfo = useTweetStore((state) => state.setTweetInfo);
+  const {
+    profile_image_url,
+    name,
+    username,
+    text,
+    retweet_count,
+    reply_count,
+    like_count,
+    created_at,
+  } = tweetInfo;
+  const [time, date] = formatDate(created_at);
   const selectedTemplate = useTemplateStore((state) => state.selectedTemplate);
   const opacity = useCardStore((state) => state.opacity);
   const font = useCardStore((state) => state.font);
+  const isMatricsVisible = useTweetStore((state) => state.isMetricsVisible);
+  const isTimestampVisible = useTweetStore((state) => state.isTimestampVisible);
+
+  // As Firefox blocks images from Twitter, here the image is fetched manually
+  const [imageData, setImageData] = useState("");
+
+  useEffect(() => {
+    if (navigator.userAgent.indexOf("Firefox") > -1) {
+      fetch("/api/get-image", {
+        method: "post",
+        body: JSON.stringify({ imageUrl: tweetInfo.profile_image_url }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setImageData(data.imageData);
+        });
+    }
+  }, [tweetInfo]);
 
   return (
     <div
@@ -22,9 +54,9 @@ export default function CardInner() {
         }`}
       >
         <img
-          className="h-14 w-14 rounded-full"
-          src={tweetInfo.profile_image_url}
-          alt="Andrej's pic"
+          className="rounded-full h-14 w-14"
+          src={imageData || profile_image_url}
+          alt="twitter pfp"
         />
         <div>
           <div
@@ -32,22 +64,62 @@ export default function CardInner() {
               selectedTemplate === "third" ? "flex items-center gap-x-2" : ""
             }`}
           >
-            <h2 className="font-bold text-zinc-900">{tweetInfo.name}</h2>
-            <p className="text-xs text-zinc-900">@{tweetInfo.username}</p>
+            <h2 className="font-bold text-zinc-900">{name}</h2>
+            <p className="text-xs text-zinc-900">@{username}</p>
           </div>
           <div
             className={`mt-2 text-zinc-900 ${
               selectedTemplate === "third" ? "block" : "hidden"
             }`}
           >
-            <p
-              dangerouslySetInnerHTML={{
-                __html: tweetInfo.text.replaceAll(
-                  "\n",
-                  "<br style='display: block; margin: 12px 0; content: \" \"' />",
-                ),
-              }}
-            ></p>
+            <div
+              className={`space-y-3 ${
+                isTimestampVisible || isMatricsVisible ? "mb-5" : ""
+              }`}
+            >
+              {text.split("\n\n").map((content, index) => (
+                <p key={index}>{content}</p>
+              ))}
+            </div>
+            <div
+              className={`flex gap-2 text-neutral-500 ${
+                isTimestampVisible ? "block" : "hidden"
+              }`}
+            >
+              <span>{time}</span>
+              <span>&bull;</span>
+              <span>{date}</span>
+            </div>
+            <div
+              className={`mt-2 flex gap-x-3 ${
+                isMatricsVisible ? "block" : "hidden"
+              }`}
+            >
+              <div>
+                <span>
+                  {new Intl.NumberFormat("en", { notation: "compact" }).format(
+                    reply_count,
+                  )}
+                </span>
+                <span className="ml-1 text-neutral-500">replies</span>
+              </div>
+              <div>
+                <span>
+                  {new Intl.NumberFormat("en", { notation: "compact" }).format(
+                    retweet_count,
+                  )}
+                </span>
+                <span className="ml-1 text-neutral-500">shares</span>
+              </div>
+              <div>
+                <span>
+                  {new Intl.NumberFormat("en", { notation: "compact" }).format(
+                    like_count,
+                  )}
+                </span>
+                <span className="ml-1 text-neutral-500">likes</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,14 +128,54 @@ export default function CardInner() {
           selectedTemplate === "second" ? "pl-[76px]" : ""
         } ${selectedTemplate === "third" ? "hidden" : "block"}`}
       >
-        <p
-          dangerouslySetInnerHTML={{
-            __html: tweetInfo.text.replaceAll(
-              "\n",
-              "<br style='display: block; margin: 12px 0; content: \" \"' />",
-            ),
-          }}
-        ></p>
+        <div
+          className={`space-y-3 ${
+            isTimestampVisible || isMatricsVisible ? "mb-5" : ""
+          }`}
+        >
+          {text.split("\n\n").map((content, index) => (
+            <p key={index}>{content}</p>
+          ))}
+        </div>
+        <div
+          className={`flex gap-2 text-neutral-500 ${
+            isTimestampVisible ? "block" : "hidden"
+          }`}
+        >
+          <span>{time}</span>
+          <span>&bull;</span>
+          <span>{date}</span>
+        </div>
+        <div
+          className={`mt-2 flex gap-x-3 ${
+            isMatricsVisible ? "block" : "hidden"
+          }`}
+        >
+          <div>
+            <span>
+              {new Intl.NumberFormat("en", { notation: "compact" }).format(
+                reply_count,
+              )}
+            </span>
+            <span className="ml-1 text-neutral-500">replies</span>
+          </div>
+          <div>
+            <span>
+              {new Intl.NumberFormat("en", { notation: "compact" }).format(
+                retweet_count,
+              )}
+            </span>
+            <span className="ml-1 text-neutral-500">shares</span>
+          </div>
+          <div>
+            <span>
+              {new Intl.NumberFormat("en", { notation: "compact" }).format(
+                like_count,
+              )}
+            </span>
+            <span className="ml-1 text-neutral-500">likes</span>
+          </div>
+        </div>
       </div>
     </div>
   );

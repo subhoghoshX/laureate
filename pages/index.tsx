@@ -5,13 +5,14 @@ import SidePanel from "../components/SidePanel";
 import TweetCard from "../components/TweetCard";
 import ExportButton from "../components/ExportButton";
 import Arrow from "../components/Arrow";
+import Script from "next/script";
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const rootRef = useRef();
+  const rootRef = useRef<null | HTMLDivElement>(null);
 
   return (
-    <div>
+    <>
       <Head>
         <title>Laureate</title>
         <meta name="title" content="Laureate" />
@@ -44,19 +45,23 @@ export default function Home() {
           content="https://laureate.netlify.app/preview.png"
         />
       </Head>
+
       <div className="relative">
         <Arrow />
         <div className="relative z-10 flex h-screen flex-col overflow-hidden">
           <Header setIsPanelOpen={setIsPanelOpen} />
           <SidePanel isPanelOpen={isPanelOpen} />
-          <div className="absolute inset-0 z-[-10] flex items-center justify-center">
+          <div className="absolute inset-0 z-[-10] flex items-center justify-center dark:bg-[#121212]">
             <TweetCard rootRef={rootRef} />
           </div>
-          <div className="absolute bottom-8 z-[-5] flex w-full justify-center">
-            <ExportButton rootRef={rootRef} />
+          <div className="absolute bottom-8 z-[-5] flex h-12 w-full justify-center">
+            <ExportButton
+              rootRef={rootRef}
+              className="w-36 lg:-translate-x-24"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

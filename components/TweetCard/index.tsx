@@ -1,8 +1,12 @@
 import { usePanStore } from "../../store/pan";
-import { useEffect } from "react";
+import { MouseEvent, MutableRefObject, useEffect } from "react";
 import CardResizable from "./CardResizable";
 
-export default function TweetCard({ rootRef }: any) {
+interface Props {
+  rootRef: MutableRefObject<HTMLDivElement | null>;
+}
+
+export default function TweetCard({ rootRef }: Props) {
   const isSpaceDown = usePanStore((state) => state.isSpaceDown);
   const setIsSpaceDown = usePanStore((state) => state.setIsSpaceDown);
   const isMouseDown = usePanStore((state) => state.isMouseDown);
@@ -10,19 +14,20 @@ export default function TweetCard({ rootRef }: any) {
   const moveBy = usePanStore((state) => state.moveBy);
   const setMoveBy = usePanStore((state) => state.setMoveBy);
 
+  // The functionality to move Card when pressing Space key and dragging the mouse
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
-      if (e.keyCode === 32) {
+      if (e.code === "Space") {
         setIsSpaceDown(() => true);
       }
     });
 
     document.addEventListener("keyup", (e) => {
-      if (e.keyCode === 32) {
+      if (e.code === "Space") {
         setIsSpaceDown(() => false);
       }
     });
-  }, []);
+  }, [setIsSpaceDown]);
 
   function mouseDownHandler() {
     setIsMouseDown(() => true);
@@ -30,7 +35,7 @@ export default function TweetCard({ rootRef }: any) {
   function mouseUpHandler() {
     setIsMouseDown(() => false);
   }
-  function mouseMoveHandler(e: any) {
+  function mouseMoveHandler(e: MouseEvent) {
     if (isMouseDown && isSpaceDown) {
       setMoveBy(() => ({
         X: moveBy.X + e.movementX,

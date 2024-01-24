@@ -9,7 +9,7 @@ export default function Arrow() {
     <>
       {isArrowVisible && (
         <span
-          className="fixed z-20 text-sm font-bold"
+          className="fixed z-20 text-sm font-bold dark:text-white"
           style={{ left: arrowX, top: arrowY }}
         >
           ⟷
